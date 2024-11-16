@@ -3,9 +3,13 @@
 #include <string.h>
 #include <time.h>
 
+void delay(int seconds) {
+    time_t start = time(NULL);
+    while (time(NULL) - start < seconds);
+}
+
 void work (User *user){
-    char pekerjaan[100];
-    int duration, gaji;
+    int duration, gaji, pekerjaan;
 
     printf("Daftar pekerjaan:\n");
     printf("1. Evil Lab Assistant (pendapatan=100, durasi=14s)\n");
@@ -15,7 +19,7 @@ void work (User *user){
     printf("5. Inator Connoisseur (pendapatan=997, durasi=15s)\n");
     printf("\nMasukkan pekerjaan yang dipilih (1-5): ");
 
-    bacakata(pekerjaan, 100);
+    bacakatainteger(pekerjaan, 5);
 
     if (pekerjaan == 1){
         gaji =+ 100; 
