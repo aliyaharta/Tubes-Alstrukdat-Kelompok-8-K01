@@ -15,6 +15,7 @@ void CreateUser_Password(User *u, const Word *name, const Word *password, int mo
         u->password[i] = password->TabWord[i];
     }
     u->password[password->Length] = '\0';
+    // cek 
 }
 
 void DisplayUser(User u) {
