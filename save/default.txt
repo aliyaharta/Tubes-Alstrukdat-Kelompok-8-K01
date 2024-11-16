@@ -1,0 +1,7 @@
+3
+1000 PlatypusLaser
+2000 ShrinkRay
+1500 NetShooter
+2
+5000 admin password123
+3000 user user 123
