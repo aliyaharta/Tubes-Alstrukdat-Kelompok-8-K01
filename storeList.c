@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include "src/ADT/mesinkata.h"
-#include "src/ADT/mesinkarakter.h"
-#include "src/ADT/list_barang.h"
-#include "src/ADT/barang.h"
+#include "storeList.h"
 
 void storeList(ListBarang lb){
     if (lb.count == 0){
@@ -18,7 +14,7 @@ void storeList(ListBarang lb){
 
         printf("- ");
         for (j=0; j<barangIni.name->Length; j++){
-            putchar(barangIni.name->TabWord[i]);
+            printf("%c", barangIni.name->TabWord[i]);
         }
         printf("\n");
     }
