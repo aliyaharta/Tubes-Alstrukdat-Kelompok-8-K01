@@ -6,13 +6,14 @@
 void register_user(User user_baru)
 {
     boolean not_login = true;
-    char new_username[50];
-    char new_password[50];
+    Word new_username;
+    Word new_password;
     int money = 0;
+
     while (not_login){
         printf("Masukkan username baru kamu (minimal 1 karakter) : ");
-        baca_kata(new_username,50);
-        if (new_username[0]=='\0')
+        baca_kata(new_username,MAX_LEN);
+        if (&new_username.Length==0)
         {
             printf("Username tidak boleh kosong. Coba isi lagi\n");
         }
@@ -25,10 +26,14 @@ void register_user(User user_baru)
     }
     while(not_login){
         printf("Masukkan password baru kamu (minimal 4 karakter): ");
-        baca_kata(new_password,50);
-        if(new_password[0]=='\0')
+        baca_kata(new_password,MAX_LEN);
+        if(&new_password.Length==0)
         {
             printf("Password tidak boleh kosong. Coba ulang password anda.");
+        }
+        else if (new_password.Length<4)
+        {
+            printf("Password haru lebih dari 4 karakter. Coba ulang password anda.");
         }
         else
         {
@@ -37,5 +42,4 @@ void register_user(User user_baru)
             CreateUser_Password(&user_baru,&new_password,money);
         }
     }
-    return (new_username,new_password);
 }

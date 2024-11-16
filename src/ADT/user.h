@@ -11,6 +11,13 @@ typedef struct {
     int money;
 } User;
 
+typedef struct 
+{
+    char TabWord[MAX_LEN];
+    int Length;
+}Word;
+
+
 // Buat User baru
 void CreateUser_Username(User *u, const Word *name);
 

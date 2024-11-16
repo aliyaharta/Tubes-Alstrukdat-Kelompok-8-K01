@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include "mesinkata.h"
 
-void baca_kata(char*kata, int Max){
+void baca_kata(Word *kata, int Max){
     int i = 0;
     char input_char;
     input_char = getchar();
-    while (input_char != '\n' && i < Max-1)
+    while (input_char != '\n' && i < Max)
     {
-        kata[i] = input_char;
-        i++;
-        input_char = getchar(); 
+        kata->TabWord[i] = input_char;
+        i++; 
     }
-    kata[i] = '\0';
+    kata->TabWord[i] = '\0';
+    kata->Length = i;
 }
