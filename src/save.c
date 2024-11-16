@@ -9,7 +9,7 @@ void SaveProgram(ListBarang lb, ListUser lu, char *filename) {
         return;
     }
 
-    // simpan jumlah barang
+    // simpan jumlah barang 
     fprintf(file, "%d\n", lb.count);
 
     // simpan barang

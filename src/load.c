@@ -11,7 +11,7 @@ void LoadProgram(ListBarang *lb, ListUser *lu, char *filename) {
         return;
     }
 
-    //baca jumlah barang
+    //baca jumlah barang 
     int jumlahBarang = 0;
     for (int i = 0; i < CurrentWord.Length; i++) {
         jumlahBarang = jumlahBarang * 10 + (CurrentWord.TabWord[i] - '0');

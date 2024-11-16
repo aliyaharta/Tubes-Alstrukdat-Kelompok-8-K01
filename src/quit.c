@@ -6,13 +6,13 @@ void QuitProgram(ListBarang *lb, ListUser *lu) {
     Word saveOption;
     printf("Apakah Anda ingin menyimpan data sebelum keluar? (Y/N): ");
 
-    //baca input user
+    //baca input user 
     STARTWORD(stdin);
     saveOption = CurrentWord;
 
     if ((saveOption.Length == 1 && (saveOption.TabWord[0] == 'Y' || saveOption.TabWord[0] == 'y'))) {
         printf("Masukkan nama file untuk menyimpan data; ");
-        ADVWORD();
+        ADVWORD(); 
 
         char filename[50];
         for (int i = 0; i < CurrentWord.Length; i++) {

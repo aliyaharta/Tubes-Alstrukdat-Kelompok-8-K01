@@ -35,7 +35,7 @@ void StartProgram(ListBarang *lb, ListUser *lu, char *filename) {
             hargaBarang = hargaBarang * 10 + (harga.TabWord[j] - '0');
         }
 
-        // tambah barang ke list
+        // tambah barang ke list 
         Barang b;
         CreateBarang(&b, &namaBarang, hargaBarang);
         AddBarang(lb, b);
