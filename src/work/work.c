@@ -19,25 +19,25 @@ void work (User *user){
     printf("5. Inator Connoisseur (pendapatan=997, durasi=15s)\n");
     printf("\nMasukkan pekerjaan yang dipilih (1-5): ");
 
-    bacakatainteger(pekerjaan, 5);
+    baca_kata(pekerjaan, 2);
 
-    if (pekerjaan == 1){
+    if (pekerjaan.TabWord[0] == '1'){
         gaji =+ 100; 
         duration = 14; 
     }
-    else if (pekerjaan = 2){
+    else if (pekerjaan.TabWord[0] = '2'){
         gaji =+ 4200; 
         duration = 21; 
     }
-    else if (pekerjaan = 3){
+    else if (pekerjaan.TabWord[0] = '3'){
         gaji =+ 7000; 
         duration = 30; 
     }
-    else if (pekerjaan = 4){
+    else if (pekerjaan = '4'){
         gaji =+ 10000; 
         duration = 22; 
     }
-    else if (pekerjaan = 5){
+    else if (pekerjaan = '5'){
         money =+ 997; 
         duration = 15; 
     }
