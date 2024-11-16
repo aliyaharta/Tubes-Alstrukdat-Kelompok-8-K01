@@ -6,7 +6,7 @@
 #define MAX_LEN 50
 
 typedef struct {
-    char name[MAX_LEN];
+    Word name[MAX_LEN];
     int price;
 } Barang;
 
