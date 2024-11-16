@@ -13,7 +13,7 @@ void StartProgram(ListBarang *lb, ListUser *lu, char *filename) {
     // Baca jumlah barang
     int jumlahBarang = 0;
     for (int i = 0; i < CurrentWord.Length; i++) {
-        jumlahBarang
+        jumlahBarang;
     }
 
 

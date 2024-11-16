@@ -12,7 +12,9 @@ typedef struct {
 } User;
 
 // Buat User baru
-void CreateUser(User *u, const Word *name, const Word *password, int money);
+void CreateUser_Username(User *u, const Word *name);
+
+void CreateUser_Password(User *u,const Word *password, int money);
 
 // Menampilkan informasi dari user
 void DisplayUser(User u);
