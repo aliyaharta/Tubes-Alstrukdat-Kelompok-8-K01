@@ -16,6 +16,6 @@ void CreateBarang(Barang *b, const Word *name, int price);
 // Tampilin informasi dari barang
 void DisplayBarang(Barang b);
 
-boolean IsBarangNameWqual(const Barang *b, const Word *name);
+boolean IsBarangNameEqual(const Barang *b, const Word *name);
 
 #endif
