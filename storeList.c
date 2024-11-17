@@ -8,14 +8,23 @@ void storeList(ListBarang lb){
 
     printf("List barang yang ada di toko: \n");
 
-    int i, j;
+    int i, j, jumUnique=0;
+    Barang barangUnique[lb.capacity];
+
     for (i=0; i<lb.count; i++){
-        Barang barangIni = lb.items[i];
+        int isUnique = 1;
 
         printf("- ");
-        for (j=0; j<barangIni.name->Length; j++){
-            printf("%c", barangIni.name->TabWord[i]);
+        for (j=0; j<jumUnique; j++){
+            if (IsBarangNameEqual(&lb.items[i], (Word *)&barangUnique[j].name)){
+                isUnique = 0;
+                break;
+            }
         }
-        printf("\n");
+
+        if (isUnique) {
+            barangUnique[jumUnique++] = lb.items[i];
+            printf("- %s\n", lb.items[i].name);
+        }
     }
 }
