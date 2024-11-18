@@ -1,6 +1,6 @@
-#ifndef input_User
-#define input_User
+#ifndef main
+#define main
 
 int main();
 
-#endif
+#endif main
