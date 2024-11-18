@@ -22,7 +22,11 @@ void DisplayUser(User u) {
 
 booleanIsUsernameEqual(User *u, const Word *username) {
     for (int i = 0; i < username->Length; i++) {
-        if (i >= MAX_LEN || username->TabWord[i] != u->name[i]) {
+        // mengubah huruf menjadi huruf kecil semua
+        char user_char = (u->name[i] >= 'A' && u->name[i] <= 'Z') ? (u->name[i] + 'a' - 'A') : u->name[i];
+        char username_char = (username->TabWord[i] >= 'A' && username->TabWord[i] <= 'Z') ? (username->TabWord[i] + 'a' - 'A') : username->TabWord[i];
+
+        if (i >= MAX_LEN || username_char != user_char) {
             return false;
         }
     }
