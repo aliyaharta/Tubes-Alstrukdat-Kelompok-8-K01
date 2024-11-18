@@ -3,32 +3,33 @@
 #include "storeList.h"  
 
 int main() {
-    ListBarang toko;
-    CreateListBarang(&toko, 10);  // Kapasitas maksimal 10 barang
+    ListBarang l;
+    CreateListBarang(&l, 10);
 
-    // Membuat barang
-    Barang b1, b2, b3, b4, b5, b6;
-    CreateBarang(&b1, "Platypus Laser", 500);
-    CreateBarang(&b2, "Shrink Ray", 300);
-    CreateBarang(&b3, "Net Shooter", 400);
-    CreateBarang(&b4, "Camouflage Cloak", 350);
-    CreateBarang(&b5, "Sleep Dart Gun", 250);
-    CreateBarang(&b6, "Bubble Blaster", 450);
+    Barang a, b, c, d, e, f;
+    Word w1 = {"Platypus Laser", 14};
+    Word w2 = {"Shrink Ray", 10};
+    Word w3 = {"Net Shooter", 11};
+    Word w4 = {"Platypus Laser", 14}; // Duplikat
+    Word w5 = {"Camouflage Cloak", 17};
+    Word w6 = {"Bubble Blaster", 14};
 
-    // Menambahkan barang ke ListBarang
-    AddBarang(&toko, b1);
-    AddBarang(&toko, b2);
-    AddBarang(&toko, b3);
-    AddBarang(&toko, b4);
-    AddBarang(&toko, b5);
-    AddBarang(&toko, b6);
+    CreateBarang(&a, &w1, 1000);
+    CreateBarang(&b, &w2, 2000);
+    CreateBarang(&c, &w3, 3000);
+    CreateBarang(&d, &w4, 1000); // Barang duplikat
+    CreateBarang(&e, &w5, 5000);
+    CreateBarang(&f, &w6, 6000);
 
-    // Panggil fungsi STORE LIST
-    printf(">> STORE LIST\n");
-    storeList(toko);
+    AddBarang(&l, a);
+    AddBarang(&l, b);
+    AddBarang(&l, c);
+    AddBarang(&l, d);
+    AddBarang(&l, e);
+    AddBarang(&l, f);
 
-    // Bebaskan memori list barang
-    FreeListBarang(&toko);
+    storeList(l); // Panggil fungsi untuk menampilkan daftar barang
 
+    FreeListBarang(&l);
     return 0;
 }
