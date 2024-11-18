@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "boolean.h"
 #include <time.h>
+#include "data.h"
 
 void delay(){
     clock_t start_time = clock();
@@ -106,39 +106,4 @@ void keluar_game(){
     delay();
     printf("l_____jl_____jl__j\_jl___j___jl__j__j|____jl__j__j                       \n");
     delay();
-}
-
-void login_help()
-{
-    if(not_login){
-        printf("=============WELCOME TO HELP MENU PURRMART===============\n");
-        printf("1. REGITSER : Untuk melakukan pendaftaran akun baru      \n");
-        printf("2. LOGIN : Untuk masuk ke dalam akun dan memulai sesi    \n");
-        printf("3. QUIT : Untuk keluar dari program                      \n");
-    }
-    else{
-        printf("=====================MENU HELP PURRMART===================\n");
-        printf("1. WORK : Untuk bekerja                                   \n");
-        printf("2. WORK CHALLENGE : Untuk mengerjakan challenge           \n");
-        printf("3. STORE lIST : Untuk melihat barang-barang di toko       \n");
-        printf("4. STORE REQUEST : Untuk meminta penambahan barang        \n");
-        printf("5. STORE SUPPLY : Untuk menambahkan barang dari permintaan\n");
-        printf("6. STORE REMOVE  : Untuk menghapus barang                 \n");
-        printf("7. LOGOUT : Untuk keluar dari sesi                        \n");
-        printf("8. SAVE : Untuk menyimpan state ke dalam file             \n");
-        printf("9. QUIT : Untuk keluar dari program                       \n");
-    }
-}
-
-void main_menu(){
-    printf("=====================MENU HELP PURRMART===================");
-    printf("1. WORK : Untuk bekerja                                   ");
-    printf("2. WORK CHALLENGE : Untuk mengerjakan challenge           ");
-    printf("3. STORE lIST : Untuk melihat barang-barang di toko       ");
-    printf("4. STORE REQUEST : Untuk meminta penambahan barang        ");
-    printf("5. STORE SUPPLY : Untuk menambahkan barang dari permintaan");
-    printf("6. STORE REMOVE  : Untuk menghapus barang                 ");
-    printf("7. LOGOUT : Untuk keluar dari sesi                        ");
-    printf("8. SAVE : Untuk menyimpan state ke dalam file             ");
-    printf("9. QUIT : Untuk keluar dari program                       ");
 }

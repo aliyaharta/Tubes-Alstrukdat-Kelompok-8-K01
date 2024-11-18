@@ -1,11 +1,6 @@
-#include "boolean.h"
 #include <stdio.h>
-#include "mesinkarakter.h"
 
-// #define MARK '.'
-// /* State Mesin */
-// extern char currentChar;
-// extern boolean EOP;
+#include "mesinkarakter.h"
 
 char currentChar;
 boolean EOP;
@@ -13,23 +8,64 @@ boolean EOP;
 static FILE *pita;
 static int retval;
 
-void START() {
+void START()
+{
     pita = stdin;
     ADV();
 }
 
-void ADV() {
-    retval = fscanf(pita, "%c", &currentChar);
-    EOP = (currentChar==MARK);
-    if (EOP) {
-        fclose(pita);
+void StartFile(char *filename)
+{
+    if (filename == NULL){
+        pita = stdin;
+    } else {
+        pita = fopen(filename, "r");
+    }
+    ADV();
+}
+ 
+void ADV()
+{
+    if (pita == NULL)
+    {
+        EOP = true;
+    }
+    else
+    {
+        retval = fscanf(pita, "%c", &currentChar);
+        EOP = feof(pita);
+
+        if (EOP)
+        {
+            fclose(pita);
+        }
     }
 }
 
-char GetCC() {
-return currentChar;
+void AdvFile()
+{
+    if (pita == NULL)
+    {
+        EOP = true;
+    }
+    else
+    {
+        retval = fscanf(pita, "%c", &currentChar);
+        EOP = feof(pita);
+
+        if (EOP)
+        {
+            fclose(pita);
+        }
+    }
 }
 
-boolean IsEOP() {
-return currentChar == MARK;
+char GetCC()
+{
+    return (currentChar);
+}
+
+boolean IsEOP()
+{
+    return (currentChar == MARK);
 }

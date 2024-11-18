@@ -2,6 +2,7 @@
 #define USER_H
 
 #include "mesinkata.h"
+#include "ADT/cekkata.h"
 
 #define MAX_LEN 50
 
@@ -10,13 +11,6 @@ typedef struct {
     char password[MAX_LEN];
     int money;
 }User;
-
-typedef struct 
-{
-    char TabWord[MAX_LEN];
-    int Length;
-}Word;
-
 
 // Buat User baru
 void CreateUser_Username(User *u, const Word *name);

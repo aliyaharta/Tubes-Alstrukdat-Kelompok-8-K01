@@ -1,11 +1,13 @@
 #ifndef __MESINKATA_H__
 #define __MESINKATA_H__
 
-#include "boolean.h"
 #include "mesinkarakter.h"
 
 #define NMax 50
 #define BLANK ' '
+#define NEWLINE '\n'
+#define STRIP '-'
+#define STOP '\0'
 
 typedef struct
 {
@@ -15,32 +17,64 @@ typedef struct
 
 /* State Mesin Kata */
 extern boolean EndWord;
-extern Word CurrentWord;
+extern Word currentWord;
+extern Word currentCommand;
+extern Word hasil;
 
-void IgnoreBlanks();
-/* Mengabaikan satu atau beberapa BLANK
-   I.S. : currentChar sembarang
-   F.S. : currentChar ≠ BLANK atau currentChar = MARK */
+void IgnoreBlank();
 
-void STARTWORD();
-/* I.S. : currentChar sembarang
-   F.S. : EndWord = true, dan currentChar = MARK;
-          atau EndWord = false, currentWord adalah kata yang sudah diakuisisi,
-          currentChar karakter pertama sesudah karakter terakhir kata */
+void IgnoreNewline();
 
-void ADVWORD();
-/* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
-   F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
-          currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
-          Jika currentChar = MARK, EndWord = true.
-   Proses : Akuisisi kata menggunakan procedure SalinWord */
+void StartWordInput();
+
+// void StartWordMark();
+
+// void StartWordBlank();
+
+Word ConcatWord(Word word_1, Word word_2);
+
+void StartWordFile(char *filename, int type);
+
+void StartCommand();
+
+void CopyCommand();
+
+void ResetCommand();
+
+void ADVWord();
+
+void ADVInput();
+
+boolean IsCommandEqual(Word Input, char * kata);
+
+void copyString(char dest[], const char src[], int max_length);
+
+int stringLen(char *string);
+
+Word stringToWord(char* str);
+
+void ADVLine();
 
 void CopyWord();
-/* Mengakuisisi kata, menyimpan dalam currentWord
-   I.S. : currentChar adalah karakter pertama dari kata
-   F.S. : currentWord berisi kata yang sudah diakuisisi;
-          currentChar = BLANK atau currentChar = MARK;
-          currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
-          Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
+
+Word CopyWordFile();
+
+void CopyWordinput();
+
+void ADVSemicolon();
+
+void DisplayWord (Word Word);
+
+boolean CekWord(Word hasil);
+
+Word ConcatWord(Word word_1, Word word_2);
+
+Word SplitWordBlank(Word word);
+
+Word SplitWordMark(Word word);
+
+Word SplitWordLeftBlank(Word word);
+
+Word SplitWordLeftMark(Word word);
 
 #endif
