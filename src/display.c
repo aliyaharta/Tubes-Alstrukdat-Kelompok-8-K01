@@ -2,6 +2,11 @@
 #include <time.h>
 #include "data.h"
 
+void delay(){
+    clock_t start_time = clock();
+    while (clock()<start_time+100000);
+}
+
 void welcome_menu()
 {
     delay();
