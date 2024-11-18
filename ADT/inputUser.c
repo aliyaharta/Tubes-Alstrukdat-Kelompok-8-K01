@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "mesinkata.h"
+#include "inputUser.h"
 
 int inputUser() {
     // Menggunakan input dari keyboard (stdin)
