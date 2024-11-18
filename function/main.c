@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "mesinkata.h"
-#include "inputUser.h"
+#include "main.h"
 
-int inputUser() {
+int main() {
     // Menggunakan input dari keyboard (stdin)
     STARTKATA(NULL); // NULL berarti menggunakan stdin
 

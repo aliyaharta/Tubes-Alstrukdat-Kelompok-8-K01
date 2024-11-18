@@ -29,12 +29,16 @@ void START(char *filename) {
 }
 
 void ADV() {
-    int retval = fscanf(pita, "%c", &currentChar); // Membaca karakter dari pita
-    EOP = currentChar == MARK; // Cek akhir pita
+    if (fscanf(pita, "%c", &currentChar) == EOF) {
+        EOP = true; // Tandai akhir pita jika mencapai EOF
+    } else {
+        EOP = (currentChar == MARK); // Tandai akhir pita berdasarkan MARK
+    }
     if (EOP && pita != stdin) {
         fclose(pita); // Tutup pita jika menggunakan file
     }
 }
+
 
 char GetCC() {
     return currentChar;
