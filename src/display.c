@@ -1,10 +1,5 @@
 #include <stdio.h>
-#include <time.h>
-
-void delay(int milisekon) {
-    clock_t start_time = clock();
-    while (clock() < start_time + milisekon * CLOCKS_PER_SEC / 1000);
-}
+#include "delay.h"
 
 const char *ascii_art[] = {
     " __    __    ___  _         __   ___   ___ ___    ___      ______   ___  ",
@@ -26,19 +21,19 @@ const char *ascii_art[] = {
 void welcome_menu()
 {   
     for (int i = 0; i < sizeof(ascii_art) / sizeof(ascii_art[0]); i++) {
-        delay(100);
+        delay(1);
         printf("%s\n", ascii_art[i]);
 }
     printf("\n");
     printf("\n");
     printf("1. START : Untuk memulai sesi baru                                       \n");
-    delay(100);
+    delay(1);
     printf("2. LOAD : Untuk memulai sesi berdasarkan file konfigurasi                \n");
-    delay(100);
+    delay(1);
     printf("3. HELP : Untuk memberikan info selanjutnya                              \n");
-    delay(100);
+    delay(1);
     printf("4. QUIT : Untuk keluar dari program                                      \n");
-    delay(100);
+    delay(1);
     printf("\n");
-    delay(100);
+    delay(1);
 }
