@@ -47,16 +47,3 @@ void DisplayBarangList(ListBarang lb) {
 void FreeListBarang(ListBarang *lb) {
     free(lb -> items);
 }
-
-int main (){
-    ListBarang l;
-    CreateListBarang(&l, 5);
-    Barang a, b, c, d, e;
-    CreateBarang(&a, &"A", 500);
-    
-    AddBarang(&l, a);
-    DisplayBarangList(l);
-    return 0;
-
-    
-}

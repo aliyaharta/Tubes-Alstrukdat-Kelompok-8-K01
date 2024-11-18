@@ -13,8 +13,7 @@ void storeList(ListBarang lb){
 
     for (i=0; i<lb.count; i++){
         int isUnique = 1;
-
-        printf("- ");
+        
         for (j=0; j<jumUnique; j++){
             if (IsBarangNameEqual(&lb.items[i], (Word *)&barangUnique[j].name)){
                 isUnique = 0;
