@@ -25,10 +25,11 @@ int generateRandomNumber(int min, int max) {
 }
 
 void tebakangka(){
-
     int kesempatan = 0; 
 
     int randomNum = generateRandomNumber(0,100);
+    int uang; 
+
     while (kesempatan < 10){
         int tebakan; 
         scanf("%d", &tebakan);
@@ -40,8 +41,10 @@ void tebakangka(){
             printf("Tebakanmu lebih kecil!\n");
         }
         else {
-            printf("Tebakanmu benar! +350 rupiah telah ditambahkan ke akun anda.\n");
+            uang = 550 - (50*(kesempatan+1));
+            printf("Tebakanmu benar! %d rupiah telah ditambahkan ke akun anda.\n", uang);
         }
+        kesempatan++;
     }
     printf("Maaf kesempatanmu sudah habis.\n");
 }
@@ -93,12 +96,20 @@ void charCheck(const char *jawaban, const char *tebakan, char *hasil) {
 
 int wordCheck(const char *word, char usedWords[][WORD_LENGTH + 1], int count) {
     for (int i = 0; i < count; i++) {
-        if (strcmp(word, usedWords[i]) == 0) {
+        int check = 1; 
+        for (int j = 0; word[j] != '\0' || usedWords[i][j] != '\0'; j++) {
+            if (word[j] != usedWords[i][j]) {
+                check = 0; 
+                break;
+            }
+        }
+        if (check) {
             return 1; 
         }
     }
     return 0; 
 }
+
 
 void wordl3(){
     #define MAX_ATTEMPTS 5
