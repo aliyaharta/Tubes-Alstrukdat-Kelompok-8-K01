@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "mesinkarakter.h"
+#include "config.h"
 
 char currentChar;
 boolean EOP;
@@ -14,7 +15,6 @@ void START(char *filename) {
     if (filename == NULL) {
         // Jika filename NULL, gunakan keyboard (stdin) sebagai pita
         pita = stdin;
-        printf("Masukkan input (akhiri dengan '.'): ");
     } else {
         // Jika filename diberikan, buka file sebagai pita
         pita = fopen(filename, "r");

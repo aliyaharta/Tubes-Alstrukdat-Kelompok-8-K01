@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "mesinkata.h"
+#include "mesinkarakter.h"
 #include "boolean.h"
+#include "config.h"
 
 Kata currentKata;
 boolean EndKata;
@@ -17,7 +19,7 @@ int getLength(Kata namaKata){
 
 void SalinKata() {
     currentKata.Index = 0;
-    while (GetCC() != BLANK && GetCC() != MARK && !IsEOP()) {
+    while (GetCC() != BLANK && !IsEOP()) {
         if (currentKata.Index < NMax) {
             currentKata.TabKata[currentKata.Index] = GetCC();
             currentKata.Index++;
@@ -54,3 +56,9 @@ Kata GetCKata() {
 boolean IsEndKata() {
     return EndKata;
 }
+
+
+void test() {
+    printf("NMax is: %d\n", NMax);
+}
+

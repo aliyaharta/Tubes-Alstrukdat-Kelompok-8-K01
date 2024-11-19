@@ -1,14 +1,14 @@
 #ifndef MESINKATA_H
 #define MESINKATA_H
 
+#include "config.h"
 #include "boolean.h"
-#include "mesinkarakter.h"
+#include "config.h"
 
-#define NMax 50    // Panjang maksimum kata
 #define BLANK ' '  // Karakter pemisah kata
 
 typedef struct {
-    char TabKata[NMax];
+    char TabKata[100];
     int Index;
 } Kata;
 
@@ -20,5 +20,7 @@ void STARTKATA(char *filename); // Inisialisasi Mesin Kata
 void ADVKATA();                 // Pindah ke kata berikutnya
 Kata GetCKata();                // Mengambil kata saat ini
 boolean IsEndKata();            // Mengecek apakah sudah akhir kata
+void IgnoreBlank();            
+void SalinKata();
 
 #endif
