@@ -7,8 +7,8 @@ OBJ_DIR = object
 PROGRAM_DIR = aplikasi
 
 TARGET = $(PROGRAM_DIR)/PURRMART.exe
-SRC_FILES = $(SRC_DIR)/inputUser.c $(SRC_DIR)/inputUserDriver.c
-LIB_FILES = $(LIB_DIR)/mesinkarakter.c $(LIB_DIR)/mesinkata.c
+SRC_FILES = $(SRC_DIR)/inputUser.c 
+LIB_FILES = $(LIB_DIR)/mesinkarakter.c $(LIB_DIR)/mesinkata.c $(LIB_FILES)/inputUserDriver.c
 OBJ_FILES = $(OBJ_DIR)/inputUser.o $(OBJ_DIR)/inputUserDriver.o $(OBJ_DIR)/mesinkarakter.o $(OBJ_DIR)/mesinkata.o
 
 # Default target
