@@ -2,7 +2,7 @@
 #include "mesinkata.h"
 #include "inputUser.h"
 
-int main() {
+int inputUser() {
     // Menggunakan input dari keyboard (stdin)
     STARTKATA(NULL); // NULL berarti menggunakan stdin
 
