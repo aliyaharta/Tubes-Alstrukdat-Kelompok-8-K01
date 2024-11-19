@@ -17,7 +17,9 @@ const char *ascii_art[] = {
     "|   _/|  |  ||    / |    / |  \\_/  ||     ||    /l_j  l_j|__j            ", 
     "|  |  |  :  ||    \\ |    \\ |   |   ||  _  ||    \\  |  |   __             ",   
     "|  |  l     ||  .  Y|  .  Y|   |   ||  |  ||  .  Y |  |  |  T            ",  
-    "l__j   \\__,_jl__ \\_jl__ \\_jl___j___jl__j__jl__ \\ _jl__j  l__j            ",
+    "l__j   \\__,_jl__ \\_jl__ \\_jl___j___jl__j__jl__ \\ _jl__j  l__j            \n",
+
+    "by Ambil ber(k)as"
 };
 
 const char *ascii_art1[] = {
@@ -49,9 +51,10 @@ const char *ascii_art1[] = {
 void welcome_menu()
 {   
     for (int i = 0; i < sizeof(ascii_art) / sizeof(ascii_art[0]); i++) {
-        delay(1);
+        delay(200);
         printf("%s\n", ascii_art[i]);
 }
+    delay(600);
     printf("\n");
     printf("\n");
     printf("1. START : Untuk memulai sesi baru                                       \n");

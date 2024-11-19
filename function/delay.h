@@ -1,8 +1,6 @@
 #ifndef DELAY_H
 #define DELAY_H
 
-#include <time.h>
-
-void delay(int seconds);
+void delay(int milliseconds);  
 
 #endif
