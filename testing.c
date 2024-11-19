@@ -6,11 +6,9 @@
 #include "storeList.h"
 
 int main() {
-    // Inisialisasi ListBarang dan Queue
     ListBarang lb;
     Queue q;
 
-    // Kapasitas awal untuk daftar barang
     CreateListBarang(&lb, 10);
     CreateQueue(&q);
 
@@ -48,7 +46,6 @@ int main() {
     displayQueue(q);
 
     // Display barang di toko
-    printf("\nDaftar barang di toko:\n");
     storeList(lb);
 
     // Free memory untuk list barang
