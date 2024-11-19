@@ -1,35 +1,58 @@
 #include <stdio.h>
 #include "src/ADT/list_barang.h"
-#include "storeList.h"  
+#include "src/ADT/queue.h"
+#include "src/ADT/mesinkarakter.h"
+#include "storeRequest.h"
+#include "storeList.h"
 
 int main() {
-    ListBarang l;
-    CreateListBarang(&l, 10);
+    // Inisialisasi ListBarang dan Queue
+    ListBarang lb;
+    Queue q;
 
-    Barang a, b, c, d, e, f;
-    Word w1 = {"Platypus Laser", 14};
-    Word w2 = {"Shrink Ray", 10};
-    Word w3 = {"Net Shooter", 11};
-    Word w4 = {"Platypus Laser", 14}; // Duplikat
-    Word w5 = {"Camouflage Cloak", 17};
-    Word w6 = {"Bubble Blaster", 14};
+    // Kapasitas awal untuk daftar barang
+    CreateListBarang(&lb, 10);
+    CreateQueue(&q);
 
-    CreateBarang(&a, &w1, 1000);
-    CreateBarang(&b, &w2, 2000);
-    CreateBarang(&c, &w3, 3000);
-    CreateBarang(&d, &w4, 1000); // Barang duplikat
-    CreateBarang(&e, &w5, 5000);
-    CreateBarang(&f, &w6, 6000);
+    // Array data barang
+    Word dataBarang[] = {
+        {"Platypus Laser", 14},
+        {"Shrink Ray", 10},
+        {"Net Shooter", 11},
+        {"Sleep Dart Gun", 14},
+        {"Bubble Blaster", 15},
+        {"Shrink Ray", 10} // Duplikat
+    };
+    int hargaBarang[] = {100, 200, 150, 300, 400, 200}; // Harga untuk masing-masing barang
+    int jumlahBarang = sizeof(hargaBarang) / sizeof(hargaBarang[0]);
 
-    AddBarang(&l, a);
-    AddBarang(&l, b);
-    AddBarang(&l, c);
-    AddBarang(&l, d);
-    AddBarang(&l, e);
-    AddBarang(&l, f);
+    // Menambahkan barang awal ke toko (hanya barang pertama hingga ketiga)
+    for (int i = 0; i < 3; i++) {
+        Barang b;
+        CreateBarang(&b, &dataBarang[i], hargaBarang[i]);
+        AddBarang(&lb, b);
+    }
 
-    storeList(l); // Panggil fungsi untuk menampilkan daftar barang
+    // Testing storeList
+    printf(">> STORE LIST\n");
+    storeList(lb);
 
-    FreeListBarang(&l);
+    // Testing storeRequest untuk barang berikutnya (keempat hingga terakhir)
+    printf("\n>> STORE REQUEST\n");
+    for (int i = 3; i < jumlahBarang; i++) {
+        storeRequest(lb, &q, &dataBarang[i]);
+    }
+
+    // Display antrean
+    printf("\nAntrean barang:\n");
+    displayQueue(q);
+
+    // Display barang di toko
+    printf("\nDaftar barang di toko:\n");
+    storeList(lb);
+
+    // Free memory untuk list barang
+    FreeListBarang(&lb);
+
     return 0;
 }

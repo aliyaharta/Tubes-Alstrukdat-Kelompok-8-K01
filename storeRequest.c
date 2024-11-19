@@ -23,8 +23,8 @@ void storeRequest(ListBarang lb, Queue *q, const Word *barangReq){
     }
 
     Barang barangBaru;
-    CreateBarang(&barangBaru, barangReq, 0);
-    AddBarang(&lb, barangBaru);
-    enqueue(q, lb.count-1);
+    CreateBarang(&barangBaru, barangReq, 0); 
+    enqueue(q, lb.count); 
     printf("Nama barang yang diminta: %s\n", barangReq->TabWord);
+
 }
