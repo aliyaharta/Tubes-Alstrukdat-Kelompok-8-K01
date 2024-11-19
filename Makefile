@@ -7,38 +7,60 @@ OBJ_DIR = object
 PROGRAM_DIR = aplikasi
 
 TARGET = $(PROGRAM_DIR)/PURRMART.exe
-SRC_FILES = $(SRC_DIR)/inputUser.c 
-LIB_FILES = $(LIB_DIR)/mesinkarakter.c $(LIB_DIR)/mesinkata.c $(LIB_FILES)/inputUserDriver.c
-OBJ_FILES = $(OBJ_DIR)/inputUser.o $(OBJ_DIR)/inputUserDriver.o $(OBJ_DIR)/mesinkarakter.o $(OBJ_DIR)/mesinkata.o
+
+# Main file (to separate it from other source files)
+MAIN_FILE = $(LIB_DIR)/inputUserDriver.c
+
+# Source and library files
+SRC_FILES = $(SRC_DIR)/inputUser.c
+LIB_FILES = $(LIB_DIR)/mesinkarakter.c $(LIB_DIR)/mesinkata.c
+
+# Object files (excluding main file)
+OBJ_FILES = $(OBJ_DIR)/inputUser.o $(OBJ_DIR)/mesinkarakter.o $(OBJ_DIR)/mesinkata.o
 
 # Default target
 all: prepare $(TARGET)
 
 # Prepare directories
 prepare:
+ifeq ($(OS),Windows_NT)
 	@if not exist $(OBJ_DIR) mkdir $(OBJ_DIR)
 	@if not exist $(PROGRAM_DIR) mkdir $(PROGRAM_DIR)
+else
+	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(PROGRAM_DIR)
+endif
 
 # Build the target (executable)
-$(TARGET): $(OBJ_FILES)
-	$(CC) $(CFLAGS) $(OBJ_FILES) -o $(TARGET)
+$(TARGET): $(OBJ_FILES) $(OBJ_DIR)/main.o
+	$(CC) $(CFLAGS) $(OBJ_FILES) $(OBJ_DIR)/main.o -o $(TARGET)
 
-# Generic rule to compile .c files in SRC_DIR to .o files in OBJ_DIR
+# Compile the main file
+$(OBJ_DIR)/main.o: $(MAIN_FILE)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Compile .c files in SRC_DIR to .o files in OBJ_DIR
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Rule to compile .c files in LIB_DIR to .o files in OBJ_DIR
+# Compile .c files in LIB_DIR to .o files in OBJ_DIR
 $(OBJ_DIR)/%.o: $(LIB_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Clean rule
 clean:
+ifeq ($(OS),Windows_NT)
 	@if exist $(OBJ_DIR) rmdir /s /q $(OBJ_DIR)
 	@if exist $(PROGRAM_DIR) rmdir /s /q $(PROGRAM_DIR)
+else
+	@rm -rf $(OBJ_DIR)
+	@rm -rf $(PROGRAM_DIR)
+endif
 
 # Debug rule
 debug:
-	@echo "Library = $(LIB_DIR)"
-	@echo "Object directory = $(OBJ_DIR)"
-	@echo "Program directory = $(PROGRAM_DIR)"
-	@echo "Target = $(TARGET)"
+	@echo "Main file: $(MAIN_FILE)"
+	@echo "Source files: $(SRC_FILES)"
+	@echo "Library files: $(LIB_FILES)"
+	@echo "Object files: $(OBJ_FILES)"
+	@echo "Target: $(TARGET)"

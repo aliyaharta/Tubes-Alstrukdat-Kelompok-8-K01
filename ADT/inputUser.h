@@ -7,7 +7,6 @@ typedef struct ArrayOfKata{
     int length;
 } ArrayOfKata;
 
-
 ArrayOfKata inputUser();
 
 
