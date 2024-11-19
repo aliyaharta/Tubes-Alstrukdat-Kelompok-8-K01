@@ -5,7 +5,6 @@
 #include <ctype.h>
 
 #define WORD_LENGTH 5
-#define MAX_ATTEMPTS 5
 
 const char *word_list[] = {"TRULY", "LUCKY", "BUILD", "PLUCK", "STORM"};
 const int word_count = 5;
@@ -53,21 +52,27 @@ void charCheck(const char *jawaban, const char *tebakan, char *hasil) {
 
     for (i = 0; i < WORD_LENGTH; i++) {
         if (tebakan[i] == jawaban[i]) {
-            hasil[i * 2] = tebakan[i];    
-            hasil[i * 2 + 1] = ' ';     
+            hasil[i * 4] = tebakan[i];    
+            hasil[i * 4 + 1] = ' ';
+            hasil[i * 4 + 2] = ' ';
+            hasil[i * 4 + 3] = ' ';     
             check[i] = 1;                 
         } else {
-            hasil[i * 2] = '_';        
-            hasil[i * 2 + 1] = ' ';
+            hasil[i * 4] = '_';
+            hasil[i * 4 + 1] = ' ';
+            hasil[i * 4 + 2] = ' ';
+            hasil[i * 4 + 3] = ' ';
         }
     }
 
     for (i = 0; i < WORD_LENGTH; i++) {
-        if (hasil[i * 2] == '_') { 
+        if (hasil[i * 4] == '_') { 
             for (j = 0; j < WORD_LENGTH; j++) {
                 if (!check[j] && tebakan[i] == jawaban[j]) {
-                    hasil[i * 2] = tebakan[i]; 
-                    hasil[i * 2 + 1] = '*'; 
+                    hasil[i * 4] = tebakan[i];
+                    hasil[i * 4 + 1] = '*';
+                    hasil[i * 4 + 2] = ' ';
+                    hasil[i * 4 + 3] = ' ';
                     check[j] = 1;            
                     break;
                 }
@@ -76,19 +81,32 @@ void charCheck(const char *jawaban, const char *tebakan, char *hasil) {
     }
 
     for (i = 0; i < WORD_LENGTH; i++) {
-        if (hasil[i * 2] == '_') {     
-            hasil[i * 2] = tebakan[i];   
-            hasil[i * 2 + 1] = '%';    
+        if (hasil[i * 4] == '_') {     
+            hasil[i * 4] = tebakan[i];
+            hasil[i * 4 + 1] = '%';
+            hasil[i * 4 + 2] = ' ';
+            hasil[i * 4 + 3] = ' ';   
         }
     }
-    hasil[WORD_LENGTH * 2] = '\0'; 
+    hasil[WORD_LENGTH * 4] = '\0'; 
+}
+
+int wordCheck(const char *word, char usedWords[][WORD_LENGTH + 1], int count) {
+    for (int i = 0; i < count; i++) {
+        if (strcmp(word, usedWords[i]) == 0) {
+            return 1; 
+        }
+    }
+    return 0; 
 }
 
 void wordl3(){
+    #define MAX_ATTEMPTS 5
+
     char jawaban[WORD_LENGTH + 1];
     char tebakan[WORD_LENGTH + 1];
-    char hasil[WORD_LENGTH * 2 + 1];
-    char semua_hasil[MAX_ATTEMPTS][WORD_LENGTH * 2 + 1]; 
+    char hasil[WORD_LENGTH * 4 + 1];
+    char semua_hasil[MAX_ATTEMPTS][WORD_LENGTH * 4 + 1]; 
     int kesempatan = 0;
 
     srand(time(NULL)); 
@@ -141,12 +159,104 @@ void wordl3(){
     }
 }
 
+void quantumWordle() {
+    #define WORD_COUNT 4
+    #define MAX_ATTEMPTS_QUANTUM 9
+
+    char jawaban[WORD_COUNT][WORD_LENGTH + 1];
+    char tebakan[WORD_COUNT][WORD_LENGTH + 1];
+    char hasil[MAX_ATTEMPTS_QUANTUM][WORD_COUNT][WORD_LENGTH * 4 + 1];
+    int kesempatan = 0;
+
+    srand(time(NULL));
+
+    for (int i = 0; i < WORD_COUNT; i++) {
+        while (1) {
+            const char *random = word_list[rand() % word_count];
+            if (!wordCheck(random, jawaban, i)) {
+                strcpy(jawaban[i], random);
+                break;
+            }
+        }
+    }
+
+    for (int i = 0; i < WORD_COUNT; i++) {
+        strcpy(jawaban[i], word_list[rand() % word_count]);
+    }
+
+    printf("WELCOME TO QUANTUM! YOU HAVE %d CHANCES TO GUESS %d WORDS!\n", MAX_ATTEMPTS_QUANTUM, WORD_COUNT);
+    for (int i = 0; i < MAX_ATTEMPTS_QUANTUM; i++) {
+        for (int j = 0; j < WORD_COUNT; j++) {
+            printf("_ _ _ _ _   ");
+        }
+        printf("\n");
+    }
+    printf("\n");
+
+    while (kesempatan < MAX_ATTEMPTS_QUANTUM) {
+        printf("Masukkan %d kata tebakan Anda (dipisah dengan spasi):\n", WORD_COUNT);
+        for (int i = 0; i < WORD_COUNT; i++) {
+            scanf("%s", tebakan[i]);
+            if (strlen(tebakan[i]) != WORD_LENGTH) {
+                printf("Kata harus berisi %d karakter!\n", WORD_LENGTH);
+                i--; 
+                continue;
+            }
+
+            for (int j = 0; j < WORD_LENGTH; j++) {
+                tebakan[i][j] = toupper(tebakan[i][j]);
+            }
+        }
+
+        int semua_benar = 1;
+
+        for (int i = 0; i < WORD_COUNT; i++) {
+            charCheck(jawaban[i], tebakan[i], hasil[kesempatan][i]);
+            if (strcmp(tebakan[i], jawaban[i]) != 0) {
+                semua_benar = 0;
+            }
+        }
+
+        printf("Hasil tebakan Anda:\n");
+        for (int i = 0; i <= kesempatan; i++) {
+            for (int j = 0; j < WORD_COUNT; j++) {
+                printf("%s   ", hasil[i][j]);
+            }
+            printf("\n");
+        }
+        for (int i = kesempatan + 1; i < MAX_ATTEMPTS_QUANTUM; i++) {
+            for (int j = 0; j < WORD_COUNT; j++) {
+                printf("_ _ _ _ _   ");
+            }
+            printf("\n");
+        }
+        printf("\n");
+
+        if (semua_benar) {
+            printf("Selamat, Anda menang! Semua kata berhasil ditebak.\n");
+            money += 2000;  
+            printf("+2000 rupiah telah ditambahkan ke akun Anda.\n");
+            return;
+        }
+
+        kesempatan++;
+    }
+
+    printf("Boo! Anda kalah. Jawaban yang benar adalah:\n");
+    for (int i = 0; i < WORD_COUNT; i++) {
+        printf("%s ", jawaban[i]);
+    }
+    printf("\n");
+}
+
+
 int main (){
     int angka;
 
     printf("Daftar challenge yang tersedia :\n");
     printf("1. Tebak Angka (biaya main=200)\n"); 
     printf("2. W0RDL399 (biaya main=500)\n");
+    printf("3. Quantum W0RDL3 (biaya main = 600)\n");
     printf("Masukan challenge yang hendak dimainkan:\n");
 
     scanf("%d", &angka);
@@ -159,5 +269,9 @@ int main (){
     else if (angka == 2){
         money-=500;
         wordl3();
+    }
+    else if (angka == 3){
+        money-=600;
+        quantumWordle();
     }
 }
