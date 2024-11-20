@@ -10,6 +10,7 @@
 typedef struct {
     char TabKata[100];
     int Index;
+    int Length;
 } Kata;
 
 extern Kata currentKata;

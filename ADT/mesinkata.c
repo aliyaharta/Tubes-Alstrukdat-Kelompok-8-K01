@@ -61,4 +61,3 @@ boolean IsEndKata() {
 void test() {
     printf("NMax is: %d\n", NMax);
 }
-

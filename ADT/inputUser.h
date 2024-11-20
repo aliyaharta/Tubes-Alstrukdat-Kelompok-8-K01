@@ -4,7 +4,7 @@
 
 typedef struct ArrayOfKata{
     char kata[5][100];
-    int length;
+    int Length;
 } ArrayOfKata;
 
 ArrayOfKata inputUser();
