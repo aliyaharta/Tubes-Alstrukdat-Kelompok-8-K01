@@ -7,6 +7,8 @@
 int main (){
     boolean isExit = false;
 
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+
     welcome_menu();
     ArrayOfKata inputkata;
     while(!isExit){
