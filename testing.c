@@ -25,7 +25,7 @@ int main() {
     int jumlahBarang = sizeof(hargaBarang) / sizeof(hargaBarang[0]);
 
     // Menambahkan barang awal ke toko (hanya barang pertama hingga ketiga)
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 6; i++) {
         Barang b;
         CreateBarang(&b, &dataBarang[i], hargaBarang[i]);
         AddBarang(&lb, b);

@@ -25,7 +25,7 @@ void DisplayUsers(ListUser lu) {
 
 int FindUser(ListUser lu, const Word *username) {
     for (int i = 0; i < lu.count; i++) {
-        if (IsUsernameWqual(&lu.users[i], username)) {
+        if (IsUsernameEqual(&lu.users[i], username)) {
             return i;
         }
     }

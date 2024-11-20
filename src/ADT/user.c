@@ -22,7 +22,7 @@ void DisplayUser(User u) {
     printf("Name: %s, Money: %d\n", u.name, u.money);
 }
 
-booleanIsUsernameEqual(User *u, const Word *username) {
+boolean IsUsernameEqual(User *u, const Word *username) {
     for (int i = 0; i < username->Length; i++) {
         if (i >= MAX_LEN || username->TabWord[i] != u->name[i]) {
             return false;
