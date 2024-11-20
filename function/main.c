@@ -1,16 +1,32 @@
+#include <stdio.h>
 #include "display.h"
 #include "inputUser.h"
 #include "boolean.h"
-#include <stdio.h>
+#include "compare.h"
 
 int main (){
+    boolean isExit = false;
 
     welcome_menu();
     ArrayOfKata inputkata;
-    do{ printf(">> ");
-        inputkata = inputUser();
-        printf("%d\n",inputkata.Length);
+    while(!isExit){
+        do{ printf(">> ");
+            inputkata = inputUser();
+        }
+        while(inputkata.Length!=1);
+        
+        if (stringCompare(inputkata.kata[0], "QUIT")){
+            printf("\n\nKamu keluar dari PURRMART.\nDadah ^_^/\n\n");
+            delay(250);
+            keluar_game();
+            isExit = true;
+        }
+        else if(stringCompare(inputkata.kata[0], "HELP")){
+            login_help();
+            printf("\n");
+
+        }
     }
-    while(inputkata.Length!=1);
+
     return 0;
 }

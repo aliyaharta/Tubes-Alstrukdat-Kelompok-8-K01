@@ -20,11 +20,11 @@ endif
 MAIN_FILE = $(SRC_DIR)/main.c
 
 # Source and library files
-SRC_FILES = $(LIB_DIR)/inputUser.c $(SRC_DIR)/display.c $(SRC_DIR)/delay.c
+SRC_FILES = $(LIB_DIR)/inputUser.c $(SRC_DIR)/display.c $(SRC_DIR)/delay.c $(SRC_DIR)/compare.c 
 LIB_FILES = $(LIB_DIR)/mesinkarakter.c $(LIB_DIR)/mesinkata.c
 
 # Object files (excluding main file)
-OBJ_FILES = $(OBJ_DIR)/inputUser.o $(OBJ_DIR)/mesinkarakter.o $(OBJ_DIR)/mesinkata.o $(OBJ_DIR)/display.o $(OBJ_DIR)/delay.o
+OBJ_FILES = $(OBJ_DIR)/inputUser.o $(OBJ_DIR)/mesinkarakter.o $(OBJ_DIR)/mesinkata.o $(OBJ_DIR)/display.o $(OBJ_DIR)/delay.o $(OBJ_DIR)/compare.o
 
 # Default target
 all: prepare $(TARGET)

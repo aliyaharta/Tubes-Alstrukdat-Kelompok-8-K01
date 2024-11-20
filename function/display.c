@@ -71,7 +71,7 @@ void welcome_menu()
 
 void keluar_game(){
     for (int i = 0; i < sizeof(ascii_art1) / sizeof(ascii_art1[0]); i++) {
-        delay(1);
+        delay(240);
         printf("%s\n", ascii_art1[i]);
     }
 }
