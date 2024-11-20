@@ -43,11 +43,16 @@ void tebakangka(){
         else {
             uang = 550 - (50*(kesempatan+1));
             printf("Tebakanmu benar! %d rupiah telah ditambahkan ke akun anda.\n", uang);
+            break;
         }
         kesempatan++;
     }
-    printf("Maaf kesempatanmu sudah habis.\n");
+
+    if (kesempatan > 9){
+        printf("Maaf kesempatanmu sudah habis.\n");
+    }
 }
+
 
 void charCheck(const char *jawaban, const char *tebakan, char *hasil) { 
     int check[WORD_LENGTH] = {0}; 
@@ -181,19 +186,17 @@ void quantumWordle() {
 
     srand(time(NULL));
 
-    for (int i = 0; i < WORD_COUNT; i++) {
-        while (1) {
-            const char *random = word_list[rand() % word_count];
-            if (!wordCheck(random, jawaban, i)) {
-                strcpy(jawaban[i], random);
-                break;
-            }
-        }
+    int i = 0;
+while (i < WORD_COUNT) {
+    const char *random = word_list[rand() % word_count];  
+    while (wordCheck(random, jawaban, i)) { 
+        random = word_list[rand() % word_count]; 
     }
+    
+    strcpy(jawaban[i], random);  
+    i++; 
+}
 
-    for (int i = 0; i < WORD_COUNT; i++) {
-        strcpy(jawaban[i], word_list[rand() % word_count]);
-    }
 
     printf("WELCOME TO QUANTUM! YOU HAVE %d CHANCES TO GUESS %d WORDS!\n", MAX_ATTEMPTS_QUANTUM, WORD_COUNT);
     for (int i = 0; i < MAX_ATTEMPTS_QUANTUM; i++) {
@@ -260,44 +263,71 @@ void quantumWordle() {
     printf("\n");
 }
 
+void challenge (){
+        int angka;
+        scanf("%d", &angka);
+
+        if (angka == 1){
+            if (money < 200){
+                printf("Uang yang dimiliki kurang! Silakan kerja terlebih dahulu.");
+            }
+            else{
+                money -= 200;
+                printf("Masukkan tebakanmu!\n");
+                tebakangka();
+            }
+        }
+        else if (angka == 2){
+            if (money < 500){
+                printf("Uang yang dimiliki kurang! Silakan cari challenge lain atau kerja terlebih dahulu.");
+            }
+            else{
+                money-=500;
+                wordl3();
+            }
+        }
+        else if (angka == 3){
+            if (money < 600){
+                printf("Uang yang dimiliki kurang! Silakan cari challenge lain atau kerja terlebih dahulu.");
+            }
+            else {
+                money-=600;
+                quantumWordle();
+            }
+        }
+    }
 
 int main (){
-    int angka;
-
     printf("Daftar challenge yang tersedia :\n");
     printf("1. Tebak Angka (biaya main=200)\n"); 
     printf("2. W0RDL399 (biaya main=500)\n");
     printf("3. Quantum W0RDL3 (biaya main = 600)\n");
     printf("Masukan challenge yang hendak dimainkan:\n");
 
-    scanf("%d", &angka);
+    challenge();
 
-    if (angka == 1){
-        if (money < 200){
-            printf("Uang yang dimiliki kurang! Silakan kerja terlebih dahulu.");
+    char tanya;
+    getchar();
+    printf("Apakah kamu masih mau melanjutkan challenge? (y / n): \n");
+    scanf("%c", &tanya);
+
+    while (tanya != 'n'){
+        if (tanya == 'y'){
+            printf("Daftar challenge yang tersedia :\n");
+            printf("1. Tebak Angka (biaya main=200)\n"); 
+            printf("2. W0RDL399 (biaya main=500)\n");
+            printf("3. Quantum W0RDL3 (biaya main = 600)\n");
+            printf("Masukan challenge yang hendak dimainkan:\n");
+
+            challenge();
+            getchar();
         }
-        else{
-            money -= 200;
-            printf("Masukkan tebakanmu!\n");
-            tebakangka();
+        else if (tanya != 'y'){
+            printf("Inputan salah! Input antara 'y' atau 'n'\n");
+            getchar();
+            scanf("%c", &tanya);
         }
-    }
-    else if (angka == 2){
-        if (money < 500){
-            printf("Uang yang dimiliki kurang! Silakan cari challenge lain atau kerja terlebih dahulu.");
-        }
-        else{
-            money-=500;
-            wordl3();
-        }
-    }
-    else if (angka == 3){
-        if (money < 600){
-            printf("Uang yang dimiliki kurang! Silakan cari challenge lain atau kerja terlebih dahulu.");
-        }
-        else {
-            money-=600;
-            quantumWordle();
-        }
+        printf("Apakah kamu masih mau melanjutkan challenge? (y / n): \n");
+        scanf("%c", &tanya);
     }
 }
