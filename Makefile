@@ -6,7 +6,15 @@ LIB_DIR = ADT
 OBJ_DIR = object
 PROGRAM_DIR = aplikasi
 
-TARGET = $(PROGRAM_DIR)/PURRMART.exe
+ifeq ($(OS),Windows_NT)
+    TARGET = $(PROGRAM_DIR)/PURRMART.exe
+    MKDIR = if not exist $(1) mkdir $(1)
+    RMDIR = if exist $(1) rmdir /s /q $(1)
+else
+    TARGET = $(PROGRAM_DIR)/PURRMART
+    MKDIR = mkdir -p $(1)
+    RMDIR = rm -rf $(1)
+endif
 
 # Main file (to separate it from other source files)
 MAIN_FILE = $(SRC_DIR)/main.c
@@ -23,13 +31,8 @@ all: prepare $(TARGET)
 
 # Prepare directories
 prepare:
-ifeq ($(OS),Windows_NT)
-	@if not exist $(OBJ_DIR) mkdir $(OBJ_DIR)
-	@if not exist $(PROGRAM_DIR) mkdir $(PROGRAM_DIR)
-else
-	@mkdir -p $(OBJ_DIR)
-	@mkdir -p $(PROGRAM_DIR)
-endif
+	$(call MKDIR,$(OBJ_DIR))
+	$(call MKDIR,$(PROGRAM_DIR))
 
 # Build the target (executable)
 $(TARGET): $(OBJ_FILES) $(OBJ_DIR)/main.o
@@ -49,13 +52,8 @@ $(OBJ_DIR)/%.o: $(LIB_DIR)/%.c
 
 # Clean rule
 clean:
-ifeq ($(OS),Windows_NT)
-	@if exist $(OBJ_DIR) rmdir /s /q $(OBJ_DIR)
-	@if exist $(PROGRAM_DIR) rmdir /s /q $(PROGRAM_DIR)
-else
-	@rm -rf $(OBJ_DIR)
-	@rm -rf $(PROGRAM_DIR)
-endif
+	$(call RMDIR,$(OBJ_DIR))
+	$(call RMDIR,$(PROGRAM_DIR))
 
 # Debug rule
 debug:
