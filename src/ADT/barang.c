@@ -15,7 +15,7 @@ void DisplayBarang(Barang b) {
 
 boolean IsBarangNameEqual(const Barang *b, const Word *name) {
     for (int i = 0; i < name->Length; i++) {
-        if ((i >= MAX_LEN) || name->TabWord[i] != b->name[i]) {
+        if ((i >= MAX_LEN) || (name->TabWord[i] != b->name[i])) {
             return false;
         }
     }
