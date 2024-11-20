@@ -1,27 +1,33 @@
 #include <stdio.h>
 #include "user.h"
-#include "baca_kata.h"
+#include "list_user.h"
 #include "boolean.h"
 
-void logout(User user_main)
+void logout()
 {
-    Word perintah;
-    printf("Apakah anda ingin logout dari game (Y/N) ?\n");
-    baca_kata(perintah,2); 
-
-    if (perintah.TabWord[0] == 'Y'||perintah.TabWord[0] == 'y')
-    {
-        printf("Terima kasih telah bermain %s\n",user_main.name);
-        return true;
-    }
-    else if (perintah.TabWord[0] == 'N' || perintah.TabWord[0] == 'n')
-    {
-        printf("oke gajadi logout\n");
-        return false;
-    }
-    else
-    {
-        printf("perintah salah, masukkan yang benar");
-        return logout(user_main);
+    char perintah;
+    boolean logout = false;
+    
+    while(!logout){
+        printf("Apakah anda ingin logout dari game (Y/N) ?\n");
+        scanf("%s",&perintah);
+        if (perintah == 'Y'||perintah == 'y')
+        {
+            printf("Terima kasih telah bermain");
+            logout = true;
+        }
+        else if (perintah== 'N' || perintah== 'n')
+        {
+            printf("Oke gajadi logout\n");
+            break;
+        }
+        else
+        {
+            printf("Perintah salah, masukkan yang benar\n");
+        }
     }  
+}
+
+int main(){
+    logout();
 }

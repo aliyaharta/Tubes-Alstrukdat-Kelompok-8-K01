@@ -9,9 +9,9 @@ typedef struct {
     int count;
 } ListUser;
 
-void CreateListUser(ListUser *lu);
+// void CreateListUser(ListUser *lu);
 void AddUser(ListUser *lu, User u);
-void DisplayUsers(ListUser lu);
+// void DisplayUsers(ListUser lu);
 int FindUser(ListUser lu, const Word *username);
 
 #endif
