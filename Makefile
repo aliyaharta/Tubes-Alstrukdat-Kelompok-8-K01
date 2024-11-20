@@ -17,7 +17,7 @@ else
 endif
 
 # Main file (to separate it from other source files)
-MAIN_FILE = $(SRC_DIR)/stringToIntDriver.c
+MAIN_FILE = $(SRC_DIR)/main.c
 
 # Source and library files
 SRC_FILES = $(LIB_DIR)/inputUser.c $(SRC_DIR)/display.c $(SRC_DIR)/delay.c $(SRC_DIR)/compare.c $(SRC_DIR)/stringToInt.c 

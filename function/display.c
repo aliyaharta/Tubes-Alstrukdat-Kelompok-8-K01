@@ -81,7 +81,7 @@ void login_help()
 {
     if(isLogin){
         printf("=============WELCOME TO HELP MENU PURRMART===============\n");
-        printf("1. REGITSER : Untuk melakukan pendaftaran akun baru      \n");
+        printf("1. REGISTER : Untuk melakukan pendaftaran akun baru      \n");
         printf("2. LOGIN : Untuk masuk ke dalam akun dan memulai sesi    \n");
         printf("3. QUIT : Untuk keluar dari program                      \n");
     }
