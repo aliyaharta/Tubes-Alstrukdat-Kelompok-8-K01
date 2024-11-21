@@ -197,7 +197,6 @@ while (i < WORD_COUNT) {
     i++; 
 }
 
-
     printf("WELCOME TO QUANTUM! YOU HAVE %d CHANCES TO GUESS %d WORDS!\n", MAX_ATTEMPTS_QUANTUM, WORD_COUNT);
     for (int i = 0; i < MAX_ATTEMPTS_QUANTUM; i++) {
         for (int j = 0; j < WORD_COUNT; j++) {
