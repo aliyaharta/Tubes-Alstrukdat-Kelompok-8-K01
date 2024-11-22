@@ -1,4 +1,6 @@
 #include "wordl3.h"
+#include "stringLength.h" 
+#include "toUpperCase.h" 
 
 void wordl3(){
     #define MAX_ATTEMPTS 5
@@ -10,14 +12,15 @@ void wordl3(){
     int kesempatan = 0;
 
     srand(time(NULL)); 
+
     const char *random = word_list[rand() % word_count];
+    
     int j = 0;
     while (random[j] != '\0') {
         jawaban[j] = random[j];
         j++;
     }
     jawaban[j] = '\0'; 
-
 
     printf("WELCOME TO W0RDL3, YOU HAVE %d CHANCES TO ANSWER BEFORE YOU LOSE!\n", MAX_ATTEMPTS);
     for (int i = 0; i < MAX_ATTEMPTS; i++) {
@@ -29,11 +32,7 @@ void wordl3(){
         printf("Masukkan kata tebakan Anda: ");
         scanf("%s", tebakan);
 
-        int length = 0;
-
-        while (tebakan[length] != '\0') {
-            length++;
-        }
+        int length = stringLength(tebakan);
 
         if (length != WORD_LENGTH) {
             printf("Kata harus berisi %d karakter!\n", WORD_LENGTH);
@@ -41,9 +40,7 @@ void wordl3(){
         }
 
         for (int i = 0; i < WORD_LENGTH; i++) {
-            if (tebakan[i] >= 'a' && tebakan[i] <= 'z') {
-                tebakan[i] = tebakan[i] - ('a' - 'A'); 
-            }
+            tebakan[i] = toUpperCase(tebakan[i]);
         }
 
         charCheck(jawaban, tebakan, hasil);
