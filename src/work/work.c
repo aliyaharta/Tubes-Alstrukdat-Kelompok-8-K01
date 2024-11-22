@@ -13,11 +13,6 @@ typedef struct {
 
 int money = 0;
 
-void delay(int seconds) {
-    time_t start = time(NULL);
-    while (time(NULL) - start < seconds);
-}
-
 int main(){
     int duration, gaji;
     char pekerjaan;
