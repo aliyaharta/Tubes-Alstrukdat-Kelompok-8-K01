@@ -2,7 +2,6 @@
 #define WORDCHECK_H
 
 #include <stdio.h>
-#include <string.h>
 
 #define WORD_LENGTH 5 
 
