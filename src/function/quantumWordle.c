@@ -1,4 +1,6 @@
-#include "quantumWordle.h" 
+#include "quantumWordle.h"
+#include "stringLength.h" 
+#include "toUpperCase.h" 
 
 void quantumWordle() {
     #define WORD_COUNT 4
@@ -13,30 +15,22 @@ void quantumWordle() {
 
     int i = 0;
     while (i < WORD_COUNT) {
-        const char *random = word_list[rand() % word_count];  
+        const char *random = word_list[rand() % word_count];
         while (wordCheck(random, jawaban, i)) { 
-            random = word_list[rand() % word_count]; 
+            random = word_list[rand() % word_count];
         }
-        
-        while (i < WORD_COUNT) {
-        const char *random = word_list[rand() % word_count];  
-        while (wordCheck(random, jawaban, i)) { 
-            random = word_list[rand() % word_count]; 
-        }
-        
+
         int j = 0;
         while (random[j] != '\0') {
             jawaban[i][j] = random[j];
             j++;
         }
         jawaban[i][j] = '\0'; 
-        
         i++;
-        }
-
     }
 
     printf("WELCOME TO QUANTUM! YOU HAVE %d CHANCES TO GUESS %d WORDS!\n", MAX_ATTEMPTS_QUANTUM, WORD_COUNT);
+    
     for (int i = 0; i < MAX_ATTEMPTS_QUANTUM; i++) {
         for (int j = 0; j < WORD_COUNT; j++) {
             printf("_ _ _ _ _   ");
@@ -49,18 +43,15 @@ void quantumWordle() {
         printf("Masukkan %d kata tebakan Anda (dipisah dengan spasi):\n", WORD_COUNT);
         for (int i = 0; i < WORD_COUNT; i++) {
             scanf("%s", tebakan[i]);
-            int len = 0;
-            for (int j = 0; tebakan[i][j] != '\0'; j++) {
-                len++;
-            }
-
+            int len = stringLength(tebakan[i]);  
+            
             if (len != WORD_LENGTH) {
                 printf("Kata harus berisi %d karakter!\n", WORD_LENGTH);
-                i--;
-                continue;
+                i--; 
+                continue; 
             }
             for (int j = 0; j < WORD_LENGTH; j++) {
-                tebakan[i][j] = toupper(tebakan[i][j]);
+                tebakan[i][j] = toUpperCase(tebakan[i][j]); 
             }
         }
 
@@ -90,7 +81,7 @@ void quantumWordle() {
 
         if (semua_benar) {
             printf("Selamat, Anda menang! Semua kata berhasil ditebak.\n");
-            money += 2000;  
+            money += 2000;
             printf("+2000 rupiah telah ditambahkan ke akun Anda.\n");
             return;
         }
