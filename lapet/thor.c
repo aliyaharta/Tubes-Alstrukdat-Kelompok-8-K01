@@ -1,6 +1,8 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <time.h>
 
 #define MAX_LEN 100
 #define MAX_USERS 100
@@ -69,7 +71,11 @@ void advWord() {
 
 // Fungsi untuk konversi kata ke integer
 int wordToInt() {
-    return atoi(currentWord);
+    int result = 0;
+    for (int i = 0; currentWord[i] != '\0'; i++) {
+        result = result * 10 + (currentWord[i] - '0');
+    }
+    return result;
 }
 
 // Fungsi membaca file dan mengisi array
@@ -113,7 +119,7 @@ void readFile(const char *filePath, User users[], int *userCount, Barang barangs
 void printUsers(User users[], int userCount) {
     printf("Users:\n");
     for (int i = 0; i < userCount; i++) {
-        printf("Name: %s, memiliki password: %s, dengan uang : %d\n", users[i].name, users[i].password, users[i].money);
+        printf("Name: %s, Password: %s, Money: %d\n", users[i].name, users[i].password, users[i].money);
     }
 }
 
@@ -125,7 +131,7 @@ void printBarangs(Barang barangs[], int barangCount) {
     }
 }
 
-// Fungsi menulis kembali data ke file
+// Fungsi menulis semua data ke file
 void writeFile(const char *filePath, User users[], int userCount, Barang barangs[], int barangCount) {
     FILE *file = fopen(filePath, "w");
     if (!file) {
@@ -154,7 +160,7 @@ int main() {
     int userCount = 0, barangCount = 0;
 
     // Nama file
-    const char *filePath = "data.txt";
+    const char *filePath = "lapet/data.txt";
 
     // Membaca file
     readFile(filePath, users, &userCount, barangs, &barangCount);
@@ -163,9 +169,16 @@ int main() {
     printUsers(users, userCount);
     printBarangs(barangs, barangCount);
 
-    // Contoh: Memodifikasi data
-    users[0].money += 50; // Menambah uang user pertama
-    strcpy(barangs[0].name, "UpdatedBarang"); // Mengubah nama barang pertama
+    // Menambahkan User baru sebagai contoh
+    strcpy(users[userCount].name, "newuser");
+    strcpy(users[userCount].password, "newpass");
+    users[userCount].money = 200;
+    userCount++;
+
+    // Menambahkan Barang baru sebagai contoh
+    strcpy(barangs[barangCount].name, "newitem");
+    barangs[barangCount].price = 500;
+    barangCount++;
 
     // Menulis kembali data ke file
     writeFile(filePath, users, userCount, barangs, barangCount);

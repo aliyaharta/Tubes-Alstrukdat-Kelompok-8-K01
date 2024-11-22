@@ -1,0 +1,4 @@
+1
+newuser newpass 200
+1
+newitem 500

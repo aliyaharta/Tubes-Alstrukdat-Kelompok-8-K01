@@ -1,6 +1,15 @@
-2
-admin alstrukdatkeren 200
-praktikan kerenbangetkak 25
-2
-UpdatedBarang 10
-Lalabu 20
+6
+ITB Bandung 1
+UI Depok 2
+UGM Jogja 3
+ITS Surabaya 4
+newuser newpass 200
+newuser newpass 200
+7
+Lenovo 100
+Apple 50
+ROG 25
+Samsung 10
+MSI 40
+newitem 500
+newitem 500
