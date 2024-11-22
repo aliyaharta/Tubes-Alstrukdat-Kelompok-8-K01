@@ -3,17 +3,7 @@
 #include <string.h>
 #include <time.h>
 
-#define MAX_LEN 50
-
-typedef struct {
-    char name[MAX_LEN];
-    char password[MAX_LEN];
-    int money;
-} User;
-
-int money = 0;
-
-int main(){
+void work(){
     int duration, gaji;
     char pekerjaan;
 
