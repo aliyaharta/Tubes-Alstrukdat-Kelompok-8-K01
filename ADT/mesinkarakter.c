@@ -15,6 +15,7 @@ void START(char *filename) {
     if (filename == NULL) {
         // Jika filename NULL, gunakan keyboard (stdin) sebagai pita
         pita = stdin;
+        printf("Masukkan input: ");
     } else {
         // Jika filename diberikan, buka file sebagai pita
         pita = fopen(filename, "r");
@@ -29,13 +30,17 @@ void START(char *filename) {
 }
 
 void ADV() {
-    if (fscanf(pita, "%c", &currentChar) == EOF) {
-        EOP = true; // Tandai akhir pita jika mencapai EOF
+     int result = fgetc(pita); // Baca satu karakter dari file
+    if (result == EOF) {
+        currentChar = MARK; // Tandai akhir file
+        EOP = true;
     } else {
+        currentChar = (char)result;
         EOP = (currentChar == MARK); // Tandai akhir pita berdasarkan MARK
     }
-    if (EOP && pita != stdin) {
+    if (EOP && pita != stdin && pita != NULL) {
         fclose(pita); // Tutup pita jika menggunakan file
+        pita = NULL;
     }
 }
 
