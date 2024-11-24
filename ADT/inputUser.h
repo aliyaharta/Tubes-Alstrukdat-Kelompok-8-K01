@@ -3,7 +3,7 @@
 #include "config.h"
 
 typedef struct ArrayOfKata{
-    char kata[5][100];
+    char kata[NMax][CharMax];
     int Length;
 } ArrayOfKata;
 

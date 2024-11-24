@@ -15,7 +15,6 @@ void START(char *filename) {
     if (filename == NULL) {
         // Jika filename NULL, gunakan keyboard (stdin) sebagai pita
         pita = stdin;
-        printf("Masukkan input: ");
     } else {
         // Jika filename diberikan, buka file sebagai pita
         pita = fopen(filename, "r");

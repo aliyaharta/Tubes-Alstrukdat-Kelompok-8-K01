@@ -8,12 +8,12 @@ int main(void) {
 
     // Print the stored words
     printf("Stored words:\n");
-    for (int i = 0; i < result.length; i++) {
+    for (int i = 0; i < result.Length; i++) {
         printf("%s\n", result.kata[i]);
     }
 
     // Print the total number of words
-    printf("Total words: %d\n", result.length);
+    printf("Total words: %d\n", result.Length);
 
     return 0; // Indicate successful execution
 }
