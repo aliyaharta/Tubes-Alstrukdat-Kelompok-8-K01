@@ -20,7 +20,7 @@ int getLength(Kata namaKata){
 void SalinKata() {
     currentKata.Index = 0;
     while (GetCC() != BLANK && !IsEOP()) {
-        if (currentKata.Index < NMax) {
+        if (currentKata.Index < WordMax) {
             currentKata.TabKata[currentKata.Index] = GetCC();
             currentKata.Index++;
         }
@@ -57,7 +57,3 @@ boolean IsEndKata() {
     return EndKata;
 }
 
-
-void test() {
-    printf("NMax is: %d\n", NMax);
-}

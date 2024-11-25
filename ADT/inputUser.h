@@ -3,8 +3,8 @@
 #include "config.h"
 
 typedef struct ArrayOfKata{
-    char kata[5][100];
-    int Length;
+    char kata[WordMax][CharMax];
+    int WordCount;
 } ArrayOfKata;
 
 ArrayOfKata inputUser();
