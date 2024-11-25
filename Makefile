@@ -21,10 +21,10 @@ MAIN_FILE = $(SRC_DIR)/main.c #/\#
 
 # Source and library files
 SRC_FILES =  $(SRC_DIR)/display.c $(SRC_DIR)/delay.c $(SRC_DIR)/compare.c $(SRC_DIR)/stringToInt.c $(SRC_DIR)/readfile.c $(SRC_DIR)/writefile.c 
-LIB_FILES = $(LIB_DIR)/mesinkarakter.c $(LIB_DIR)/mesinkata.c $(LIB_DIR)/inputUser.c $(LIB_DIR)/user.c $(LIB_DIR)/barang.c
+LIB_FILES = $(LIB_DIR)/mesinkarakter.c $(LIB_DIR)/mesinkata.c $(LIB_DIR)/inputUser.c $(LIB_DIR)/user.c $(LIB_DIR)/barang.c $(LIB_DIR)/copystr.c
 
 # Object files (excluding main file)
-OBJ_FILES = $(OBJ_DIR)/inputUser.o $(OBJ_DIR)/mesinkarakter.o $(OBJ_DIR)/mesinkata.o $(OBJ_DIR)/display.o $(OBJ_DIR)/delay.o $(OBJ_DIR)/compare.o $(OBJ_DIR)/stringToInt.o $(OBJ_DIR)/user.o $(OBJ_DIR)/barang.o $(OBJ_DIR)/readfile.o $(OBJ_DIR)/writefile.o
+OBJ_FILES = $(OBJ_DIR)/inputUser.o $(OBJ_DIR)/mesinkarakter.o $(OBJ_DIR)/mesinkata.o $(OBJ_DIR)/display.o $(OBJ_DIR)/delay.o $(OBJ_DIR)/compare.o $(OBJ_DIR)/stringToInt.o $(OBJ_DIR)/user.o $(OBJ_DIR)/barang.o $(OBJ_DIR)/readfile.o $(OBJ_DIR)/writefile.o $(OBJ_DIR)/copystr.o
 
 # Default target
 all: prepare $(TARGET)

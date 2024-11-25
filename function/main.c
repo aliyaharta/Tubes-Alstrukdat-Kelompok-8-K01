@@ -5,6 +5,7 @@
 #include "compare.h"
 #include "readfile.h"
 #include "user.h"
+#include "copystr.h"
 
 int main (){
     boolean isExit = false;
@@ -95,14 +96,22 @@ int main (){
         }
 
         else if (stringCompare(inputkata.kata[0], "REGISTER") && inputkata.WordCount == 1) {
-            // if (userList<maxUser){
-            //     printf("Username: ");
-            //     ArrayOfKata username = inputUser();
-            //     userList[userCount].name = username.kata[0];
-            //     printf("\nPassword: ");
-            //     ArrayOfKata password = inputUser();
+            if (userCount<maxUser){
+                printf("Username: ");
+                ArrayOfKata username = inputUser();
 
-                
+                if (getIndex(username.kata[0])==-1){
+                    copyString(userList[userCount].name,username.kata[0]);
+                    printf("\nPassword: ");
+                    ArrayOfKata password = inputUser();
+                    copyString(userList[userCount].password,password.kata[0]);
+                    userList[userCount].money=0;
+                    userCount++;
+                }
+                else {
+                    printf("Username tidak tersedia!");
+                }
+
             }
             else{
                 printf("Jumlah user telah maksimal.");
