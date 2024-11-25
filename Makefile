@@ -25,6 +25,7 @@ LIB_FILES = $(LIB_DIR)/mesinkarakter.c $(LIB_DIR)/mesinkata.c $(LIB_DIR)/inputUs
 
 # Object files (excluding main file)
 OBJ_FILES = $(OBJ_DIR)/inputUser.o $(OBJ_DIR)/mesinkarakter.o $(OBJ_DIR)/mesinkata.o $(OBJ_DIR)/display.o $(OBJ_DIR)/delay.o $(OBJ_DIR)/compare.o $(OBJ_DIR)/stringToInt.o $(OBJ_DIR)/user.o $(OBJ_DIR)/barang.o $(OBJ_DIR)/readfile.o $(OBJ_DIR)/writefile.o $(OBJ_DIR)/copystr.o $(OBJ_DIR)/work.o 
+
 # Default target
 all: prepare $(TARGET)
 
