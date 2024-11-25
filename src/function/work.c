@@ -1,19 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <time.h>
+#include "work.h"
 
-int money = 0;
-
-void delay(int seconds) {
-    int milli_seconds = seconds * 1000;
-    clock_t start_time = clock();
-    while (clock() < start_time + milli_seconds);
-}
-
-void work() {
+void work (){
     int duration, gaji;
-    char pekerjaan[50];
+    char pekerjaan;
 
     printf("Daftar pekerjaan:\n");
     printf("1. Evil Lab Assistant (pendapatan=100, durasi=14s)\n");
@@ -23,38 +15,36 @@ void work() {
     printf("5. Inator Connoisseur (pendapatan=997, durasi=15s)\n");
     printf("\nMasukkan pekerjaan yang dipilih: ");
 
-    fgets(pekerjaan, sizeof(pekerjaan), stdin);
-    pekerjaan[strcspn(pekerjaan, "\n")] = '\0'; // Menghapus newline
+    scanf("%c", &pekerjaan);
 
-    if (strcmp(pekerjaan, "Evil Lab Assistant") == 0) {
+    if (pekerjaan == 'Evil Lab Assistant'){
         gaji = 100;
-        duration = 14;
-    } else if (strcmp(pekerjaan, "OWCA Hiring Manager") == 0) {
-        gaji = 4200;
-        duration = 21;
-    } else if (strcmp(pekerjaan, "Cikapundunginator Caretaker") == 0) {
-        gaji = 7000;
-        duration = 30;
-    } else if (strcmp(pekerjaan, "Mewing Specialist") == 0) {
-        gaji = 10000;
-        duration = 22;
-    } else if (strcmp(pekerjaan, "Inator Connoisseur") == 0) {
-        gaji = 997;
-        duration = 15;
-    } else {
-        printf("Pilihan tidak valid!\n");
-        return;
+        money += 100; 
+        duration = 14; 
     }
-
-    printf("Anda sedang bekerja sebagai %s... harap tunggu.\n", pekerjaan);
+    else if (pekerjaan == 'OWCA Hiring Manager'){
+        gaji = 4200;
+        money += 4200; 
+        duration = 21; 
+    }
+    else if (pekerjaan == 'Cikapundunginator Caretaker'){
+        gaji = 7000;
+        money += 7000; 
+        duration = 30; 
+    }
+    else if (pekerjaan == 'Mewing Specialist'){
+        gaji = 10000;
+        money += 10000; 
+        duration = 22; 
+    }
+    else if (pekerjaan == 'Inator Connoisseur'){
+        gaji = 997;
+        money += 997; 
+        duration = 15; 
+    }
+    printf("Anda sedang bekerja... harap tunggu.\n");
     delay(duration);
 
     money += gaji;
     printf("Pekerjaan selesai, +%d rupiah telah ditambahkan ke akun Anda.\n", gaji);
-    printf("Saldo total Anda: %d rupiah.\n", money);
-}
-
-int main() {
-    work();
-    return 0;
 }
