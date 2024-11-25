@@ -1,4 +1,4 @@
-#include "playChallenge.h"
+#include "challenge.h"
 
 void playChallenge (){
     printf("Daftar challenge yang tersedia :\n");

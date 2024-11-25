@@ -2,6 +2,9 @@
 #define CHALLENGE_H
 
 #include <stdio.h>
+#include "tebakangka.h"
+#include "wordl3.h"
+#include "quantumWordle.h"
 
 // Deklarasi variabel global
 extern const char *word_list[];

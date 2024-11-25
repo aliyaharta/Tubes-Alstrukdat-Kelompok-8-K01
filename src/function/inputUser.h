@@ -9,6 +9,4 @@ typedef struct ArrayOfKata{
 
 ArrayOfKata inputUser();
 
-
-
 #endif

@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+
 #include "work.h"
+#include "inputUser.h"
+#include "delay.h"
+#include "compare.h"
+#include "mesinkata.h"
 
 void work (){
     int duration, gaji;

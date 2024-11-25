@@ -2,6 +2,7 @@
 #define PLAYCHALLENGE_H
 
 #include <stdio.h>
+#include "challenge.h"
 
 // Deklarasi fungsi playChallenge
 /**

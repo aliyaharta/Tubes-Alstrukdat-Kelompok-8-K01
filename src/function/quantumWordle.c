@@ -1,5 +1,4 @@
 #include "quantumWordle.h"
-#include "stringLength.h" 
 #include "toUpperCase.h" 
 
 void quantumWordle() {
@@ -43,7 +42,7 @@ void quantumWordle() {
         printf("Masukkan %d kata tebakan Anda (dipisah dengan spasi):\n", WORD_COUNT);
         for (int i = 0; i < WORD_COUNT; i++) {
             scanf("%s", tebakan[i]);
-            int len = stringLength(tebakan[i]);  
+            int len = getLength(tebakan[i]);  
             
             if (len != WORD_LENGTH) {
                 printf("Kata harus berisi %d karakter!\n", WORD_LENGTH);

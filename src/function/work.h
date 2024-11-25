@@ -1,11 +1,6 @@
 #ifndef WORK_H
 #define WORK_H
 
-#include "inputUser.h"
-#include "delay.h"
-#include "compare.h"
-#include "mesinkata.h"
-
 extern int money;
 
 #define MAX_LEN 50
