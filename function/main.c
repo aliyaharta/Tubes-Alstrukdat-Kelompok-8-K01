@@ -96,7 +96,7 @@ int main (){
             isDone = true;
         }
 
-        else if (stringCompare(inputkata.kata[0], "REGISTER") && inputkata.WordCount == 1) {
+        else if (stringCompare(inputkata.kata[0], "REGISTER") && inputkata.WordCount == 1 && !isLogin) {
             if (userCount<maxUser){
                 printf("Username: ");
                 ArrayOfKata username = inputUser();
@@ -108,6 +108,7 @@ int main (){
                     copyString(userList[userCount].password,password.kata[0]);
                     userList[userCount].money=0;
                     userCount++;
+                    printf("User berhasil ditambahkan");
                 }
                 else {
                     printf("Username tidak tersedia!");
@@ -139,10 +140,10 @@ int main (){
             printf("Menyimpan file\n\n");
             isDone = true;
         }
-        else if (stringCompare(inputkata.kata[0], "WORK") && stringCompare(inputkata.kata[1],"CHALLENGE") && inputkata.WordCount == 2) {
-            printf("Daftar challenge yang tersedia:\n1. Tebak Angka (biaya main=200)\n2. W0RDL399 (biaya main=500)\n\n");
-            isDone = true;
-        } 
+        // else if (stringCompare(inputkata.kata[0], "WORK") && stringCompare(inputkata.kata[1],"CHALLENGE") && inputkata.WordCount == 2) {
+        //     printf("Daftar challenge yang tersedia:\n1. Tebak Angka (biaya main=200)\n2. W0RDL399 (biaya main=500)\n\n");
+        //     isDone = true;
+        // } 
         else if (stringCompare(inputkata.kata[0], "STORE") && stringCompare(inputkata.kata[1],"LIST") && inputkata.WordCount == 2) {
             printf("List barang yang ada di toko :\n\n");
             isDone = true;

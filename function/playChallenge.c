@@ -1,4 +1,6 @@
 #include "playChallenge.h"
+#include "challenge.h"
+#include "inputUser.h"
 
 void playChallenge (){
     printf("Daftar challenge yang tersedia :\n");
@@ -9,10 +11,10 @@ void playChallenge (){
 
     challenge();
 
-    char tanya;
-    getchar();
+
     printf("Apakah kamu masih mau melanjutkan challenge? (y / n): \n");
-    scanf("%c", &tanya);
+    ArrayOfKata y = inputUser();
+    char tanya[6] = y.kata[0];
 
     while (tanya != 'n'){
         if (tanya == 'y'){

@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "challenge.h"
+#include "stringToInt.h"
+#include "inputUser.h"
 
 const char *word_list[] = {"TRULY", "LUCKY", "BUILD", "PLUCK", "STORM"};
 const int word_count = 5;
@@ -8,8 +10,9 @@ int money = 1000;
 
 void challenge (){
         int angka;
-        scanf("%d", &angka);
-
+        ArrayOfKata listAngka = inputUser();
+        angka =  stringToInt(listAngka.kata[0]);
+        
         if (angka == 1){
             if (money < 200){
                 printf("Uang yang dimiliki kurang! Silakan kerja terlebih dahulu.");
