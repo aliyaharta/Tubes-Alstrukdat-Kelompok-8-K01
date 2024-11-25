@@ -1,7 +1,10 @@
 #ifndef WORK_H
 #define WORK_H
 
-#include <stdio.h>
+#include "inputUser.h"
+#include "delay.h"
+#include "compare.h"
+#include "mesinkata.h"
 
 extern int money;
 

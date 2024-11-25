@@ -15,29 +15,29 @@ void work (){
     printf("5. Inator Connoisseur (pendapatan=997, durasi=15s)\n");
     printf("\nMasukkan pekerjaan yang dipilih: ");
 
-    scanf("%c", &pekerjaan);
+    ArrayOfKata input = inputUser();
 
-    if (pekerjaan == 'Evil Lab Assistant'){
+    if (stringCompare(input.kata[0], "Evil") && stringCompare(input.kata[1], "Lab") && stringCompare(input.kata[2], "Assistant") ){
         gaji = 100;
         money += 100; 
         duration = 14; 
     }
-    else if (pekerjaan == 'OWCA Hiring Manager'){
+    else if (stringCompare(input.kata[0], "OWCA") && stringCompare(input.kata[1], "Hiring") && stringCompare(input.kata[2], "Manager")){
         gaji = 4200;
         money += 4200; 
         duration = 21; 
     }
-    else if (pekerjaan == 'Cikapundunginator Caretaker'){
+    else if (stringCompare(input.kata[0], "Cikapundunginator") && stringCompare(input.kata[1], "Caretaker")){
         gaji = 7000;
         money += 7000; 
         duration = 30; 
     }
-    else if (pekerjaan == 'Mewing Specialist'){
+    else if (stringCompare(input.kata[0], "Mewing") && stringCompare(input.kata[1], "Specialist")){
         gaji = 10000;
         money += 10000; 
         duration = 22; 
     }
-    else if (pekerjaan == 'Inator Connoisseur'){
+    else if (stringCompare(input.kata[0], "Inator") && stringCompare(input.kata[1], "Connoisseur")){
         gaji = 997;
         money += 997; 
         duration = 15; 
