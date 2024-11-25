@@ -12,4 +12,5 @@ typedef struct {
 extern User userList[25];
 extern int userCount;
 
+int getIndex(const char *name);
 #endif // USER_H

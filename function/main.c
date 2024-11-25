@@ -13,9 +13,11 @@ int main (){
 
     welcome_menu();
     ArrayOfKata inputkata;
+    boolean isLogin = false;
+
     while(!isExit){
         isDone = false;
-        do{ printf(">> ");
+        do{ printf("\n>> ");
             inputkata = inputUser();
             printf("\n");
 
@@ -26,13 +28,10 @@ int main (){
             isExit = true;
             isDone = true;
         }
-        else if (stringCompare(inputkata.kata[0], "HELP") && inputkata.WordCount == 1) {
-            login_help();
-            printf("\n\n");
-            isDone = true;
-        }
-        else if (stringCompare(inputkata.kata[0], "START") && inputkata.WordCount == 1) {
 
+        else if (stringCompare(inputkata.kata[0], "START") && inputkata.WordCount == 1) {
+            
+            delay(300);
             if(readFile("SAVE/BASE/data.txt")==0){
                 printf("File konfigurasi aplikasi berhasil dibaca. PURRMART berhasil dijalankan.\n\n");
             }
@@ -42,16 +41,50 @@ int main (){
             
             isDone = true;
         }
+
         else if (stringCompare(inputkata.kata[0], "LOAD") && inputkata.WordCount == 2) {
-            printf("Meload /save/");
+            printf("Memuat file %s\n\n",inputkata.kata[1]);
+
+            char filepath[150];
+            sprintf(filepath, "SAVE/%s", inputkata.kata[1]);
+            if(readFile(filepath)==0){
+                printf("Save file berhasil dibaca. PURRMART berhasil dijalankan.\n\n");
+            }
+            else {
+                printf("Save file tidak ditemukan. PURRMART gagal dijalankan. \n\n");
+            }
             isDone = true;
         }
+
+        else if (stringCompare(inputkata.kata[0], "LOGIN") && inputkata.WordCount == 1 && isLogin==false) {
+            
+            printf("Username: ");
+            ArrayOfKata username = inputUser();
+            printf("\nPassword: ");
+            ArrayOfKata password = inputUser();
+            
+            printf("%d ",getIndex("Jett"));
+            // if (username.WordCount == 1 && password.WordCount == 1) {
+            //         int userIndex = getIndex(username.kata[0]); // Directly call getIndex
+            //         printf("%d",userIndex);
+            //         if (userIndex != -1 && stringCompare(userList[userIndex].password, password.kata[0])) {
+            //             printf("Login berhasil! Selamat datang, %s\n", userList[userIndex].name);
+            //             isLogin = true; // Update login status
+            //             isDone = true;
+            //         } else {
+            //             printf("Username atau password salah. Silakan coba lagi.\n");
+            //         }
+            //     }
+            }
+
+        else if (stringCompare(inputkata.kata[0], "HELP") && inputkata.WordCount == 1) {
+            login_help();
+            printf("\n\n");
+            isDone = true;
+        }
+
         else if (stringCompare(inputkata.kata[0], "SAVE") && inputkata.WordCount == 2) {
             printf("Save file\n\n");
-            isDone = true;
-        }
-        else if (stringCompare(inputkata.kata[0], "LOGIN") && inputkata.WordCount == 1) {
-            printf("Username:\nPassword:\n\n");
             isDone = true;
         }
         else if (stringCompare(inputkata.kata[0], "LOGOUT") && inputkata.WordCount == 1) {
