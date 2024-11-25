@@ -17,7 +17,7 @@ else
 endif
 
 # Main file (to separate it from other source files)
-MAIN_FILE = $(SRC_DIR)/readfileDriver.c #/\#
+MAIN_FILE = $(LIB_DIR)/inputUserDriver.c #/\#
 
 # Source and library files
 SRC_FILES =  $(SRC_DIR)/display.c $(SRC_DIR)/delay.c $(SRC_DIR)/compare.c $(SRC_DIR)/stringToInt.c $(SRC_DIR)/readfile.c 
@@ -35,11 +35,11 @@ prepare:
 	$(call MKDIR,$(PROGRAM_DIR))
 
 # Build the target (executable)
-$(TARGET): $(OBJ_FILES) $(OBJ_DIR)/readfileDriver.o #/\#
-	$(CC) $(CFLAGS) $(OBJ_FILES) $(OBJ_DIR)/readfileDriver.o -o $(TARGET) 
+$(TARGET): $(OBJ_FILES) $(OBJ_DIR)/inputUserDriver.o #/\#
+	$(CC) $(CFLAGS) $(OBJ_FILES) $(OBJ_DIR)/inputUserDriver.o -o $(TARGET) 
 
 # Compile the main file
-$(OBJ_DIR)/readfileDriver.o: $(MAIN_FILE) #/\#
+$(OBJ_DIR)/inputUserDriver.o: $(MAIN_FILE) #/\#
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Compile .c files in SRC_DIR to .o files in OBJ_DIR

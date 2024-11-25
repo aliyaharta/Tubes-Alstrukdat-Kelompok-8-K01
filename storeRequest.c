@@ -1,6 +1,9 @@
 #include "storeRequest.h"
 
 void storeRequest(ListBarang lb, Queue *q, const Word *barangReq){
+    
+    
+
     int i, panjangQueue = length(*q), idx;
 
     for (i=0; i<lb.count; i++){

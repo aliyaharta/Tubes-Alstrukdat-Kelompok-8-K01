@@ -9,6 +9,10 @@ typedef struct ArrayOfKata{
 
 ArrayOfKata inputUser();
 
+/*
+ArrayOfKata namabarang;
+namabarang = inputUser();
 
+*/
 
 #endif
