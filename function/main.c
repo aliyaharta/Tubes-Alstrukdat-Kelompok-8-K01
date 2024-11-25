@@ -103,11 +103,11 @@ int main (){
             //     ArrayOfKata password = inputUser();
 
                 
-            // }
-            // else{
-            //     printf("Jumlah user telah maksimal.");
-            // }
-            // isDone = true;
+            }
+            else{
+                printf("Jumlah user telah maksimal.");
+            }
+            isDone = true;
         }
 
         else if (stringCompare(inputkata.kata[0], "HELP") && inputkata.WordCount == 1) {
