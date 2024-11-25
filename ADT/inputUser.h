@@ -8,11 +8,6 @@ typedef struct ArrayOfKata{
 } ArrayOfKata;
 
 ArrayOfKata inputUser();
-
-/*
-ArrayOfKata namabarang;
-namabarang = inputUser();
-
-*/
+void CopyString(char dest[], char src[]);
 
 #endif

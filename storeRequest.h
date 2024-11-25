@@ -7,7 +7,8 @@
 #include "src/ADT/mesinkarakter.h"
 #include "src/ADT/mesinkata.h"
 #include "src/ADT/queue.h"
+#include "ADT/inputUser.h"
 
-void storeRequest(ListBarang lb, Queue *q, const Word *barangReq);
+void storeRequest(ListBarang lb, Queue *q);
 
 #endif

@@ -40,9 +40,7 @@ int main() {
 
     // Testing storeRequest untuk barang berikutnya (keempat hingga terakhir)
     printf("\n>> STORE REQUEST\n");
-    for (int i = 3; i < jumlahBarang; i++) {
-        storeRequest(lb, &q, &dataBarang[i]);
-    }
+    storeRequest(lb, &q);
 
     // Display antrean
     printf("\nAntrean barang:\n");
