@@ -2,10 +2,11 @@
 #include <stdio.h>
 
 void CreateBarang(Barang *b, const Word *name, int price) {
-    for (int i = 0; i < name->Length && i < MAX_LEN - 1; i++) {
+    int i;
+    for (i = 0; i < name->Length && i < MAX_LEN - 1; i++) {
         b->name[i] = name->TabWord[i];
     }
-    b->name[name->Length] = '\0';
+    b->name[i] = '\0';
     b->price = price;
 }
 
@@ -19,5 +20,5 @@ boolean IsBarangNameEqual(const Barang *b, const Word *name) {
             return false;
         }
     }
-    return (name->Length == 0 || b->name[name->Length] == '\0');
+    return (b->name[name->Length] == '\0');
 }

@@ -17,13 +17,16 @@ int main() {
         {"Platypus Laser", 14},
         {"Shrink Ray", 10},
         {"Net Shooter", 11},
+        {"Camouflage Cloak", 12},
         {"Sleep Dart Gun", 14},
         {"Bubble Blaster", 15},
-        {"Shrink Ray", 10} // Duplikat
+    //    {"Shrink Ray", 10} // duplikat
     };
     int hargaBarang[] = {100, 200, 150, 300, 400, 200}; // Harga untuk masing-masing barang
     int jumlahBarang = sizeof(hargaBarang) / sizeof(hargaBarang[0]);
-
+    
+    printf(">> STORE LIST\n");
+    storeList(lb);
     // Menambahkan barang awal ke toko (hanya barang pertama hingga ketiga)
     for (int i = 0; i < 6; i++) {
         Barang b;
@@ -46,10 +49,10 @@ int main() {
     displayQueue(q);
 
     // Display barang di toko
-    storeList(lb);
 
     // Free memory untuk list barang
     FreeListBarang(&lb);
+
 
     return 0;
 }
