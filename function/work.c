@@ -3,11 +3,14 @@
 #include <time.h>
 #include "work.h"
 #include "user.h"
+#include "mesinkata.h"
+#include "compare.h"
+#include "delay.h"
 
-void work (){
+void work (int idx){
     int duration, gaji;
-    char pekerjaan;
 
+    do {
     printf("Daftar pekerjaan:\n");
     printf("1. Evil Lab Assistant (pendapatan=100, durasi=14s)\n");
     printf("2. OWCA Hiring Manager (pendapatan=4200, durasi=21s)\n");
@@ -18,34 +21,43 @@ void work (){
 
     ArrayOfKata input = inputUser();
 
-    if (stringCompare(input.kata[0], "Evil") && stringCompare(input.kata[1], "Lab") && stringCompare(input.kata[2], "Assistant") ){
+    if (stringCompare(input.kata[0], "Evil") && stringCompare(input.kata[1], "Lab") && stringCompare(input.kata[2], "Assistant")) {
         gaji = 100;
-        userList->money += 100; 
+        userList[idx].money += 100; 
         duration = 14; 
+        break; // Exit loop if valid input
     }
-    else if (stringCompare(input.kata[0], "OWCA") && stringCompare(input.kata[1], "Hiring") && stringCompare(input.kata[2], "Manager")){
+    else if (stringCompare(input.kata[0], "OWCA") && stringCompare(input.kata[1], "Hiring") && stringCompare(input.kata[2], "Manager")) {
         gaji = 4200;
-        userList->money += 4200; 
+        userList[idx].money += 4200; 
         duration = 21; 
+        break; // Exit loop if valid input
     }
-    else if (stringCompare(input.kata[0], "Cikapundunginator") && stringCompare(input.kata[1], "Caretaker")){
+    else if (stringCompare(input.kata[0], "Cikapundunginator") && stringCompare(input.kata[1], "Caretaker")) {
         gaji = 7000;
-        userList->money += 7000; 
+        userList[idx].money += 7000; 
         duration = 30; 
+        break; // Exit loop if valid input
     }
-    else if (stringCompare(input.kata[0], "Mewing") && stringCompare(input.kata[1], "Specialist")){
+    else if (stringCompare(input.kata[0], "Mewing") && stringCompare(input.kata[1], "Specialist")) {
         gaji = 10000;
-        userList->money += 10000; 
+        userList[idx].money += 10000; 
         duration = 22; 
+        break; // Exit loop if valid input
     }
-    else if (stringCompare(input.kata[0], "Inator") && stringCompare(input.kata[1], "Connoisseur")){
+    else if (stringCompare(input.kata[0], "Inator") && stringCompare(input.kata[1], "Connoisseur")) {
         gaji = 997;
-        userList->money += 997; 
+        userList[idx].money += 997; 
         duration = 15; 
+        break; // Exit loop if valid input
+    } else {
+        printf("Pekerjaan tidak valid. Coba lagi.\n");
     }
-    printf("Anda sedang bekerja... harap tunggu.\n");
-    delay(duration);
+} while (1); // Repeat until a valid input is provided
 
-    userList->money += gaji;
+    printf("Anda sedang bekerja... harap tunggu.\n");
+    delay(duration*1000);
+
     printf("Pekerjaan selesai, +%d rupiah telah ditambahkan ke akun Anda.\n", gaji);
+
 }

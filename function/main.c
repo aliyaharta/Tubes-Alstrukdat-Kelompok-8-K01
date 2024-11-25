@@ -119,8 +119,8 @@ int main (){
             isDone = true;
         }
 
-        else if (stringCompare(inputkata.kata[0], "WORK") && inputkata.WordCount == 1) {
-            // work();
+        else if (stringCompare(inputkata.kata[0], "WORK") && inputkata.WordCount == 1 && isLogin) {
+            work(UserIndex);
             isDone = true;
         } 
 
