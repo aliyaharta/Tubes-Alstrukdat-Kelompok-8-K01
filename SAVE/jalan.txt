@@ -1,0 +1,18 @@
+10
+15 Beras
+10 Minyak
+20 Telur 
+10 Tepung 
+20 Sampo
+10 Sabun
+50 Kaos
+50 Celana
+100 Tenda 
+60 Sepatu
+6
+20 kevin cisitu
+50 nadia buahbatu
+40 daniel tamansari 
+30 aliya tubis 
+15 apple kanayakan 
+80 siti kucingitb 
