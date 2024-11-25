@@ -119,6 +119,11 @@ int main (){
             isDone = true;
         }
 
+        else if (stringCompare(inputkata.kata[0], "WORK") && inputkata.WordCount == 1) {
+            // work();
+            isDone = true;
+        } 
+
         else if (stringCompare(inputkata.kata[0], "HELP") && inputkata.WordCount == 1) {
             login_help();
             printf("\n\n");
@@ -129,10 +134,6 @@ int main (){
             printf("Save file\n\n");
             isDone = true;
         }
-        else if (stringCompare(inputkata.kata[0], "WORK") && inputkata.WordCount == 1) {
-            printf("Daftar pekerjaan:\n\n");
-            isDone = true;
-        } 
         else if (stringCompare(inputkata.kata[0], "WORK") && stringCompare(inputkata.kata[1],"CHALLENGE") && inputkata.WordCount == 2) {
             printf("Daftar challenge yang tersedia:\n1. Tebak Angka (biaya main=200)\n2. W0RDL399 (biaya main=500)\n\n");
             isDone = true;
