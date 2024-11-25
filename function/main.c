@@ -7,6 +7,8 @@
 #include "user.h"
 #include "copystr.h"
 #include "writefile.h"
+#include "work.h"
+#include "copystr.h"
 
 int main (){
     boolean isExit = false;

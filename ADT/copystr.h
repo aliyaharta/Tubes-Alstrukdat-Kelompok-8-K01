@@ -1,7 +1,7 @@
-#ifndef USER_H
-#define USER_H
-
+#ifndef COPYSTR_
+#define COPYSTR_
 
 void copyString(char *destination, const char *source);
 
-#endif // USER_H
+
+#endif // COPYSTR_

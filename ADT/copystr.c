@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "config.h"
+#include "copystr.h"
 
 
 void copyString(char *destination, const char *source) {
