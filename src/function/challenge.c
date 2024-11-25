@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "challenge.h"
 
 const char *word_list[] = {"TRULY", "LUCKY", "BUILD", "PLUCK", "STORM"};
 const int word_count = 5;
