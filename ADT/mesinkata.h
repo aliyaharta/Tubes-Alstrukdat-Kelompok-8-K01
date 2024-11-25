@@ -18,7 +18,7 @@ extern boolean EndKata;
 
 int getLength(Kata namaKata);
 // Fungsi ini digunakan untuk mendapatkan panjang Kata 
-void STARTKATA(const char *filename);
+void STARTKATA(char *filename); 
 // Fungsi ini digunakan untuk Inisialisasi Mesin Kata
 void ADVKATA();                 
 // Fungsi ini digunakan untuk pindah ke kata berikutnya

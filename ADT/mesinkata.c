@@ -29,15 +29,9 @@ void SalinKata() {
     currentKata.TabKata[currentKata.Index] = '\0'; // Null-terminated string
 }
 
-void STARTKATA(const char *filename) {
-    // Pastikan filename diberikan
-    if (filename != NULL) {
-        START((char *)filename); // Panggil START untuk membuka file
-    } else {
-        START(NULL); // Jika NULL, gunakan stdin
-    }
-
-    IgnoreBlank(); 
+void STARTKATA(char *filename) {
+    START(filename); // Mulai Mesin Karakter
+    IgnoreBlank();   // Lewati spasi awal
     if (IsEOP()) {
         EndKata = true;
     } else {
@@ -45,7 +39,6 @@ void STARTKATA(const char *filename) {
         SalinKata();
     }
 }
-
 
 void ADVKATA() {
     IgnoreBlank();

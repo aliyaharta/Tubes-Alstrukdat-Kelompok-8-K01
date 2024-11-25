@@ -17,14 +17,14 @@ else
 endif
 
 # Main file (to separate it from other source files)
-MAIN_FILE = $(LIB_DIR)/tesbacafile.c #/\#
+MAIN_FILE = $(LIB_DIR)/inputUserDriver.c #/\#
 
 # Source and library files
 SRC_FILES = $(LIB_DIR)/inputUser.c $(SRC_DIR)/display.c $(SRC_DIR)/delay.c $(SRC_DIR)/compare.c $(SRC_DIR)/stringToInt.c 
-LIB_FILES = $(LIB_DIR)/mesinkarakter.c $(LIB_DIR)/mesinkata.c $(LIB_DIR)/readfile.c
+LIB_FILES = $(LIB_DIR)/mesinkarakter.c $(LIB_DIR)/mesinkata.c
 
 # Object files (excluding main file)
-OBJ_FILES = $(OBJ_DIR)/inputUser.o $(OBJ_DIR)/mesinkarakter.o $(OBJ_DIR)/mesinkata.o $(OBJ_DIR)/display.o $(OBJ_DIR)/delay.o $(OBJ_DIR)/compare.o $(OBJ_DIR)/stringToInt.o $(OBJ_DIR)/readfile.o
+OBJ_FILES = $(OBJ_DIR)/inputUser.o $(OBJ_DIR)/mesinkarakter.o $(OBJ_DIR)/mesinkata.o $(OBJ_DIR)/display.o $(OBJ_DIR)/delay.o $(OBJ_DIR)/compare.o $(OBJ_DIR)/stringToInt.o
 
 # Default target
 all: prepare $(TARGET)
@@ -35,8 +35,8 @@ prepare:
 	$(call MKDIR,$(PROGRAM_DIR))
 
 # Build the target (executable)
-$(TARGET): $(OBJ_FILES) $(OBJ_DIR)/tesbacafile.o #/\#
-	$(CC) $(CFLAGS) $(OBJ_FILES) $(OBJ_DIR)/tesbacafile.o -o $(TARGET) 
+$(TARGET): $(OBJ_FILES) $(OBJ_DIR)/inputUserDriver.o #/\#
+	$(CC) $(CFLAGS) $(OBJ_FILES) $(OBJ_DIR)/inputUserDriver.o -o $(TARGET) 
 
 # Compile the main file
 $(OBJ_DIR)/inputUserDriver.o: $(MAIN_FILE) #/\#
