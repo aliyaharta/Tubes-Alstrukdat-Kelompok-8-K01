@@ -4,18 +4,18 @@
 #include "list_user.h"
 
 int login (ListUser *lu){
-    Word username;
-    Word password;
+    Kata username;
+    Kata password;
     
     boolean islogin = false;
 
     printf("Input username kamu :\n");
-    scanf("%s",username.TabWord);
-    username.Length = stringLen(username.TabWord);
+    scanf("%s",username.TabKata);
+    username.Length = getLength(username);
     
     printf("Input password kamu :\n");
-    scanf("%s",password.TabWord);
-    password.Length = stringLen(password.TabWord);
+    scanf("%s",password.TabKata);
+    password.Length = getLength(password);
 
     int userIndex = FindUser(*lu,&username);
     if(!islogin){

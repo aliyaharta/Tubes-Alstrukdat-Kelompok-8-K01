@@ -1,80 +1,27 @@
-#ifndef __MESINKATA_H__
-#define __MESINKATA_H__
+#ifndef MESINKATA_H
+#define MESINKATA_H
 
-#include "mesinkarakter.h"
+#include "config.h"
+#include "boolean.h"
+#include "config.h"
 
-#define NMax 50
-#define BLANK ' '
-#define NEWLINE '\n'
-#define STRIP '-'
-#define STOP '\0'
+#define BLANK ' '  // Karakter pemisah kata
 
-typedef struct
-{
-   char TabWord[NMax]; /* container penyimpan kata, indeks yang dipakai [0..NMax-1] */
-   int Length;
-} Word;
+typedef struct {
+    char TabKata[100];
+    int Index;
+    int Length;
+} Kata;
 
-/* State Mesin Kata */
-extern boolean EndWord;
-extern Word currentWord;
-extern Word currentCommand;
-extern Word hasil;
+extern Kata currentKata;
+extern boolean EndKata;
 
-// void IgnoreBlank();
-
-// void IgnoreNewline();
-
-// void StartWordInput();
-
-// void StartWordMark();
-
-// void StartWordBlank();
-
-// Word ConcatWord(Word word_1, Word word_2);
-
-// void StartWordFile(char *filename, int type);
-
-// void StartCommand();
-
-// void CopyCommand();
-
-// void ResetCommand();
-
-// void ADVWord();
-
-// void ADVInput();
-
-// boolean IsCommandEqual(Word Input, char * kata);
-
-// void copyString(char dest[], const char src[], int max_length);
-
-int stringLen(char* string);
-
-// Word stringToWord(char* str);
-
-// void ADVLine();
-
-// void CopyWord();
-
-// Word CopyWordFile();
-
-// void CopyWordinput();
-
-// void ADVSemicolon();
-
-// void DisplayWord (Word Word);
-
-// boolean CekWord(Word hasil);
-
-// Word ConcatWord(Word word_1, Word word_2);
-
-// Word SplitWordBlank(Word word);
-
-// Word SplitWordMark(Word word);
-
-// Word SplitWordLeftBlank(Word word);
-
-// Word SplitWordLeftMark(Word word);
+int getLength(Kata namaKata);
+void STARTKATA(char *filename); // Inisialisasi Mesin Kata
+void ADVKATA();                 // Pindah ke kata berikutnya
+Kata GetCKata();                // Mengambil kata saat ini
+boolean IsEndKata();            // Mengecek apakah sudah akhir kata
+void IgnoreBlank();            
+void SalinKata();
 
 #endif

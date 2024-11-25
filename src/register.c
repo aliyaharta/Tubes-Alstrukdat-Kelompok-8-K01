@@ -2,12 +2,13 @@
 #include "list_user.h"
 #include "mesinkata.h"
 #include "user.h"
+#include "inputUser.h"
 
 void register_user(ListUser *lu)
 {
     boolean regis = false;
-    Word new_username;
-    Word new_password;
+    Kata new_username;
+    Kata new_password;
     User u;
     int user_index;
     int money = 0;
@@ -15,18 +16,18 @@ void register_user(ListUser *lu)
 
     while (!regis) {
         printf("Masukkan username baru kamu (minimal 1 karakter):\n");
-        scanf("%s", new_username.TabWord);
-        new_username.Length = stringLen(new_username.TabWord);
+        inputUser();
+        new_username.Length = getLength(new_username);
 
         if (new_username.Length == 0) {
             printf("Username tidak boleh kosong. Coba isi lagi\n");
         } else {
-            user_index = FindUser(*lu, &new_username);
+            user_index = FindUser(*lu, &new_username);// ada di ADT Kevin
             if (user_index != -1) {
                 printf("Username sudah digunakan, silahkan coba username lain\n");
             } else {
                 regis = true;
-                printf("Username '%s' berhasil didaftarkan\n", new_username.TabWord);
+                printf("Username '%s' berhasil didaftarkan\n", new_username.TabKata);
             }
         }
     }
@@ -34,8 +35,8 @@ void register_user(ListUser *lu)
     regis = false;
     while (!regis) {
         printf("Masukkan password baru kamu (minimal 4 karakter): ");
-        scanf("%s", new_password.TabWord);
-        new_password.Length = stringLen(new_password.TabWord);
+        scanf("%s", new_password.TabKata);
+        new_password.Length = getLength(new_password);
         
         if (new_password.Length == 0) {
             printf("Password tidak boleh kosong. Coba ulang password anda.\n");

@@ -22,7 +22,7 @@ void AddUser(ListUser *lu, User u) {
 //     }
 // }
 
-int FindUser(ListUser lu, const Word *username) {
+int FindUser(ListUser lu, const Kata *username) {
     for (int i = 0; i < lu.count; i++) {
         if (IsUsernameEqual(&lu.users[i], username)) {
             return i;
