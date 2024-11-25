@@ -6,6 +6,7 @@
 #include "readfile.h"
 #include "user.h"
 #include "copystr.h"
+#include "writefile.h"
 
 int main (){
     boolean isExit = false;
@@ -125,13 +126,17 @@ int main (){
         } 
 
         else if (stringCompare(inputkata.kata[0], "HELP") && inputkata.WordCount == 1) {
-            login_help();
+            login_help(isLogin);
             printf("\n\n");
             isDone = true;
         }
 
         else if (stringCompare(inputkata.kata[0], "SAVE") && inputkata.WordCount == 2) {
-            printf("Save file\n\n");
+            printf("Menyimpan file pada %s\n\n",inputkata.kata[1]);
+            char filepath[150];
+            sprintf(filepath, "SAVE/%s", inputkata.kata[1]);
+            writeFile(filepath);
+            printf("Menyimpan file\n\n");
             isDone = true;
         }
         else if (stringCompare(inputkata.kata[0], "WORK") && stringCompare(inputkata.kata[1],"CHALLENGE") && inputkata.WordCount == 2) {

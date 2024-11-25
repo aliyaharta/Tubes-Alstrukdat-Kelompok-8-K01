@@ -23,5 +23,5 @@ void writeFile(const char *filename) {
     }
 
     fclose(file);
-    printf("Data successfully written to %s\n", filename);
+    printf("Data telah berhasil disimpan ke %s\n", filename);
 }

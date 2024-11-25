@@ -84,16 +84,17 @@ void keluar_game(){
     }
 }
 
-boolean isLogin = true;
-void login_help()
+void login_help(boolean isLogin)
 {
-    if(isLogin){
+    if(!isLogin){
+        delay(200);
         printf("=============WELCOME TO HELP MENU PURRMART===============\n");
         printf("1. REGISTER : Untuk melakukan pendaftaran akun baru      \n");
         printf("2. LOGIN : Untuk masuk ke dalam akun dan memulai sesi    \n");
         printf("3. QUIT : Untuk keluar dari program                      \n");
     }
     else{
+        delay(200);
         printf("=====================MENU HELP PURRMART===================\n");
         printf("1. WORK : Untuk bekerja                                   \n");
         printf("2. WORK CHALLENGE : Untuk mengerjakan challenge           \n");
