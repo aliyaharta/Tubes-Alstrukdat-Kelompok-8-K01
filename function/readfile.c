@@ -2,11 +2,10 @@
 #include <stdlib.h>
 #include "readfile.h"
 
-void readFile(const char *filename) {
+int readFile(const char *filename) {
     FILE *file = fopen(filename, "r");
     if (file == NULL) {
-        printf("Error: Could not open file.\n");
-        exit(1);
+        return 1; // Error membuka file
     }
 
     // Membaca jumlah barang
@@ -25,4 +24,5 @@ void readFile(const char *filename) {
     }
 
     fclose(file);
+    return 0; // Berhasil membaca file
 }

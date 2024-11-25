@@ -4,6 +4,6 @@
 #include "user.h"
 #include "barang.h"
 
-void readFile(const char *filename);
+int readFile(const char *filename);
 
 #endif // READFILE_H

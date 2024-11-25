@@ -3,6 +3,7 @@
 #include "inputUser.h"
 #include "boolean.h"
 #include "compare.h"
+#include "readfile.h"
 
 int main (){
     boolean isExit = false;
@@ -31,7 +32,14 @@ int main (){
             isDone = true;
         }
         else if (stringCompare(inputkata.kata[0], "START") && inputkata.WordCount == 1) {
-            printf("File konfigurasi aplikasi berhasil dibaca. PURRMART berhasil dijalankan.\n\n");
+
+            if(readFile("SAVE/BASE/data.txt")==0){
+                printf("File konfigurasi aplikasi berhasil dibaca. PURRMART berhasil dijalankan.\n\n");
+            }
+            else {
+                printf("File konfigurasi telah rusak. Lakukan install ulang! \n\n");
+            }
+            
             isDone = true;
         }
         else if (stringCompare(inputkata.kata[0], "LOAD") && inputkata.WordCount == 2) {
