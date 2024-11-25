@@ -17,9 +17,9 @@ PURRMART adalah sebuah aplikasi yang digunakan untuk aktivitas beli barang pada 
 Berdasarkan deskripsi tersebut, kami mengembangkan program e-commerce dengan berbagai fitur seperti START, LOAD, dan HELP pada awal program, serta LOGIN dan REGISTER untuk mengakses akun. Setelah login, user dapat memasukkan command WORK, WORK CHALLENGE, STORE LIST, STORE REQUEST, STORE SUPPLY, dan STORE REMOVE. Sementara itu, fitur SAVE digunakan untuk menyimpan state aplikasi ke dalam file, dan QUIT digunakan untuk keluar dari aplikasi.
 
 Untuk run program, jalankan perintah berikut ini di terminal yang sudah dalam direktori program
-> make clean
-> make
-> aplikasi/PURRMART
+>> make clean
+>> make
+>> aplikasi/PURRMART
 
 Setelah selesai menggunakan program, jalankan berikut di terminal yang sudah dalam direktori program
 > make clean
