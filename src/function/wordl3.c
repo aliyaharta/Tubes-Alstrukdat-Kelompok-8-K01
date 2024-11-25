@@ -1,6 +1,7 @@
 #include "wordl3.h"
 #include "stringLength.h" 
 #include "toUpperCase.h" 
+#include "inputUser.h"
 
 const char *word_list[] = {"TRULY", "LUCKY", "BUILD", "PLUCK", "STORM"}; 
 int word_count = 5; 
