@@ -2,6 +2,7 @@
 #define USER_H
 
 #include "config.h"
+#define maxUser 25
 
 typedef struct {
     char name[WordMax];
@@ -9,7 +10,7 @@ typedef struct {
     int money;
 } User;
 
-extern User userList[25];
+extern User userList[maxUser];
 extern int userCount;
 
 int getIndex(const char *name);

@@ -19,8 +19,8 @@ int readFile(const char *filename) {
     fscanf(file, "%d", &userCount);
     for (int i = 0; i < userCount; i++) {
         fscanf(file, "%d", &userList[i].money);
-        fscanf(file, "%s", userList[i].password); // Membaca password tanpa spasi
-        fscanf(file, " %[^\n]s", userList[i].name); // Membaca nama hingga newline
+        fscanf(file, "%s", userList[i].name); // Membaca password tanpa spasi
+        fscanf(file, " %[^\n]s", userList[i].password); // Membaca nama hingga newline
     }
 
     fclose(file);

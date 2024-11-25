@@ -1,7 +1,7 @@
 #include "user.h"
 #include "compare.h"
 
-User userList[25];
+User userList[maxUser];
 int userCount = 0;
 
 int getIndex(const char *name) {

@@ -4,16 +4,18 @@
 #include "boolean.h"
 #include "compare.h"
 #include "readfile.h"
+#include "user.h"
 
 int main (){
     boolean isExit = false;
     boolean isDone = false;
+    boolean isLogin = false;
+    int UserIndex;
 
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 
     welcome_menu();
     ArrayOfKata inputkata;
-    boolean isLogin = false;
 
     while(!isExit){
         isDone = false;
@@ -56,26 +58,57 @@ int main (){
             isDone = true;
         }
 
-        else if (stringCompare(inputkata.kata[0], "LOGIN") && inputkata.WordCount == 1 && isLogin==false) {
-            
+        else if (stringCompare(inputkata.kata[0], "LOGIN") && inputkata.WordCount == 1) {
+            if (!isLogin){
             printf("Username: ");
             ArrayOfKata username = inputUser();
             printf("\nPassword: ");
             ArrayOfKata password = inputUser();
             
-            printf("%d ",getIndex("Jett"));
-            // if (username.WordCount == 1 && password.WordCount == 1) {
-            //         int userIndex = getIndex(username.kata[0]); // Directly call getIndex
-            //         printf("%d",userIndex);
-            //         if (userIndex != -1 && stringCompare(userList[userIndex].password, password.kata[0])) {
-            //             printf("Login berhasil! Selamat datang, %s\n", userList[userIndex].name);
-            //             isLogin = true; // Update login status
-            //             isDone = true;
-            //         } else {
-            //             printf("Username atau password salah. Silakan coba lagi.\n");
-            //         }
-            //     }
+            if (username.WordCount == 1 && password.WordCount == 1) {
+                    int idx = getIndex(username.kata[0]); // Directly call getIndex
+                    if (idx != -1 && stringCompare(userList[idx].password, password.kata[0])) {
+                        printf("Login berhasil! \nSelamat datang, %s\n", userList[idx].name);
+                        UserIndex = idx;
+                        isLogin = true; // Update login status
+                        isDone = true;
+                    } else {
+                        printf("Username atau password salah. Silakan coba lagi.\n");
+                    }
+                }
             }
+            else {
+                printf("Anda telah login.\n");
+
+            }
+        }
+
+        else if (stringCompare(inputkata.kata[0], "LOGOUT") && inputkata.WordCount == 1) {
+            if (isLogin){
+                printf("Anda telah logout dari sistem PURRMART.\nSilakan REGISTER/LOGIN kembali untuk melanjutkan.\n\n");
+                isLogin = false;
+            }
+            else {
+                printf("Anda belum login.\n\n");
+            }
+            isDone = true;
+        }
+
+        else if (stringCompare(inputkata.kata[0], "REGISTER") && inputkata.WordCount == 1) {
+            // if (userList<maxUser){
+            //     printf("Username: ");
+            //     ArrayOfKata username = inputUser();
+            //     userList[userCount].name = username.kata[0];
+            //     printf("\nPassword: ");
+            //     ArrayOfKata password = inputUser();
+
+                
+            // }
+            // else{
+            //     printf("Jumlah user telah maksimal.");
+            // }
+            // isDone = true;
+        }
 
         else if (stringCompare(inputkata.kata[0], "HELP") && inputkata.WordCount == 1) {
             login_help();
@@ -85,14 +118,6 @@ int main (){
 
         else if (stringCompare(inputkata.kata[0], "SAVE") && inputkata.WordCount == 2) {
             printf("Save file\n\n");
-            isDone = true;
-        }
-        else if (stringCompare(inputkata.kata[0], "LOGOUT") && inputkata.WordCount == 1) {
-            printf("Anda telah logout dari sistem PURRMART. Silakan REGISTER/LOGIN kembali untuk melanjutkan.\n\n");
-            isDone = true;
-        }
-        else if (stringCompare(inputkata.kata[0], "REGISTER") && inputkata.WordCount == 1) {
-            printf("Username:\nPassword:\n\n");
             isDone = true;
         }
         else if (stringCompare(inputkata.kata[0], "WORK") && inputkata.WordCount == 1) {
