@@ -1,6 +1,7 @@
 #ifndef STORELIST_H
 #define STORELIST_H
 
+#include <stdio.h>
 #include "mesinkata.h"
 #include "mesinkarakter.h"
 #include "list_barang.h"
