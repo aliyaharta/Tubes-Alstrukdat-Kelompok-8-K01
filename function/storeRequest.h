@@ -8,6 +8,7 @@
 #include "mesinkata.h"
 #include "queue.h"
 #include "inputUser.h"
+#include "copystr.h"
 
 void storeRequest(ListBarang lb, Queue *q);
 

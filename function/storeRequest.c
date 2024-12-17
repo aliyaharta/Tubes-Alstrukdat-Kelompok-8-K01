@@ -16,7 +16,7 @@ void storeRequest(ListBarang lb, Queue *q) {
         }
 
         barangReq.Length = length; 
-        CopyString(barangReq.TabKata, input.kata[0]);
+        copyString(barangReq.TabKata, input.kata[0]);
     } else {
         printf("Input tidak valid.\n");
         return;
