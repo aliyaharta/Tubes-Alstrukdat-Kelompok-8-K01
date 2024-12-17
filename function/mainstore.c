@@ -37,7 +37,14 @@
 
 int main() {
     // Membaca data dari file
-    const char *filename = "barang.txt";  // Gantilah dengan nama file yang sesuai
+    const char *filename = "/Users/macbook/Documents/GitHub/Tubes-Alstrukdat-Kelompok-8-K01/function/barang.txt";  // Gantilah dengan nama file yang sesuai
+
+    // FILE *file = fopen(filename, "/Users/macbook/Documents/GitHub/Tubes-Alstrukdat-Kelompok-8-K01/function/barang.txt");
+    // if (file == NULL) {
+    //     perror("Error membuka file");
+    //     return 1;
+    //     }
+
     if (readFile(filename) != 0) {
         printf("Error membaca file\n");
         return 1;
