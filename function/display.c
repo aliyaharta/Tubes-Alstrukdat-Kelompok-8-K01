@@ -69,24 +69,24 @@ void login_help(boolean isLogin)
 {
     if(!isLogin){
         delay(50,'m');
-        printf("HELP MENU PURRMART===============================\n");
+        printf("===================MENU HELP PURRMART==================\n");
         printf("REGISTER : melakukan pendaftaran akun baru      \n");
         printf("LOAD<spasi><filename> : menggunakan data yang telah disimpan,      \n");
-        printf("LOGIN : masuk ke dalam akun dan memulai sesi    \n");
-        printf("QUIT : keluar dari program                      \n");
+        printf("LOGIN : masuk ke dalam akun dan memulai sesi           \n");
+        printf("QUIT : Untuk keluar dari program                       \n");
     }
     else{
         delay(200,'m');
-        printf("MENU HELP PURRMART===============================\n");
-        printf("WORK : bekerja                                   \n");
-        printf("WORK CHALLENGE : mengerjakan challenge           \n");
-        printf("STORE lIST : melihat barang-barang di toko       \n");
-        printf("STORE REQUEST : meminta penambahan barang        \n");
-        printf("STORE SUPPLY : menambahkan barang dari permintaan\n");
-        printf("STORE REMOVE  : menghapus barang                 \n");
-        printf("LOGOUT : keluar dari sesi                        \n");
-        printf("SAVE : menyimpan state ke dalam file             \n");
-        printf("QUIT : keluar dari program                       \n");
+        printf("===================MENU HELP PURRMART==================\n");
+        printf("WORK : Untuk bekerja                                   \n");
+        printf("WORK CHALLENGE : Untuk mengerjakan challenge           \n");
+        printf("STORE lIST : Untuk melihat barang-barang di toko       \n");
+        printf("STORE REQUEST : Untuk meminta penambahan barang        \n");
+        printf("STORE SUPPLY : Untuk menambahkan barang dari permintaan\n");
+        printf("STORE REMOVE  : Untuk menghapus barang                 \n");
+        printf("LOGOUT : Untuk keluar dari sesi                        \n");
+        printf("SAVE : Untuk menyimpan state ke dalam file             \n");
+        printf("QUIT : Untuk keluar dari program                       \n");
     }
 }
 

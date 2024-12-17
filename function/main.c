@@ -105,7 +105,6 @@ int main (){
                     
                     else {
                         printf("Anda telah login.\n");
-
                     }
                     }
                 }
@@ -207,6 +206,26 @@ int main (){
                 printf("Nama barang yang akan dihapus: ");
                 isDone = true;
             } 
+            else if (stringCompare(inputkata.kata[0], "PROFILE") && inputkata.WordCount == 1){
+                printf("Nama : %s\n",userList[UserIndex].name);
+                printf("Money : %d\n",userList[UserIndex].money);
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"SHOW") && inputkata.WordCount == 2){
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"ADD") && inputkata.WordCount == 2){
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"REMOVE") && inputkata.WordCount == 2){
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"SHOW") && inputkata.WordCount == 2){
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"PAY") && inputkata.WordCount == 2){
+                isDone = true;
+            }
             else{
                 printf("Masukkan command yang sesuai!\nPastikan menggunakan huruf kapital!\ncommand 'HELP' untuk bantuan\n");
             }
