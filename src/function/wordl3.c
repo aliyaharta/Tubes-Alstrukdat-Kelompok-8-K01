@@ -35,7 +35,15 @@ void wordl3(){
 
     while (kesempatan < MAX_ATTEMPTS) {
         printf("Masukkan kata tebakan Anda: ");
-        scanf("%s", tebakan);
+        
+        ArrayOfKata userInput = inputUser();
+
+        if (userInput.WordCount < 1) {
+            printf("Input tidak boleh kosong!\n");
+            continue;
+        }
+
+        CopyString(tebakan, userInput.kata[0]); 
 
         int length = stringLength(tebakan);
 
@@ -80,7 +88,6 @@ void wordl3(){
             printf("+1500 rupiah telah ditambahkan ke akun Anda.\n");
             break;
         }
-
 
         kesempatan++;
     }
