@@ -23,7 +23,7 @@ void storeList(ListBarang lb) {
 
         if (isUnique==1) {
             barangUnique[jumUnique++] = lb.items[i];
-            printf("- %s\n", lb.items[i].name);
+            printf("- %s - Harga: %d\n", lb.items[i].name, lb.items[i].price);
         }
     }
 }
