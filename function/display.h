@@ -11,4 +11,7 @@ void keluar_game();
 void login_help(boolean isLogin);
 // fungsi ini akan menunjukkan daftar command dan deskripsinya yang dapat dieksekusi oleh user 
 
+void loadingScreen(int duration);
+// fungsi ini merupakan loading screen sebagai transisi
+
 #endif
