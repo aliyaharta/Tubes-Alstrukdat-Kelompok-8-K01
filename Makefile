@@ -17,7 +17,7 @@ else
 endif
 
 # Main file (to separate it from other source files)
-MAIN_FILE = $(SRC_DIR)/main.c #/\#
+MAIN_FILE = $(SRC_DIR)/mainstore.c #/\#
 
 # Source and library files
 SRC_FILES = $(filter-out $(MAIN_FILE), $(wildcard $(SRC_DIR)/*.c)) # Semua .c kecuali main.c
@@ -34,12 +34,15 @@ prepare:
 	$(call MKDIR,$(OBJ_DIR))
 	$(call MKDIR,$(PROGRAM_DIR))
 
+mainstore: prepare $(OBJ_DIR)/mainstore.o $(OBJ_FILES)
+	$(CC) $(CFLAGS) $(OBJ_DIR)/mainstore.o $(OBJ_FILES) -o $(PROGRAM_DIR)/mainstore
+
 # Build the target (executable)
-$(TARGET): $(OBJ_FILES) $(OBJ_DIR)/main.o #/\#
-	$(CC) $(CFLAGS) $(OBJ_FILES) $(OBJ_DIR)/main.o -o $(TARGET) 
+$(TARGET): $(OBJ_FILES) $(OBJ_DIR)/mainstore.o #/\#
+	$(CC) $(CFLAGS) $(OBJ_FILES) $(OBJ_DIR)/mainstore.o -o $(TARGET) 
 
 # Compile the main file
-$(OBJ_DIR)/main.o: $(MAIN_FILE) #/\#
+$(OBJ_DIR)/mainstore.o: $(MAIN_FILE) #/\#
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Compile .c files in SRC_DIR to .o files in OBJ_DIR
