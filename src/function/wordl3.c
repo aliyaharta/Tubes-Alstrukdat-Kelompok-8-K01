@@ -2,10 +2,7 @@
 #include "stringLength.h" 
 #include "toUpperCase.h" 
 #include "inputUser.h"
-
-const char *word_list[] = {"TRULY", "LUCKY", "BUILD", "PLUCK", "STORM"}; 
-int word_count = 5; 
-int money = 0;
+#include "charCheck.h"
 
 void wordl3(){
     #define MAX_ATTEMPTS 5
@@ -103,5 +100,4 @@ void wordl3(){
     if (beda) {
         printf("Boo! Anda kalah. Jawaban yang benar adalah: %s\n", jawaban);
     }
-
 }
