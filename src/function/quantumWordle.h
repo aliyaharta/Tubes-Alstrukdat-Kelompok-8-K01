@@ -8,11 +8,7 @@
 
 #define WORD_LENGTH 5            
 #define WORD_COUNT 4            
-#define MAX_ATTEMPTS_QUANTUM 9  
-
-extern const char *word_list[] = {"TRULY", "LUCKY", "BUILD", "PLUCK", "STORM"}; 
-extern int word_count = 5;      
-extern int money;               
+#define MAX_ATTEMPTS_QUANTUM 9               
 
 /**
  * I.S.
@@ -28,4 +24,4 @@ extern int money;
  */
 void quantumWordle();
 
-#endif 
+#endif
