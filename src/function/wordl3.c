@@ -4,6 +4,10 @@
 #include "inputUser.h"
 #include "charCheck.h"
 
+const char *word_list[] = {"TRULY", "LUCKY", "BUILD", "PLUCK", "STORM"}; 
+int word_count = 5;           
+int money = 0;  
+
 void wordl3(){
     #define MAX_ATTEMPTS 5
 
