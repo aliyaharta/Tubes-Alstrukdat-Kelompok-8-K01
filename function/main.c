@@ -32,12 +32,48 @@ int main (){
 
             printf("\033[3J\033[H\033[J");
             printf("\n\n\n");
-            loadingScreen(120);
+            // loadingScreen(120);
             printf("\033[3J\033[H\033[J");
             printf("\n\n\n");
             if (stringCompare(inputkata.kata[0], "QUIT") && inputkata.WordCount == 1) {
                 printf("\033[3J\033[H\033[J");            
                 delay(1,'s');
+                printf("Apakah Anda ingin menyimpan data sesi sekarang? (Y/N)\n");
+                ArrayOfKata option;
+                boolean validOption = false;
+                while (!validOption) {
+                    option = inputUser();
+
+                    if (stringCompare(option.kata[0], "Y")) {
+                        validOption = true;
+
+                        printf("Masukkan nama file yang ingin disimpan!\n");
+                        ArrayOfKata namafile;
+                        boolean goodname = false;
+
+                        // Loop to ensure a valid filename is provided
+                        while (!goodname) {
+                            namafile = inputUser();
+
+                            if (namafile.WordCount == 1) {
+                                goodname = true;
+                            } else {
+                                printf("Masukkan nama file yang sesuai! (satu kata)\n");
+                            }
+                        }
+                        printf("Menyimpan file %s",namafile.kata[0]);
+                        delay(380,'m');
+                        printf(".");
+                        delay(380,'m');
+                        printf(".");
+                        delay(380,'m');
+                        printf(".\n\n");
+                        char filepath[150];
+                        sprintf(filepath, "SAVE/%s", inputkata.kata[1]);
+                        writeFile(filepath);
+                    
+                }
+                }
                 keluar_game();
                 isExit = true;
                 isDone = true;
