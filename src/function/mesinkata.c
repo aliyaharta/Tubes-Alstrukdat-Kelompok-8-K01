@@ -13,10 +13,8 @@ void IgnoreBlank() {
     }
 }
 
-int getLength(char* namaKata){
-    int i = 0;
-    while(namaKata[i] != '\0') i++;
-    return i;
+int getLength(Kata namaKata){
+    return namaKata.Index+1;
 }
 
 void SalinKata() {

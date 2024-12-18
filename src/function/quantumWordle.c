@@ -5,10 +5,11 @@
 #include "mesinkata.h"
 #include "wordCheck.h"
 #include "charCheck.h"
+#include "global.h"
 
-const char *word_list[] = {"TRULY", "LUCKY", "BUILD", "PLUCK", "STORM"}; 
-int word_count = 5;      
-int money = 0;  
+int money = 0;
+const char *word_list[] = {"TRULY", "LUCKY", "BUILD", "PLUCK", "STORM"};
+int word_count = 5;
 
 void quantumWordle() {
     #define WORD_COUNT 4

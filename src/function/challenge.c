@@ -2,6 +2,9 @@
 #include "challenge.h"
 #include "inputUser.h"
 #include "compare.h"
+#include "quantumWordle.h"
+#include "tebakangka.h"
+#include "wordl3.h"
 
 void challenge (){
         int angka;
