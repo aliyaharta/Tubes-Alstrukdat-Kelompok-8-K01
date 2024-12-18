@@ -9,9 +9,9 @@ void storeSupply(ListBarang *lb, Queue *q) {
     // Ambil index barang dari antrian
     int idx;
     dequeue(q, &idx);
-    Barang barangAntri = lb->items[idx];
+    Barang barangAntrian = lb->items[idx];
 
-    printf("Apakah kamu ingin menambahkan barang %s: ", barangAntri.name);
+    printf("Apakah kamu ingin menambahkan barang %s: ", barangAntrian.name);
 
     // Baca input menggunakan inputUser()
     ArrayOfKata input = inputUser();
@@ -37,17 +37,17 @@ void storeSupply(ListBarang *lb, Queue *q) {
                 }
             } while (harga <= 0);
 
-            barangAntri.price = harga;
-            lb->items[lb->count++] = barangAntri; // Tambahkan barang ke toko
+            barangAntrian.price = harga;
+            lb->items[lb->count++] = barangAntrian; // Tambahkan barang ke toko
 
-            printf("%s dengan harga %d telah ditambahkan ke toko.\n", barangAntri.name, barangAntri.price);
+            printf("%s dengan harga %d telah ditambahkan ke toko.\n", barangAntrian.name, barangAntrian.price);
 
         } else if (IsBarangNameEqual((Barang*) &(Barang){.name = "Tunda"}, &inputCommand)) {
-            printf("%s dikembalikan ke antrian.\n", barangAntri.name);
+            printf("%s dikembalikan ke antrian.\n", barangAntrian.name);
             enqueue(q, idx); // Kembalikan barang ke antrian
 
         } else if (IsBarangNameEqual((Barang*) &(Barang){.name = "Tolak"}, &inputCommand)) {
-            printf("%s dihapus dari antrian.\n", barangAntri.name);
+            printf("%s dihapus dari antrian.\n", barangAntrian.name);
             // Barang dihapus, tidak dimasukkan kembali ke antrian
 
         } else {
