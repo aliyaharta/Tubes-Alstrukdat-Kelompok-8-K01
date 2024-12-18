@@ -1,5 +1,15 @@
 #include "barang.h"
+#include <stdlib.h>
 
-// Definisi variabel global untuk Barang
-Barang barangList[100];
-int barangCount = 0;
+ListBarang barangList;
+
+void CreateListBarang(ListBarang *barangList, int capacity){
+    barangList -> items = (Barang *)malloc(capacity * sizeof(Barang));
+    barangList -> capacity = capacity;
+    barangList -> count = 0;
+}
+
+boolean isEmptyBarang(ListBarang *listBarang){
+    return(listBarang->count == 0);
+}
+

@@ -9,6 +9,9 @@
 #include "writefile.h"
 #include "work.h"
 #include "copystr.h"
+#include "storelist.h"
+#include "barang.h"
+
 
 int main (){
 
@@ -30,11 +33,11 @@ int main (){
             inputkata = inputUser();
             printf("\n");
 
-            printf("\033[3J\033[H\033[J");
+            // printf("\033[3J\033[H\033[J");
             printf("\n\n\n");
             loadingScreen(120);
-            printf("\033[3J\033[H\033[J");
-            printf("\n\n\n");
+            // printf("\033[3J\033[H\033[J");
+            // printf("\n\n\n");
             if (stringCompare(inputkata.kata[0], "QUIT") && inputkata.WordCount == 1) {
                 printf("\033[3J\033[H\033[J");            
                 delay(1,'s');
@@ -187,8 +190,7 @@ int main (){
             //     isDone = true;
             // } 
             else if (stringCompare(inputkata.kata[0], "STORE") && stringCompare(inputkata.kata[1],"LIST") && inputkata.WordCount == 2) {
-                
-                printf("List barang yang ada di toko :\n\n");
+                storelist(&barangList);
                 isDone = true;
             } 
             else if (stringCompare(inputkata.kata[0], "STORE") && stringCompare(inputkata.kata[1],"REQUEST") && inputkata.WordCount == 2) {
@@ -212,6 +214,7 @@ int main (){
                 isDone = true;
             }
             else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"SHOW") && inputkata.WordCount == 2){
+                // showCartItems(userList[UserIndex].cart);
                 isDone = true;
             }
             else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"ADD") && inputkata.WordCount == 2){
