@@ -1,4 +1,5 @@
 #include "tebakangka.h"
+#include "rng.h"
 
 void tebakangka(){
     int kesempatan = 0; 

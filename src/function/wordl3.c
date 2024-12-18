@@ -2,10 +2,11 @@
 #include "stringLength.h" 
 #include "toUpperCase.h" 
 #include "inputUser.h"
+#include "charCheck.h"
 
 const char *word_list[] = {"TRULY", "LUCKY", "BUILD", "PLUCK", "STORM"}; 
-int word_count = 5; 
-int money = 0;
+int word_count = 5;           
+int money = 0;  
 
 void wordl3(){
     #define MAX_ATTEMPTS 5
@@ -45,9 +46,7 @@ void wordl3(){
 
         CopyString(tebakan, userInput.kata[0]); 
 
-        int length = stringLength(tebakan);
-
-        if (length != WORD_LENGTH) {
+        if (userInput.WordCount != 5) {
             printf("Kata harus berisi %d karakter!\n", WORD_LENGTH);
             continue;
         }
@@ -103,5 +102,4 @@ void wordl3(){
     if (beda) {
         printf("Boo! Anda kalah. Jawaban yang benar adalah: %s\n", jawaban);
     }
-
 }

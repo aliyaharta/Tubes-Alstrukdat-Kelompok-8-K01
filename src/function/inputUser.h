@@ -7,6 +7,8 @@ typedef struct ArrayOfKata{
     int WordCount;
 } ArrayOfKata;
 
+void CopyString(char dest[], char src[]);
+
 ArrayOfKata inputUser();
 
 #endif
