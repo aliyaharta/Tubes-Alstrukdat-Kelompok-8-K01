@@ -2,6 +2,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// typedef struct {
+//     Barang *items;
+//     int capacity;
+//     int count;
+// } ListBarang;
+
 void CreateListBarang(ListBarang *lb, int capacity) {
     lb -> items = (Barang *)malloc(capacity * sizeof(Barang));
     lb -> capacity = capacity;
