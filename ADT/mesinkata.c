@@ -4,6 +4,12 @@
 #include "boolean.h"
 #include "config.h"
 
+// typedef struct {
+//     char TabKata[100];
+//     int Index;
+//     int Length;
+// } Kata;
+
 Kata currentKata;
 boolean EndKata;
 

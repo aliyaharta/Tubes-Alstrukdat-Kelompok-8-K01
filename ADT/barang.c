@@ -1,6 +1,11 @@
 #include "barang.h"
 #include <stdio.h>
 
+// typedef struct {
+//     char name[WordMax];
+//     int price;
+// } Barang;
+
 // Definisi variabel global untuk Barang
 Barang barangList[100];
 int barangCount = 0;
