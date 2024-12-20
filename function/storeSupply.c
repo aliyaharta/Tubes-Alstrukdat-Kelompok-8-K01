@@ -11,7 +11,6 @@ void storeSupply(Queue *antrian, ListBarang *barangList) {
 
     printf("\nApakah kamu ingin menambahkan barang %s: ", itemName);
 
-    // Menggunakan inputUser untuk membaca keputusan pengguna
     ArrayOfKata decision = inputUser();
     if (decision.WordCount == 1) {
         if (stringCompare(decision.kata[0], "Terima")) {
