@@ -13,6 +13,7 @@
 #include "combineword.h"
 #include "storelist.h"
 #include "storerequest.h"
+#include "playChallenge.h"
 
 
 int main (){
@@ -107,9 +108,7 @@ int main (){
                     else if(password.WordCount>1){
                         printf("Username atau password salah. Silakan coba lagi.\n");
 
-                    }
-                                
-                    
+                    }     
                     else {
                         printf("Anda telah login.\n");
                     }
@@ -189,10 +188,10 @@ int main (){
                 writeFile(filepath);
                 isDone = true;
             }
-            // else if (stringCompare(inputkata.kata[0], "WORK") && stringCompare(inputkata.kata[1],"CHALLENGE") && inputkata.WordCount == 2) {
-            //     printf("Daftar challenge yang tersedia:\n1. Tebak Angka (biaya main=200)\n2. W0RDL399 (biaya main=500)\n\n");
-            //     isDone = true;
-            // } 
+            else if (stringCompare(inputkata.kata[0], "WORK") && stringCompare(inputkata.kata[1],"CHALLENGE") && inputkata.WordCount == 2) {
+                playChallenge(UserIndex);
+                isDone = true;
+            } 
             else if (stringCompare(inputkata.kata[0], "STORE") && stringCompare(inputkata.kata[1],"LIST") && inputkata.WordCount == 2) {
                 storelist(&barangList);
                 isDone = true;

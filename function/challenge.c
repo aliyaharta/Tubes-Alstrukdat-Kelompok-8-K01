@@ -1,44 +1,80 @@
+
 #include <stdio.h>
 #include "challenge.h"
-#include "stringToInt.h"
 #include "inputUser.h"
+#include "compare.h"
+#include "quantumWordle.h"
+#include "tebakangka.h"
+#include "wordl3.h"
+#include "user.h"
 
-const char *word_list[] = {"TRULY", "LUCKY", "BUILD", "PLUCK", "STORM"};
-const int word_count = 5;
+void challenge (int UserIndex){
+    
+        ArrayOfKata input;
+        input = inputUser();
 
-int money = 1000;
-
-void challenge (){
-        int angka;
-        ArrayOfKata listAngka = inputUser();
-        angka =  stringToInt(listAngka.kata[0]);
-        
-        if (angka == 1){
-            if (money < 200){
-                printf("Uang yang dimiliki kurang! Silakan kerja terlebih dahulu.");
+        /*while(input.WordCount < 2 && input.WordCount > 0){
+            if (stringCompare(input.kata[0], "1")){
+                if (userList[UserIndex].money < 200){
+                    printf("Uang yang dimiliki kurang! Silakan kerja terlebih dahulu.");
+                }
+                else{
+                    userList[UserIndex].money -= 200;
+                    printf("Masukkan tebakanmu!\n");
+                    tebakangka(UserIndex);
+                }
             }
-            else{
-                money -= 200;
+            else if (stringCompare(input.kata[0], "2")){
+                if (userList[UserIndex].money < 500){
+                    printf("Uang yang dimiliki kurang! Silakan cari challenge lain atau kerja terlebih dahulu.");
+                }
+                else{
+                    userList[UserIndex].money-=500;
+                    wordl3(UserIndex);
+                }
+            }
+            else if (stringCompare(input.kata[0], "3")){
+                if (userList[UserIndex].money < 600){
+                    printf("Uang yang dimiliki kurang! Silakan cari challenge lain atau kerja terlebih dahulu.");
+                }
+                else {
+                    userList[UserIndex].money-=600;
+                    quantumWordle(UserIndex);
+                }
+            }
+            ArrayOfKata input = inputUser();
+        }*/
+       while (1) {
+        input = inputUser(); // Dapatkan input dari user
+        if (input.WordCount == 0) { // Jika input kosong, keluar
+            printf("Input kosong, keluar dari challenge.\n");
+            break;
+        }
+
+        if (stringCompare(input.kata[0], "1")) {
+            if (userList[UserIndex].money < 200) {
+                printf("Uang yang dimiliki kurang! Silakan kerja terlebih dahulu.\n");
+            } else {
+                userList[UserIndex].money -= 200;
                 printf("Masukkan tebakanmu!\n");
-                tebakangka();
+                tebakangka(UserIndex);
             }
-        }
-        else if (angka == 2){
-            if (money < 500){
-                printf("Uang yang dimiliki kurang! Silakan cari challenge lain atau kerja terlebih dahulu.");
+        } else if (stringCompare(input.kata[0], "2")) {
+            if (userList[UserIndex].money < 500) {
+                printf("Uang yang dimiliki kurang! Silakan cari challenge lain atau kerja terlebih dahulu.\n");
+            } else {
+                userList[UserIndex].money -= 500;
+                wordl3(UserIndex);
             }
-            else{
-                money-=500;
-                wordl3();
+        } else if (stringCompare(input.kata[0], "3")) {
+            if (userList[UserIndex].money < 600) {
+                printf("Uang yang dimiliki kurang! Silakan cari challenge lain atau kerja terlebih dahulu.\n");
+            } else {
+                userList[UserIndex].money -= 600;
+                quantumWordle(UserIndex);
             }
-        }
-        else if (angka == 3){
-            if (money < 600){
-                printf("Uang yang dimiliki kurang! Silakan cari challenge lain atau kerja terlebih dahulu.");
-            }
-            else {
-                money-=600;
-                quantumWordle();
-            }
+        } else {
+            printf("Pilihan tidak valid, coba lagi.\n");
         }
     }
+}

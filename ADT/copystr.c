@@ -4,12 +4,19 @@
 #include "copystr.h"
 
 
-void copyString(char *destination, const char *source) {
+void copyString(char *dest, const char *src) {
     int i = 0;
-    while (source[i] != '\0') { // Copy each character until null-terminator
-        destination[i] = source[i];
+    while (src[i] != '\0') { // Copy characters until null-terminator
+        dest[i] = src[i];
         i++;
     }
-    destination[i] = '\0'; // Add the null-terminator at the end
+    dest[i] = '\0'; // Add null-terminator at the end
+
+    // int i = 0;
+    // while (source[i] != '\0') { // Copy each character until null-terminator
+    //     destination[i] = source[i];
+    //     i++;
+    // }
+    // destination[i] = '\0'; // Add the null-terminator at the end
 }
 

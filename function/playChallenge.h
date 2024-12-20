@@ -2,6 +2,7 @@
 #define PLAYCHALLENGE_H
 
 #include <stdio.h>
+#include "challenge.h"
 
 // Deklarasi fungsi playChallenge
 /**
@@ -15,6 +16,6 @@
  * - Jika input tidak valid, akan meminta pengguna untuk memasukkan input yang benar.
  * - Program akan terus menawarkan challenge hingga pengguna memilih keluar dengan input `n`.
  */
-void playChallenge();
+void playChallenge(int userIndex);
 
 #endif // PLAYCHALLENGE_H

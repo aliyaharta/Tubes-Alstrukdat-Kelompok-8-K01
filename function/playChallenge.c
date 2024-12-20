@@ -1,38 +1,39 @@
-#include "playChallenge.h"
 #include "challenge.h"
 #include "inputUser.h"
+#include "compare.h"
+#include "mesinkata.h"
+#include "challenge.h"
+#include "user.h"
 
-void playChallenge (){
-    printf("Daftar challenge yang tersedia :\n");
-    printf("1. Tebak Angka (biaya main=200)\n"); 
-    printf("2. W0RDL399 (biaya main=500)\n");
-    printf("3. Quantum W0RDL3 (biaya main = 600)\n");
-    printf("Masukan challenge yang hendak dimainkan:\n");
+void playChallenge(int userIndex) {
+    ArrayOfKata input;
 
-    challenge();
+    while (1) {
+        printf("Daftar challenge yang tersedia :\n");
+        printf("1. Tebak Angka (biaya main=200)\n");
+        printf("2. W0RDL399 (biaya main=500)\n");
+        printf("3. Quantum W0RDL3 (biaya main=600)\n");
+        printf("Masukan challenge yang hendak dimainkan:\n");
 
+        input = inputUser();
 
-    printf("Apakah kamu masih mau melanjutkan challenge? (y / n): \n");
-    ArrayOfKata y = inputUser();
-    char tanya[6] = y.kata[0];
+        if (input.WordCount > 0) {
+            challenge(userIndex); 
+            printf("Apakah kamu masih mau melanjutkan challenge? (y / n): \n");
+            input = inputUser();
 
-    while (tanya != 'n'){
-        if (tanya == 'y'){
-            printf("Daftar challenge yang tersedia :\n");
-            printf("1. Tebak Angka (biaya main=200)\n"); 
-            printf("2. W0RDL399 (biaya main=500)\n");
-            printf("3. Quantum W0RDL3 (biaya main = 600)\n");
-            printf("Masukan challenge yang hendak dimainkan:\n");
-
-            challenge();
-            getchar();
+            if (input.WordCount > 0) {
+                if (stringCompare(input.kata[0], "n") || stringCompare(input.kata[0], "N")) {
+                    printf("Terima kasih telah bermain!\n");
+                    break;
+                } 
+                else if (stringCompare(input.kata[0], "y") || stringCompare(input.kata[0], "Y")) {
+                    continue;
+                } 
+                else {
+                    printf("Inputan salah! Harap masukkan 'y' atau 'n'\n");
+                }
+            }
         }
-        else if (tanya != 'y'){
-            printf("Inputan salah! Input antara 'y' atau 'n'\n");
-            getchar();
-            scanf("%c", &tanya);
-        }
-        printf("Apakah kamu masih mau melanjutkan challenge? (y / n): \n");
-        scanf("%c", &tanya);
     }
 }
