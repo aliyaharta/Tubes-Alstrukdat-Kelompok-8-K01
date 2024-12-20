@@ -7,6 +7,6 @@
 #include "inputUser.h"
 #include "compare.h"
 
-void storeRemove(ListBarang *lb);
+void storeRemove(ListBarang *barangList);
 
 #endif 
