@@ -1,15 +1,15 @@
-#ifndef STOREREQUEST_H
-#define STOREREQUEST_H
+// #ifndef STOREREQUEST_H
+// #define STOREREQUEST_H
 
-#include <stdio.h>
-#include "barang.h"
-#include "list_barang.h"
-#include "mesinkarakter.h"
-#include "mesinkata.h"
-#include "queue.h"
-#include "inputUser.h"
-#include "copystr.h"
+// #include <stdio.h>
+// #include "barang.h"
+// #include "list_barang.h"
+// #include "mesinkarakter.h"
+// #include "mesinkata.h"
+// #include "queue.h"
+// #include "inputUser.h"
+// #include "copystr.h"
 
-void storeRequest(ListBarang lb, Queue *q);
+// void storeRequest(ListBarang lb, Queue *q);
 
-#endif
+// #endif

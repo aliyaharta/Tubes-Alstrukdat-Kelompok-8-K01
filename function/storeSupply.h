@@ -4,9 +4,10 @@
 #include <stdio.h>
 #include "barang.h"
 #include "queue.h"
-#include "storeRequest.h"
 #include "inputUser.h"
+#include "compare.h"
+#include "stringToInt.h"
 
-void storeSupply(ListBarang *lb, Queue *q);
+void storeSupply(Queue *antrian, ListBarang *barangList);
 
 #endif 

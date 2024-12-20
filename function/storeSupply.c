@@ -1,61 +1,47 @@
 #include "storeSupply.h"
 
-void storeSupply(ListBarang *lb, Queue *q) {
-    if (isEmpty(*q)) {
-        printf("Tidak ada barang dalam antrian.\n");
+void storeSupply(Queue *antrian, ListBarang *barangList) {
+    if (isEmpty(*antrian)) {
+        printf("\nTidak ada barang dalam antrian.\n");
         return;
     }
 
-    // Ambil index barang dari antrian
-    int idx;
-    dequeue(q, &idx);
-    Barang barangAntrian = lb->items[idx];
+    char itemName[WordMax];
+    dequeue(antrian, itemName);
 
-    printf("Apakah kamu ingin menambahkan barang %s: ", barangAntrian.name);
+    printf("\nApakah kamu ingin menambahkan barang %s: ", itemName);
 
-    // Baca input menggunakan inputUser()
-    ArrayOfKata input = inputUser();
+    // Menggunakan inputUser untuk membaca keputusan pengguna
+    ArrayOfKata decision = inputUser();
+    if (decision.WordCount == 1) {
+        if (stringCompare(decision.kata[0], "Terima")) {
+            printf("Harga barang: ");
+            ArrayOfKata priceInput = inputUser();
+            int price = stringToInt(priceInput.kata[0]);
 
-    // Validasi input
-    if (input.WordCount > 0) {
-        Kata inputCommand;
-        for (int i = 0; i < CharMax; i++) {
-            inputCommand.TabKata[i] = input.kata[0][i]; // Salin kata pertama ke tipe Kata
-        }
-        inputCommand.Index = 0; // Reset Index
-        inputCommand.TabKata[CharMax - 1] = '\0';
-
-        if (IsBarangNameEqual((Barang*) &(Barang){.name = "Terima"}, &inputCommand)) {
-            int harga;
-
-            // Validasi harga barang
-            do {
-                printf("Harga barang: ");
-                scanf("%d", &harga);
-                if (harga <= 0) {
-                    printf("Harga harus lebih dari 0!\n");
+            if (price > 0) {
+                Barang newItem = CreateBarang(itemName, price);
+                if (barangList->count < barangList->capacity) {
+                    barangList->items[barangList->count++] = newItem;
+                    printf("%s dengan harga %d telah ditambahkan ke toko.\n", itemName, price);
+                } else {
+                    printf("Gagal menambahkan barang. Kapasitas toko penuh.\n");
                 }
-            } while (harga <= 0);
-
-            barangAntrian.price = harga;
-            lb->items[lb->count++] = barangAntrian; // Tambahkan barang ke toko
-
-            printf("%s dengan harga %d telah ditambahkan ke toko.\n", barangAntrian.name, barangAntrian.price);
-
-        } else if (IsBarangNameEqual((Barang*) &(Barang){.name = "Tunda"}, &inputCommand)) {
-            printf("%s dikembalikan ke antrian.\n", barangAntrian.name);
-            enqueue(q, idx); // Kembalikan barang ke antrian
-
-        } else if (IsBarangNameEqual((Barang*) &(Barang){.name = "Tolak"}, &inputCommand)) {
-            printf("%s dihapus dari antrian.\n", barangAntrian.name);
-            // Barang dihapus, tidak dimasukkan kembali ke antrian
-
+            } else {
+                printf("Harga barang tidak valid. Barang dikembalikan ke antrian.\n");
+                enqueue(antrian, itemName);
+            }
+        } else if (stringCompare(decision.kata[0], "Tunda")) {
+            enqueue(antrian, itemName);
+            printf("%s dikembalikan ke antrian.\n", itemName);
+        } else if (stringCompare(decision.kata[0], "Tolak")) {
+            printf("%s dihapuskan dari antrian.\n", itemName);
         } else {
-            printf("Input tidak valid. Gunakan 'Terima', 'Tunda', atau 'Tolak'.\n");
-            enqueue(q, idx); // Masukkan kembali ke antrian
+            printf("Input tidak valid. Kembali ke menu utama.\n");
+            enqueue(antrian, itemName);
         }
     } else {
-        printf("Input kosong. Kembali ke menu.\n");
-        enqueue(q, idx); // Masukkan kembali ke antrian
+        printf("Input tidak valid. Kembali ke menu utama.\n");
+        enqueue(antrian, itemName);
     }
 }

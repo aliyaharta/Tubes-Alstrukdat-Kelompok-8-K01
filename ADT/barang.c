@@ -1,32 +1,34 @@
 #include "barang.h"
-#include <stdio.h>
+#include <stdlib.h>
 
-// typedef struct {
-//     char name[WordMax];
-//     int price;
-// } Barang;
+ListBarang barangList;
 
-// Definisi variabel global untuk Barang
-Barang barangList[100];
-int barangCount = 0;
+Barang CreateBarang(const char *name, int price) {
+    Barang newItem;
+    
+    copyString(newItem.name, name);
 
-void CreateBarang(Barang *b, const Kata *name, int price) {
-    for (int i = 0; i < name->Length && i < WordMax - 1; i++) {
-        b->name[i] = name->TabKata[i];
-    }
-    b->name[name->Length] = '\0';
-    b->price = price;
+    newItem.name[WordMax - 1] = '\0';
+    newItem.price = price;
+
+    return newItem;
 }
 
-void DisplayBarang(Barang b) {
-    printf("Name: %s, Price: %d\n", b.name, b.price);
+void CreateListBarang(ListBarang *barangList, int capacity){
+    barangList -> items = (Barang *)malloc(capacity * sizeof(Barang));
+    barangList -> capacity = capacity;
+    barangList -> count = 0;
 }
 
-boolean IsBarangNameEqual(const Barang *b, const Kata *name) {
-    for (int i = 0; i < name->Length; i++) {
-        if (i >= WordMax || name->TabKata[i] != b->name[i]) {
-            return false;
+boolean isEmptyBarang(ListBarang *listBarang){
+    return(listBarang->count == 0);
+}
+
+int findItemBarang(ListBarang *ListBarang, char *name){
+    for (int i = 0; i < barangList.count; i++){
+        if (stringCompare(barangList.items[i].name,name)){
+            return i;
         }
     }
-    return (name->Length == 0 || b->name[name->Length] == '\0');
+    return -1;
 }

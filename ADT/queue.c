@@ -1,111 +1,53 @@
-/* File : queue.h */
-/* Definisi ADT Queue dengan representasi array secara eksplisit dan alokasi statik */
-
-// #ifndef QUEUE_H
-// #define QUEUE_H
-
-#include "boolean.h"
-#include "queue.h"
 #include <stdio.h>
+#include "queue.h"
 
-// #define IDX_UNDEF -1
-// #define CAPACITY 100
+Queue antrian;
 
-// /* Definisi elemen dan address */
-// typedef int ElType;
-// typedef struct {
-// 	ElType buffer[CAPACITY]; 
-// 	int idxHead;
-// 	int idxTail;
-// } Queue;
-
-
-// /* ********* AKSES (Selektor) ********* */
-// /* Jika q adalah Queue, maka akses elemen : */
-// #define IDX_HEAD(q) (q).idxHead
-// #define IDX_TAIL(q) (q).idxTail
-// #define     HEAD(q) (q).buffer[(q).idxHead]
-// #define     TAIL(q) (q).buffer[(q).idxTail]
-
-/* *** Kreator *** */
-void CreateQueue(Queue *q) {
-/* I.S. sembarang */
-/* F.S. Sebuah q kosong terbentuk dengan kondisi sbb: */
-/* - Index head bernilai IDX_UNDEF */
-/* - Index tail bernilai IDX_UNDEF */
-/* Proses : Melakukan alokasi, membuat sebuah q kosong */
-IDX_HEAD(*q) = IDX_UNDEF;
-IDX_TAIL(*q) = IDX_UNDEF;
+void createQueue(Queue *antrian) {
+    antrian->head = IDX_UNDEF;
+    antrian->tail = IDX_UNDEF;
 }
 
-/* ********* Prototype ********* */
-boolean isEmpty(Queue q) {
-/* Mengirim true jika q kosong: lihat definisi di atas */
-return (IDX_HEAD(q) == IDX_UNDEF && IDX_TAIL(q) == IDX_UNDEF);
+boolean isEmpty(Queue antrian) {
+    return antrian.head == IDX_UNDEF && antrian.tail == IDX_UNDEF;
 }
 
-boolean isFull(Queue q) {
-/* Mengirim true jika tabel penampung elemen q sudah penuh */
-/* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
-return (IDX_HEAD(q) == (IDX_TAIL(q) + 1) % CAPACITY);
+boolean isFull(Queue antrian) {
+    return (antrian.tail + 1) % MAX_QUEUE_SIZE == antrian.head;
 }
 
-int length(Queue q) {
-/* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
-if (isEmpty(q)) {
-    return 0;
-} else {
-    return (IDX_TAIL(q) - IDX_HEAD(q) + 100) % 100 + 1;
-}
+void enqueue(Queue *antrian, char *item) {
+    if (isEmpty(*antrian)) {
+        antrian->head = 0;
+    }
+
+    antrian->tail = (antrian->tail + 1) % MAX_QUEUE_SIZE;
+    copyString(antrian->items[antrian->tail], item);
 }
 
-/* *** Primitif Add/Delete *** */
-void enqueue(Queue *q, ElType val) {
-/* Proses: Menambahkan val pada q dengan aturan FIFO */
-/* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
-/* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
-if (isEmpty(*q)) {
-    IDX_HEAD(*q) = 0;
-    IDX_TAIL(*q) = 0;
-} else {
-    IDX_TAIL(*q) = (IDX_TAIL(*q) + 1) % CAPACITY;
-}
-TAIL(*q) = val;
+void dequeue(Queue *antrian, char *item) {
+    copyString(item, antrian->items[antrian->head]);
+
+    if (antrian->head == antrian->tail) {
+        antrian->head = -1;
+        antrian->tail = -1;
+    } else {
+        antrian->head = (antrian->head + 1) % MAX_QUEUE_SIZE;
+    }
 }
 
-void dequeue(Queue *q, ElType *val) {
-/* Proses: Menghapus val pada q dengan aturan FIFO */
-/* I.S. q tidak mungkin kosong */
-/* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
-        q mungkin kosong */
-*val = HEAD(*q);
-if (length(*q) == 1) {
-    CreateQueue(q);
-} else {
-    IDX_HEAD(*q) = (IDX_HEAD(*q) + 1) % CAPACITY;
-}
-}
+boolean inQueue(Queue antrian, char *item) {
+    if (isEmpty(antrian)) {
+        return false;
+    }
 
-/* *** Display Queue *** */
-void displayQueue(Queue q) {
-/* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung 
-   siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan 
-   karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
-/* I.S. q boleh kosong */
-/* F.S. Jika q tidak kosong: [e1,e2,...,en] */
-/* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
-/* Jika Queue kosong : menulis [] */
-printf("[");
-if(!isEmpty(q)) {
-    int i = IDX_HEAD(q);
+    int i = antrian.head;
     do {
-        printf("%d,", q.buffer[i]);
-        i = (i + 1) % CAPACITY;
-    } while (i != IDX_TAIL(q));
-    printf("%d", q.buffer[i]);
-    
-}
-printf("]\n");
+        if (stringCompare(antrian.items[i], item)) {
+            return true;
+        }
+        i = (i + 1) % MAX_QUEUE_SIZE;
+    } while (i != (antrian.tail + 1) % MAX_QUEUE_SIZE);
 
-
+    return false;
 }

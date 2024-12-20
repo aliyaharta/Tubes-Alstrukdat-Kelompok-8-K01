@@ -1,36 +1,27 @@
 #include "storeRemove.h"
 
-void storeRemove(ListBarang *lb) {
-    printf("Nama barang yang akan dihapus: ");
-
-    // Menggunakan inputUser untuk mendapatkan nama barang
-    ArrayOfKata input = inputUser();
-
-    if (input.WordCount == 0) {
-        printf("Input tidak valid.\n");
+void storeRemove(ListBarang *barangList) {
+    if (isEmptyBarang(barangList)) {
+        printf("\nTidak ada barang di toko untuk dihapus.\n");
         return;
     }
 
-    Kata namaBarang;
-    // Menyusun nama barang
-    namaBarang.Index = 0;  // Reset Index
-    for (int i = 0; i < input.WordCount; i++) {
-        int j = 0;
-        while (input.kata[i][j] != '\0' && j < CharMax) {
-            namaBarang.TabKata[namaBarang.Index++] = input.kata[i][j];
-            j++;
-        }
-        if (i != input.WordCount - 1) {
-            namaBarang.TabKata[namaBarang.Index++] = ' '; // Tambahkan spasi antar kata
-        }
-    }
-    namaBarang.TabKata[namaBarang.Index] = '\0'; // Akhiri string
+    printf("\nNama barang yang akan dihapus: ");
+    ArrayOfKata input = inputUser();
 
-    // Menghapus barang dari list
-    RemoveBarang(lb, &namaBarang);
-    if (FindBarang(*lb, &namaBarang) == -1) {
-        printf("%s telah berhasil dihapus dari toko.\n", namaBarang.TabKata);
+    if (input.WordCount == 1) {
+        char *itemName = input.kata[0];
+        int idx = findItemBarang(barangList, itemName);
+        if (idx != -1) {
+            for (int i = idx; i < barangList->count - 1; i++) {
+                barangList->items[i] = barangList->items[i + 1];
+            }
+            barangList->count--;
+            printf("%s telah berhasil dihapus.\n", itemName);
+        } else {
+            printf("Toko tidak menjual %s.\n", itemName);
+        }
     } else {
-        printf("Toko tidak menjual %s.\n", namaBarang.TabKata);
+        printf("Input tidak valid. Kembali ke menu utama.\n");
     }
 }
