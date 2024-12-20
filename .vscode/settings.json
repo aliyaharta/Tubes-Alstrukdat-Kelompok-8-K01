@@ -5,7 +5,8 @@
     "delay.h": "c",
     "time.h": "c",
     "NO.C": "cpp",
-    "mesinkata.h": "c"
+    "mesinkata.h": "c",
+    "linkedlist.h": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

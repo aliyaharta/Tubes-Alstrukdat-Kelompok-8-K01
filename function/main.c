@@ -14,6 +14,9 @@
 #include "storelist.h"
 #include "storerequest.h"
 #include "playChallenge.h"
+#include "wishlistadd.h"
+#include "wishlistclear.h"
+#incl
 
 
 int main (){
@@ -231,6 +234,21 @@ int main (){
                 isDone = true;
             }
             else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"PAY") && inputkata.WordCount == 2){
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"ADD") && inputkata.WordCount == 2){
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"SWAP") && inputkata.WordCount == 2){
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"REMOVE") && inputkata.WordCount == 2){
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"CLEAR") && inputkata.WordCount == 2){
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"SHOW") && inputkata.WordCount == 2){
                 isDone = true;
             }
             else{

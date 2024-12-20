@@ -20,18 +20,18 @@ void wishlist_show(const LinkedList *wishlist) {
 
 
 
-int main() {
-    LinkedList wishlist;
-    list_create(&wishlist);
+// int main() {
+//     LinkedList wishlist;
+//     list_create(&wishlist);
 
-    list_insert_last(&wishlist, "Barang1");
-    list_insert_last(&wishlist, "Barang2");
-    list_insert_last(&wishlist, "Barang3");
+//     list_insert_last(&wishlist, "Barang1");
+//     list_insert_last(&wishlist, "Barang2");
+//     list_insert_last(&wishlist, "Barang3");
 
-    wishlist_show(&wishlist);
-    list_destroy(&wishlist);
-    wishlist_show(&wishlist);
+//     wishlist_show(&wishlist);
+//     list_destroy(&wishlist);
+//     wishlist_show(&wishlist);
 
-    return 0;
-}
+//     return 0;
+// }
 

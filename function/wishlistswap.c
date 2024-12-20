@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "linkedlist.h" 
+#include "wishlistswap.h" 
 
 void wishlist_swap(LinkedList *wishlist, int i, int j) {
     // Periksa indeks udah bener apa belum

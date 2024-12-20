@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/ASUS/Documents/GitHub/Tubes-Alstrukdat-Kelompok-8-K01/ADT",
-      "program": "c:/Users/ASUS/Documents/GitHub/Tubes-Alstrukdat-Kelompok-8-K01/ADT/build/Debug/outDebug",
+      "cwd": "c:/Users/ASUS/Documents/GitHub/Tubes-Alstrukdat-Kelompok-8-K01/function",
+      "program": "c:/Users/ASUS/Documents/GitHub/Tubes-Alstrukdat-Kelompok-8-K01/function/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
