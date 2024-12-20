@@ -1,5 +1,5 @@
-#ifndef WISHLISTCLEAR_H
-#define WISHLISTCLEAR_H
+#ifndef WISHLISTADD_H
+#define WISHLISTADD_H
 
 #include "linkedlist.h" 
 #include "barang.h"

@@ -1,8 +1,19 @@
 #include "linkedlist.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "inputUser.h"
+#include "compare.h"
+#include "combineword.h"
 
-void wishlist_remove(LinkedList *wishlist, const char *name) {
+void wishlist_remove(LinkedList *wishlist) {
+    ArrayOfKata nama;
+    printf("Masukkan nama barang yang ingin diremove :\n");
+    nama = inputUser();
+
+    char input[CharMax];
+
+    combineword(input,nama);
+
     if (wishlist->size == 0) {
         printf("Penghapusan barang WISHLIST gagal dilakukan, WISHLIST kosong!\n");
         return;
@@ -13,7 +24,9 @@ void wishlist_remove(LinkedList *wishlist, const char *name) {
 
     while (current != NULL) {
         // Membandingkan nama barang 
-        if (list_compare_strings(current->data, name) == 0) {
+        
+        //if (list_compare_strings(current->data, name) == 0) {
+        if (stringCompare(current->data, input)){
             if (prev == NULL) { 
                 wishlist->head = current->next;
             } else {
@@ -22,7 +35,7 @@ void wishlist_remove(LinkedList *wishlist, const char *name) {
 
             free(current);
             wishlist->size--;
-            printf("%s berhasil dihapus dari WISHLIST!\n", name);
+            printf("%s berhasil dihapus dari WISHLIST!\n", input);
             return;
         }
 
@@ -31,7 +44,7 @@ void wishlist_remove(LinkedList *wishlist, const char *name) {
     }
 
     // Jika barang tidak ditemukan
-    printf("Penghapusan barang WISHLIST gagal dilakukan, %s tidak ada di WISHLIST!\n", name);
+    printf("Penghapusan barang WISHLIST gagal dilakukan, %s tidak ada di WISHLIST!\n", input);
 }
 
 

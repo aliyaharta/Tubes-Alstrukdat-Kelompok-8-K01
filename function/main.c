@@ -18,6 +18,7 @@
 #include "linkedlist.h"
 #include "wishlistclear.h"
 #include "wishlistshow.h"
+#include "wishlistremove.h"
 
 int main (){
 
@@ -250,10 +251,15 @@ int main (){
                 isDone = true;
             }
             else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"REMOVE") && inputkata.WordCount == 2){
+                wishlist_remove(&wishlist);
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"REMOVE" ) && inputkata.WordCount == 2){
+                wishlist_remove(&wishlist);
                 isDone = true;
             }
             else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"CLEAR") && inputkata.WordCount == 2){
-                wish
+                wishlist_clear(&wishlist);
                 isDone = true;
             }
             else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"SHOW") && inputkata.WordCount == 2){
