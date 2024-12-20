@@ -1,5 +1,7 @@
 #include "barang.h"
 #include <stdlib.h>
+#include <stdio.h>
+
 
 ListBarang barangList;
 
@@ -20,15 +22,24 @@ void CreateListBarang(ListBarang *barangList, int capacity){
     barangList -> count = 0;
 }
 
-boolean isEmptyBarang(ListBarang *listBarang){
-    return(listBarang->count == 0);
+boolean isEmptyBarang(ListBarang listBarang){
+    return(listBarang.count == 0);
 }
 
-int findItemBarang(ListBarang *ListBarang, char *name){
+int findItemBarang(ListBarang ListBarang, char* name){
     for (int i = 0; i < barangList.count; i++){
         if (stringCompare(barangList.items[i].name,name)){
             return i;
         }
     }
     return -1;
+}
+
+boolean isinbarang(ListBarang barangList, char* name){
+    for (int i = 0; i < barangList.count; i++){
+        if (stringCompare(barangList.items[i].name,name)){
+            return true;
+        }
+    }
+    return false;
 }

@@ -16,6 +16,6 @@ void combineword(char dest[], ArrayOfKata inputkata) {
             dest[pos++] = ' ';
         }
     }
-
     dest[pos] = '\0';
 }
+

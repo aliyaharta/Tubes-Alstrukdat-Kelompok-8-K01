@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "linkedlist.h" 
+#include "wishlistadd.h"
 
 void wishlist_add(LinkedList *wishlist, char *item_name) {
     //Memeriksa barang apakah sudah ada di wishlist
@@ -12,12 +12,18 @@ void wishlist_add(LinkedList *wishlist, char *item_name) {
         }
         current = current->next;
     }
-
+    
     //Menambahkan barang ke wishlist
-    if (list_insert_last(wishlist, item_name)) {
-        printf("Berhasil menambahkan %s ke wishlist!\n", item_name);
-    } else {
-        printf("Gagal menambahkan %s ke wishlist!\n", item_name);
+    if(isinbarang(barangList,item_name)){
+        if (list_insert_last(wishlist, item_name)) {
+            printf("Berhasil menambahkan %s ke wishlist!\n", item_name);
+        } 
+        else {
+            printf("Gagal menambahkan %s ke wishlist!\n", item_name);
+        }
+    }
+    else{
+        printf("Tidak ada barang dengan nama %s!\n",item_name);
     }
 }
 

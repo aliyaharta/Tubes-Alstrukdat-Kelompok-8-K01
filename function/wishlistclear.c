@@ -1,4 +1,4 @@
-#include "linkedlist.h"
+#include "wishlistclear.h"
 #include <stdio.h>
 #include <stdlib.h>
 

@@ -3,6 +3,6 @@
 
 #include "barang.h"
 
-void storelist(ListBarang *barangList);
+void storelist(ListBarang barangList);
 
 #endif // STORELIST_H

@@ -15,9 +15,9 @@
 #include "storerequest.h"
 #include "playChallenge.h"
 #include "wishlistadd.h"
+#include "linkedlist.h"
 #include "wishlistclear.h"
-#incl
-
+#include "wishlistshow.h"
 
 int main (){
 
@@ -27,13 +27,15 @@ int main (){
     boolean dataLoaded = false;
     int UserIndex;
     Queue antrian;
+    createQueue(&antrian);
+    LinkedList wishlist;
+    list_create(&wishlist);
 
     printf("\033[3J\033[H\033[J");
     printf("\n\n\n");
 
     welcome_menu();
     ArrayOfKata inputkata;
-    createQueue(&antrian);
 
     while(!isExit){
         isDone = false;
@@ -196,7 +198,7 @@ int main (){
                 isDone = true;
             } 
             else if (stringCompare(inputkata.kata[0], "STORE") && stringCompare(inputkata.kata[1],"LIST") && inputkata.WordCount == 2) {
-                storelist(&barangList);
+                storelist(barangList);
                 isDone = true;
             } 
             else if (stringCompare(inputkata.kata[0], "STORE") && stringCompare(inputkata.kata[1],"REQUEST") && inputkata.WordCount == 2) {
@@ -237,6 +239,11 @@ int main (){
                 isDone = true;
             }
             else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"ADD") && inputkata.WordCount == 2){
+                printf("Masukkan nama barang : \n");
+                ArrayOfKata inputwishlist = inputUser();
+                char items[CharMax];
+                combineword(items,inputwishlist);
+                wishlist_add(&wishlist,items);
                 isDone = true;
             }
             else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"SWAP") && inputkata.WordCount == 2){
@@ -246,9 +253,11 @@ int main (){
                 isDone = true;
             }
             else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"CLEAR") && inputkata.WordCount == 2){
+                wish
                 isDone = true;
             }
             else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"SHOW") && inputkata.WordCount == 2){
+                wishlist_show(&wishlist);
                 isDone = true;
             }
             else{

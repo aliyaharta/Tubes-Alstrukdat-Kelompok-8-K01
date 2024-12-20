@@ -22,7 +22,8 @@ extern ListBarang barangList;
 
 Barang CreateBarang(const char *name, int price);
 void CreateListBarang(ListBarang *listbarang, int capacity);
-boolean isEmptyBarang(ListBarang *listBarang);
-int findItemBarang(ListBarang *ListBarang, char *name);
+boolean isEmptyBarang(ListBarang listBarang);
+int findItemBarang(ListBarang ListBarang, char* name);
+boolean isinbarang(ListBarang barangList, char* name);
 
 #endif // BARANG_H
