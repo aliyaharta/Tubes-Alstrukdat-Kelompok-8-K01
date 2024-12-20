@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "readfile.h"
+#include "barang.h"
 
 int readFile(const char *filename) {
     FILE *file = fopen(filename, "r");
@@ -9,10 +10,11 @@ int readFile(const char *filename) {
     }
 
     // Membaca jumlah barang
-    fscanf(file, "%d", &barangCount);
-    for (int i = 0; i < barangCount; i++) {
-        fscanf(file, "%d", &barangList[i].price);
-        fscanf(file, " %[^\n]s", barangList[i].name); // Membaca string hingga newline
+    CreateListBarang(&barangList,100);
+    fscanf(file, "%d", &barangList.count);
+    for (int i = 0; i < barangList.count; i++) {
+        fscanf(file, "%d", &barangList.items[i].price);
+        fscanf(file, " %[^\n]s", barangList.items[i].name); // Membaca string hingga newline
     }
 
     // Membaca jumlah user

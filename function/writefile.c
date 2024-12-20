@@ -11,9 +11,9 @@ void writeFile(const char *filename) {
     }
 
     // Menulis jumlah barang
-    fprintf(file, "%d\n", barangCount);
-    for (int i = 0; i < barangCount; i++) {
-        fprintf(file, "%d %s\n", barangList[i].price, barangList[i].name);
+    fprintf(file, "%d\n", barangList.count);
+    for (int i = 0; i < barangList.count; i++) {
+        fprintf(file, "%d %s\n", barangList.items[i].price, barangList.items[i].name);
     }
 
     // Menulis jumlah user

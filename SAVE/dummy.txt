@@ -1,8 +1,8 @@
 5
 10 apel
 32 nanas
-50 mangga
-17 durian
+50 mangga kuning
+17 durian hijau
 25 alpukat
 7
 20 Chamber sentinel
