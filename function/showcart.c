@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "showCart.h"
 
-int findItemBarang(const char *name){
-    for (int i = 0; i < barangCount; i++){
+int findItemBarang(SetMap cart, char *name){
+    for (int i = 0; i < barangList.count; i++){
         if (stringCompare(barangList[i].name,name)){
             return i;
         }

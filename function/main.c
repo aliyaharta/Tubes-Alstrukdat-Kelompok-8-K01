@@ -9,8 +9,10 @@
 #include "writefile.h"
 #include "work.h"
 #include "copystr.h"
-#include "storelist.h"
 #include "barang.h"
+#include "combineword.h"
+#include "storelist.h"
+#include "storerequest.h"
 
 
 int main (){
@@ -20,12 +22,14 @@ int main (){
     boolean isLogin = false;
     boolean dataLoaded = false;
     int UserIndex;
+    Queue antrian;
 
     printf("\033[3J\033[H\033[J");
     printf("\n\n\n");
 
     welcome_menu();
     ArrayOfKata inputkata;
+    createQueue(&antrian);
 
     while(!isExit){
         isDone = false;
@@ -194,8 +198,9 @@ int main (){
                 isDone = true;
             } 
             else if (stringCompare(inputkata.kata[0], "STORE") && stringCompare(inputkata.kata[1],"REQUEST") && inputkata.WordCount == 2) {
-                
-                printf("Nama barang yang diminta: \n\n");
+                Queue antrian;
+                createQueue(&antrian);
+                storerequest(barangList,&antrian);
                 isDone = true;
             } 
             else if (stringCompare(inputkata.kata[0], "STORE") && stringCompare(inputkata.kata[1],"SUPPLY") && inputkata.WordCount == 2) {

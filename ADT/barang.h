@@ -3,6 +3,7 @@
 
 #include "config.h"
 #include "boolean.h"
+#include "copystr.h"
 
 typedef struct {
     char name[WordMax];
@@ -18,6 +19,7 @@ typedef struct {
 // Deklarasi variabel global untuk Barang
 extern ListBarang barangList;
 
+Barang CreateBarang(const char *name, int price);
 void CreateListBarang(ListBarang *listbarang, int capacity);
 boolean isEmptyBarang(ListBarang *listBarang);
 
