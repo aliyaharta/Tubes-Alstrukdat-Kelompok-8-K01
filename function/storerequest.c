@@ -7,7 +7,7 @@ void storerequest(ListBarang barangList, Queue *queue){
     printf("Nama barang yang diminta : ");
     inputkata = inputUser();
 
-    char* barang;
+    char barang[CharMax];
 
     combineword(barang,inputkata);
 
@@ -23,18 +23,17 @@ void storerequest(ListBarang barangList, Queue *queue){
                 if (!isFull(*queue)) {
                     enqueue(queue, barang);
                     CreateBarang(barang, 0);
-                    printf("Barang berhasil dimasukkan ke antrian: %s", queue->items[queue->tail]);
+                    printf("Barang berhasil dimasukkan ke antrian: %s\n", queue->items[queue->tail]);
                     printf("%s",queue->items[queue->head]);
-                    }
+                }
                 else{
                     char temp;
                     dequeue(queue,&temp);
                     enqueue(queue,barang);
                     CreateBarang(barang, 0);
-                    printf("%s",queue->items[queue->tail]);
-                    printf("Barang berhasil dimasukkan ke antrian: %s", queue->items[queue->tail]);
+                    printf("Barang berhasil dimasukkan ke antrian: %s\n", queue->items[queue->tail]);
                     printf("%s",queue->items[queue->head]);
-                    }
+                }
             }
             // if (!isEmpty(*queue)) {
             // if (inQueue(*queue, &barang)) {

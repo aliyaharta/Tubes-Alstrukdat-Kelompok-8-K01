@@ -5,6 +5,7 @@
 #include "compare.h"
 #include "readfile.h"
 #include "user.h"
+#include "stringToInt.h"
 #include "copystr.h"
 #include "writefile.h"
 #include "work.h"
@@ -19,6 +20,8 @@
 #include "wishlistclear.h"
 #include "wishlistshow.h"
 #include "wishlistremove.h"
+#include "wishlistremovei.h"
+#include "wishlistswap.h"
 
 int main (){
 
@@ -203,8 +206,6 @@ int main (){
                 isDone = true;
             } 
             else if (stringCompare(inputkata.kata[0], "STORE") && stringCompare(inputkata.kata[1],"REQUEST") && inputkata.WordCount == 2) {
-                Queue antrian;
-                createQueue(&antrian);
                 storerequest(barangList,&antrian);
                 isDone = true;
             } 
@@ -247,15 +248,53 @@ int main (){
                 wishlist_add(&wishlist,items);
                 isDone = true;
             }
-            else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"SWAP") && inputkata.WordCount == 2){
+            else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"SWAP") && inputkata.WordCount == 4){
+                char* angkastring1 = inputkata.kata[2];
+                char* angkastring2 = inputkata.kata[3];
+                boolean isNumber1 = true;
+                for (int i = 0; angkastring1[i] != '\0'; i++) {
+                    if (angkastring1[i] < '0' || angkastring1[i] > '9') {
+                        isNumber1 = false;
+                        break;
+                    }
+                }
+                boolean isNumber2 = true;
+                for (int i = 0; angkastring2[i] != '\0'; i++) {
+                    if (angkastring2[i] < '0' || angkastring2[i] > '9') {
+                        isNumber2 = false;
+                        break;
+                    }
+                }
+                if(isNumber1 && isNumber2){
+                    int angka1 = stringToInt(angkastring1);
+                    int angka2 = stringToInt(angkastring2);
+                    wishlist_swap(&wishlist,angka1, angka2);
+                }
+                else{
+                    printf("Tidak bisa menukar barang. Command tidak valid\n");
+                }
                 isDone = true;
             }
             else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"REMOVE") && inputkata.WordCount == 2){
                 wishlist_remove(&wishlist);
                 isDone = true;
             }
-            else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"REMOVE" ) && inputkata.WordCount == 2){
-                wishlist_remove(&wishlist);
+            else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"REMOVE") && inputkata.WordCount == 3){
+                char* angkastring = inputkata.kata[2];
+                boolean isNumber = true;
+                for (int i = 0; angkastring[i] != '\0'; i++) {
+                    if (angkastring[i] < '0' || angkastring[i] > '9') {
+                        isNumber = false;
+                        break;
+                    }
+                }
+                if(isNumber){
+                    int angka = stringToInt(angkastring);
+                    wishlist_removei(&wishlist,angka);
+                }
+                else{
+                    printf("Penghapusan barang di wishlist gagal. Command tidak valid\n");
+                }
                 isDone = true;
             }
             else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"CLEAR") && inputkata.WordCount == 2){

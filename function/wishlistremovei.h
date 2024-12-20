@@ -3,6 +3,6 @@
 
 #include "linkedlist.h" 
 
-void wishlist_remove(LinkedList *wishlist, int position);
+void wishlist_removei(LinkedList *wishlist, int position);
 
 #endif

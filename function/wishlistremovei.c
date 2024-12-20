@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void wishlist_remove(LinkedList *wishlist, int position) {
+void wishlist_removei(LinkedList *wishlist, int position) {
     if (wishlist->size == 0) {
         printf("Penghapusan barang WISHLIST gagal dilakukan, WISHLIST kosong!\n");
         return;
