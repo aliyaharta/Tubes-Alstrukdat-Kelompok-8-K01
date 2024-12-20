@@ -1,8 +1,7 @@
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include "readfile.h"
-// #include "storeList.h"
-// #include "storeRequest.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "storeRemove.h"
+#include "storeSupply.h"
 
 // #define MAX_BARANG 100
 // #define MAX_USER 100
@@ -31,43 +30,49 @@
 // // User userList[MAX_USER];
 // // int userCount = 0;
 
-// // // Function prototypes
-// // void storeList(ListBarang lb);
-// // void storeRequest(ListBarang lb, Queue *q);
 
-// int main() {
-//     // Membaca data dari file
-//     const char *filename = "/Users/macbook/Documents/GitHub/Tubes-Alstrukdat-Kelompok-8-K01/function/barang.txt";  // Gantilah dengan nama file yang sesuai
+int main() {
+    // Inisialisasi data
+    Queue antrian;
+    ListBarang barangList;
+    int kapasitasToko = 10; // Kapasitas maksimum toko
 
-//     // FILE *file = fopen(filename, "/Users/macbook/Documents/GitHub/Tubes-Alstrukdat-Kelompok-8-K01/function/barang.txt");
-//     // if (file == NULL) {
-//     //     perror("Error membuka file");
-//     //     return 1;
-//     //     }
+    // Membuat queue dan list barang
+    createQueue(&antrian);
+    CreateListBarang(&barangList, kapasitasToko);
 
-//     if (readFile(filename) != 0) {
-//         printf("Error membaca file\n");
-//         return 1;
-//     }
+    // Menambahkan beberapa item ke antrian
+    enqueue(&antrian, "AK47");
+    enqueue(&antrian, "Bazooka");
+    enqueue(&antrian, "Sticky Web Gun");
 
-//     // Menampilkan list barang menggunakan storeList
-//     ListBarang lb;
-//     lb.count = barangCount;
-//     lb.capacity = MAX_BARANG;
-//     for (int i = 0; i < barangCount; i++) {
-//         lb.items[i] = barangList[i];
-//     }
+    int pilihan;
+    do {
+        printf("\nMENU:\n");
+        printf("1. Store Supply\n");
+        printf("2. Store Remove\n");
+        printf("3. Keluar\n");
+        printf("Pilihan: ");
+        scanf("%d", &pilihan);
 
-//     printf(">> STORE LIST\n");
-//     storeList(lb);  // Menampilkan daftar barang di toko
+        switch (pilihan) {
+            case 1:
+                storeSupply(&antrian, &barangList);
+                break;
+            case 2:
+                storeRemove(&barangList);
+                break;
+            case 3:
+                printf("Keluar dari program.\n");
+                break;
+            default:
+                printf("Pilihan tidak valid. Silakan coba lagi.\n");
+                break;
+        }
+    } while (pilihan != 3);
 
-//     // Membuat queue untuk menyimpan request barang
-//     Queue q;
-//     CreateQueue(&q);
+    // Membersihkan memori jika diperlukan
+    free(barangList.items);
 
-//     // Menangani request barang menggunakan storeRequest
-//     printf("\n>> STORE REQUEST\n");
-//     storeRequest(lb, &q);
-
-//     return 0;
-// }
+    return 0;
+}
