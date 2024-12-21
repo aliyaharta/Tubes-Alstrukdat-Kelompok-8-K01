@@ -1,4 +1,6 @@
-#include <stdio.h>
+#ifndef QUEUE_H
+#define QUEUE_H
+
 #include "./../function/compare.h"
 #include "copystr.h"
 #include "boolean.h"
@@ -21,3 +23,4 @@ void enqueue(Queue *queue, char *item);
 void dequeue(Queue *queue, char *item);
 boolean inQueue(Queue queue, char *item);
 
+#endif

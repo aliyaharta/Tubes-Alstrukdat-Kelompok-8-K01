@@ -14,6 +14,8 @@
 #include "combineword.h"
 #include "storelist.h"
 #include "storerequest.h"
+#include "storeremove.h"
+#include "storesupply.h"
 #include "playChallenge.h"
 #include "wishlistadd.h"
 #include "linkedlist.h"
@@ -103,7 +105,7 @@ int main (){
                     printf("Password: ");
                     ArrayOfKata password = inputUser();
                     
-                    if (username.WordCount == 1 && password.WordCount == 1) {
+                        if (username.WordCount == 1 && password.WordCount == 1) {
                             int idx = getIndex(username.kata[0]); // Directly call getIndex
                             if (idx != -1 && stringCompare(userList[idx].password, password.kata[0])) {
                                 printf("\nLogin berhasil! \nSelamat datang, %s\n", userList[idx].name);
@@ -114,13 +116,12 @@ int main (){
                                 printf("Username atau password salah. Silakan coba lagi.\n");
                             }
                         }
-                    else if(password.WordCount>1){
-                        printf("Username atau password salah. Silakan coba lagi.\n");
-
-                    }     
-                    else {
-                        printf("Anda telah login.\n");
-                    }
+                        else if(password.WordCount>1){
+                            printf("Username atau password salah. Silakan coba lagi.\n");
+                        }     
+                        else {
+                            printf("Anda telah login.\n");
+                        }
                     }
                 }
                 else{
@@ -210,13 +211,11 @@ int main (){
                 isDone = true;
             } 
             else if (stringCompare(inputkata.kata[0], "STORE") && stringCompare(inputkata.kata[1],"SUPPLY") && inputkata.WordCount == 2) {
-                
-                printf("Apakah kamu ingin menambahkan barang ");
+                storesupply(&antrian,&barangList);
                 isDone = true;
             } 
             else if (stringCompare(inputkata.kata[0], "STORE") && stringCompare(inputkata.kata[1],"REMOVE") && inputkata.WordCount == 2) {
-                
-                printf("Nama barang yang akan dihapus: ");
+                storeremove(&barangList);
                 isDone = true;
             } 
             else if (stringCompare(inputkata.kata[0], "PROFILE") && inputkata.WordCount == 1){

@@ -2,13 +2,13 @@
 #define STOREREQUEST_H
 
 #include <stdio.h>
-#include "./../ADT/barang.h"
-#include "./../ADT/mesinkarakter.h"
-#include "./../ADT/mesinkata.h"
-#include "./../ADT/queue.h"
-#include "./../ADT/inputUser.h"
-#include "./../ADT/copystr.h"
-#include "./../ADT/combineword.h"
+#include "barang.h"
+#include "mesinkarakter.h"
+#include "mesinkata.h"
+#include "queue.h"
+#include "inputUser.h"
+#include "copystr.h"
+#include "combineword.h"
 #include "compare.h"
 
 void inToko(ListBarang barangList, char name);
