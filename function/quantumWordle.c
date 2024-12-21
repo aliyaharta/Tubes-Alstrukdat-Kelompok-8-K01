@@ -6,6 +6,8 @@
 #include "wordCheck.h"
 #include "charCheck.h"
 #include "global.h"
+#include "user.h"
+#include "stringLength.h"
 
 int money = 0;
 const char *word_list[] = {"TRULY", "LUCKY", "BUILD", "PLUCK", "STORM"};
@@ -102,7 +104,7 @@ void quantumWordle(int userIndex) {
 
         if (semua_benar) {
             printf("Selamat, Anda menang! Semua kata berhasil ditebak.\n");
-            money += 2000;
+            userList[userIndex].money += 2000;
             printf("+2000 rupiah telah ditambahkan ke akun Anda.\n");
             return;
         }
@@ -110,7 +112,7 @@ void quantumWordle(int userIndex) {
         kesempatan++;
 }
 
-    printf("Boo! Anda kalah. Jawaban yang benar adalah:\n");
+    printf("Boo! Anda kalah. Jawaban yang benar adalah: ");
     for (int i = 0; i < WORD_COUNT; i++) {
         printf("%s ", jawaban[i]);
     }

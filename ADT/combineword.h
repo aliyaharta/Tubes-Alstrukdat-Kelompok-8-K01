@@ -3,6 +3,6 @@
 
 #include "inputUser.h"
 
-void combineword(char dest[], ArrayOfKata inputkata);
+void combineword(char dest[], ArrayOfKata inputkata, int start, int end);
 
 #endif

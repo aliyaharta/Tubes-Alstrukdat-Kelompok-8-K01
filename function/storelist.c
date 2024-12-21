@@ -8,7 +8,7 @@ void storelist(ListBarang barangList){
     else{
         printf("List Barang di toko :\n");
         for(int i=0;i<barangList.count;i++){
-            printf("%s\n",barangList.items[i].name);
+            printf("%s - Harga : %d\n",barangList.items[i].name, barangList.items[i].price);
         }
     }
 }

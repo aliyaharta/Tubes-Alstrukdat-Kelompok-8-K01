@@ -9,7 +9,7 @@ void storerequest(ListBarang barangList, Queue *queue){
 
     char barang[WordMax];
 
-    combineword(barang,inputkata);
+    combineword(barang,inputkata,0,inputkata.WordCount);
 
     if (inputkata.WordCount > 0) {
         if (isinbarang(barangList, barang)) {

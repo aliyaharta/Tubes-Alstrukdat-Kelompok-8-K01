@@ -5,7 +5,7 @@
 void wishlist_swap(LinkedList *wishlist, int i, int j) {
     // Periksa indeks udah bener apa belum
     if (i <= 0 || j <= 0 || i > list_length(*wishlist) || j > list_length(*wishlist)) {
-        printf("Indeks tidak valid untuk melakukan swap!\n");
+        printf("Indeks tidak valid untuk melakukan swap atau wishlist kosong!\n");
         return;
     }
 

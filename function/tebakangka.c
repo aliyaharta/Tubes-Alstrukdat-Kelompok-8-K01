@@ -3,6 +3,7 @@
 #include "inputUser.h"
 #include "compare.h"
 #include "stringToInt.h"
+#include "user.h"
 
 void tebakangka(int userIndex){
     int kesempatan = 0; 
@@ -26,10 +27,11 @@ void tebakangka(int userIndex){
         else {
             uang = 550 - (50*(kesempatan+1));
             printf("Tebakanmu benar! %d rupiah telah ditambahkan ke akun anda.\n", uang);
+            userList[userIndex].money += uang;
+            break;
         }
         kesempatan++;
     }
-
     if (kesempatan > 9){
         printf("Maaf kesempatanmu sudah habis.\n");
     }

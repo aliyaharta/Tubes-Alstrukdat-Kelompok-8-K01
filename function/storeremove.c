@@ -12,7 +12,7 @@ void storeremove(ListBarang *barangList) {
 
         if (input.WordCount > 0) {
             char itemName[WordMax];
-            combineword(itemName,input);
+            combineword(itemName,input,0,input.WordCount);
             int idx = findItemBarang(*barangList, itemName);
             if (idx != -1) {
                 for (int i = idx; i < barangList->count - 1; i++) {

@@ -5,15 +5,7 @@
 #include "compare.h"
 #include "combineword.h"
 
-void wishlist_remove(LinkedList *wishlist) {
-    ArrayOfKata nama;
-    printf("Masukkan nama barang yang ingin diremove :\n");
-    nama = inputUser();
-
-    char input[CharMax];
-
-    combineword(input,nama);
-
+void wishlist_remove(LinkedList *wishlist, char *input) {
     if (wishlist->size == 0) {
         printf("Penghapusan barang WISHLIST gagal dilakukan, WISHLIST kosong!\n");
         return;

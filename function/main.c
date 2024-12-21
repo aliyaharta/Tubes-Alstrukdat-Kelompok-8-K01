@@ -17,8 +17,11 @@
 #include "storeremove.h"
 #include "storesupply.h"
 #include "playChallenge.h"
-#include "wishlistadd.h"
+#include "setmap.h"
+#include "cartshow.h"
+#include "cartadd.h"
 #include "linkedlist.h"
+#include "wishlistadd.h"
 #include "wishlistclear.h"
 #include "wishlistshow.h"
 #include "wishlistremove.h"
@@ -36,6 +39,8 @@ int main (){
     createQueue(&antrian);
     LinkedList wishlist;
     list_create(&wishlist);
+    SetMap keranjang;
+    createEmptyCart(&keranjang);
 
     printf("\033[3J\033[H\033[J");
     printf("\n\n\n");
@@ -224,10 +229,30 @@ int main (){
                 isDone = true;
             }
             else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"SHOW") && inputkata.WordCount == 2){
-                // showCartItems(userList[UserIndex].cart);
+                showcartitems(keranjang);
                 isDone = true;
             }
-            else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"ADD") && inputkata.WordCount == 2){
+            else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"ADD") && inputkata.WordCount >= 4){
+                char namaitem[WordMax] = "";
+                combineword(namaitem,inputkata,2,inputkata.WordCount-1);
+                char* jumlahitem = inputkata.kata[inputkata.WordCount - 1];
+                
+                boolean isNumber = true;
+                for (int i = 0; jumlahitem[i] != '\0'; i++) {
+                    if (jumlahitem[i] < '0' || jumlahitem[i] > '9') {
+                        isNumber = false;
+                        break;
+                    }
+                }
+
+                if(isNumber){
+                    int angka = stringToInt(jumlahitem);
+                    addcart(&keranjang,barangList,namaitem,angka);
+                }
+                else{
+                    printf("Masukkan jumlah barang dengan benar!\n");
+                }
+
                 isDone = true;
             }
             else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"REMOVE") && inputkata.WordCount == 2){
@@ -240,10 +265,10 @@ int main (){
                 isDone = true;
             }
             else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"ADD") && inputkata.WordCount == 2){
-                printf("Masukkan nama barang : \n");
+                printf("Masukkan nama barang : ");
                 ArrayOfKata inputwishlist = inputUser();
-                char items[CharMax];
-                combineword(items,inputwishlist);
+                char items[WordMax];
+                combineword(items,inputwishlist,0,inputwishlist.WordCount);
                 wishlist_add(&wishlist,items);
                 isDone = true;
             }
@@ -275,7 +300,12 @@ int main (){
                 isDone = true;
             }
             else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"REMOVE") && inputkata.WordCount == 2){
-                wishlist_remove(&wishlist);
+                ArrayOfKata nama;
+                printf("Masukkan nama barang yang ingin diremove :\n");
+                nama = inputUser();
+                char input[CharMax];
+                combineword(input,nama,0,nama.WordCount);
+                wishlist_remove(&wishlist,input);
                 isDone = true;
             }
             else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"REMOVE") && inputkata.WordCount == 3){

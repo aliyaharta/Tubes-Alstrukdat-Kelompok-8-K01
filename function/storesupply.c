@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "storesupply.h"
 
 // pengecekan jika input tidak valid masih loss

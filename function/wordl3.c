@@ -5,6 +5,7 @@
 #include "global.h"
 #include "copystr.h"
 #include "stringLength.h"
+#include "user.h"
 
 void wordl3(int userIndex){
     #define MAX_ATTEMPTS 5
@@ -81,7 +82,7 @@ void wordl3(int userIndex){
 
         if (sama) {
             printf("Selamat, Anda menang!\n");
-            money += 1500; 
+            userList[userIndex].money += 1500; 
             printf("+1500 rupiah telah ditambahkan ke akun Anda.\n");
             break;
         }
