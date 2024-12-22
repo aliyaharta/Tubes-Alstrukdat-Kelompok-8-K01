@@ -16,4 +16,4 @@ extern User userList[maxUser];
 extern int userCount;
 
 int getIndex(const char *name);
-#endif // USER_H
+#endif 

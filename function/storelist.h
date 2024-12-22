@@ -5,4 +5,4 @@
 
 void storelist(ListBarang barangList);
 
-#endif // STORELIST_H
+#endif

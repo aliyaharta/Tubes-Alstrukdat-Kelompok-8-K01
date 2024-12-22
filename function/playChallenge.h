@@ -18,4 +18,4 @@
  */
 void playChallenge(int userIndex);
 
-#endif // PLAYCHALLENGE_H
+#endif

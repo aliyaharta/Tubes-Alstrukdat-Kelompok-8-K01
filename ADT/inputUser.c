@@ -6,32 +6,27 @@
 
 ArrayOfKata katas;
 
-// Function to copy a string from `src` to `dest`
 void CopyString(char dest[], char src[]) {
     int i = 0;
-    while (src[i] != '\0') { // Copy characters until null-terminator
+    while (src[i] != '\0') { 
         dest[i] = src[i];
         i++;
     }
-    dest[i] = '\0'; // Add null-terminator at the end
+    dest[i] = '\0';
 }
 
-// Function to read input from the user and populate the `ArrayOfKata` structure
 ArrayOfKata inputUser() {
-    // Initialize the `katas` structure
     katas.WordCount = 0;
 
-    // Start reading words using input from stdin
-    STARTKATA(NULL); // NULL means using stdin
-
-    while (!IsEndKata() && katas.WordCount < WordMax) { // Ensure no overflow
+    STARTKATA(NULL); 
+    while (!IsEndKata() && katas.WordCount < WordMax) {
         Kata word = GetCKata();
-        CopyString(katas.kata[katas.WordCount], word.TabKata); // Copy the word to `katas.kata`
-        katas.WordCount++; // Increment WordCount after adding a word
-        ADVKATA(); // Move to the next word
+        CopyString(katas.kata[katas.WordCount], word.TabKata); 
+        katas.WordCount++; 
+        ADVKATA(); 
     }
 
-    return katas; // Return the populated structure
+    return katas; 
 }
 
 

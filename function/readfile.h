@@ -5,4 +5,4 @@
 
 int readFile(const char *filename);
 
-#endif // READFILE_H
+#endif

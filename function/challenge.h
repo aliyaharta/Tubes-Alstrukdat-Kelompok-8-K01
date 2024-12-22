@@ -19,4 +19,4 @@ extern const int word_count;
 void challenge(int index);
 
 
-#endif // CHALLENGE_H
+#endif 

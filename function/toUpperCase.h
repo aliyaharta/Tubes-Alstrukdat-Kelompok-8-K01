@@ -4,4 +4,4 @@
 // Fungsi untuk mengubah karakter menjadi huruf besar
 char toUpperCase(char c);
 
-#endif  // TOUPPERCASE_H
+#endif

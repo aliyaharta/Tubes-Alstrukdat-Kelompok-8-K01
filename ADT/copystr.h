@@ -4,4 +4,4 @@
 void copyString(char *destination, const char *source);
 
 
-#endif // COPYSTR_
+#endif 

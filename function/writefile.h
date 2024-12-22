@@ -3,4 +3,4 @@
 
 void writeFile(const char *filename);
 
-#endif // WRITEFILE_H
+#endif

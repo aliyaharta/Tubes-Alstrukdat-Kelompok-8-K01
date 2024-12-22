@@ -4,4 +4,4 @@
 // Fungsi untuk menghitung panjang string
 int stringLength(const char *str);
 
-#endif  // STRINGLENGTH_H
+#endif  

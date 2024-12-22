@@ -1,4 +1,3 @@
-// boolean.h
 #ifndef BOOLEAN_H
 #define BOOLEAN_H
 
@@ -8,4 +7,4 @@ typedef unsigned char boolean;
 #define false 0
 
 
-#endif // BOOLEAN_H
+#endif 

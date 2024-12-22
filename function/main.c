@@ -54,11 +54,11 @@ int main (){
             inputkata = inputUser();
             printf("\n");
 
-            // printf("\033[3J\033[H\033[J");
+            printf("\033[3J\033[H\033[J");
             printf("\n\n\n");
             loadingScreen(120);
-            // printf("\033[3J\033[H\033[J");
-            // printf("\n\n\n");
+            printf("\033[3J\033[H\033[J");
+            printf("\n\n\n");
             if (stringCompare(inputkata.kata[0], "QUIT") && inputkata.WordCount == 1) {
                 printf("\033[3J\033[H\033[J");            
                 delay(1,'s');
@@ -111,11 +111,11 @@ int main (){
                     ArrayOfKata password = inputUser();
                     
                         if (username.WordCount == 1 && password.WordCount == 1) {
-                            int idx = getIndex(username.kata[0]); // Directly call getIndex
+                            int idx = getIndex(username.kata[0]); 
                             if (idx != -1 && stringCompare(userList[idx].password, password.kata[0])) {
                                 printf("\nLogin berhasil! \nSelamat datang, %s\n", userList[idx].name);
                                 UserIndex = idx;
-                                isLogin = true; // Update login status
+                                isLogin = true; 
                                 isDone = true;
                             } else {
                                 printf("Username atau password salah. Silakan coba lagi.\n");
