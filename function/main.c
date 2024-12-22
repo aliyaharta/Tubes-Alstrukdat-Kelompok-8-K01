@@ -1,15 +1,344 @@
 #include <stdio.h>
-#include "mesinkata.h"
-#include "main.h"
+#include "display.h"
+#include "inputUser.h"
+#include "boolean.h"
+#include "compare.h"
+#include "readfile.h"
+#include "user.h"
+#include "stringToInt.h"
+#include "copystr.h"
+#include "writefile.h"
+#include "work.h"
+#include "copystr.h"
+#include "barang.h"
+#include "combineword.h"
+#include "storelist.h"
+#include "storerequest.h"
+#include "storeremove.h"
+#include "storesupply.h"
+#include "playChallenge.h"
+#include "setmap.h"
+#include "cartshow.h"
+#include "cartadd.h"
+#include "linkedlist.h"
+#include "wishlistadd.h"
+#include "wishlistclear.h"
+#include "wishlistshow.h"
+#include "wishlistremove.h"
+#include "wishlistremovei.h"
+#include "wishlistswap.h"
 
-int main() {
-    // Menggunakan input dari keyboard (stdin)
-    STARTKATA(NULL); // NULL berarti menggunakan stdin
+int main (){
 
-    while (!IsEndKata()) {
-        Kata word = GetCKata();
-        printf("%s\n", word.TabKata); // Menampilkan kata
-        ADVKATA(); // Lanjutkan ke kata berikutnya
+    boolean isExit = false;
+    boolean isDone = false;
+    boolean isLogin = false;
+    boolean dataLoaded = false;
+    int UserIndex;
+    Queue antrian;
+    createQueue(&antrian);
+    LinkedList wishlist;
+    list_create(&wishlist);
+    SetMap keranjang;
+    createEmptyCart(&keranjang);
+
+    printf("\033[3J\033[H\033[J");
+    printf("\n\n\n");
+
+    welcome_menu();
+    ArrayOfKata inputkata;
+
+    while(!isExit){
+        isDone = false;
+        do{ printf("\n>> ");
+            inputkata = inputUser();
+            printf("\n");
+
+            printf("\033[3J\033[H\033[J");
+            printf("\n\n\n");
+            loadingScreen(120);
+            printf("\033[3J\033[H\033[J");
+            printf("\n\n\n");
+            if (stringCompare(inputkata.kata[0], "QUIT") && inputkata.WordCount == 1) {
+                printf("\033[3J\033[H\033[J");            
+                delay(1,'s');
+                keluar_game();
+                isExit = true;
+                isDone = true;
+            }
+
+            else if (stringCompare(inputkata.kata[0], "START") && inputkata.WordCount == 1) {
+
+                delay(300,'m');
+                if(readFile("SAVE/BASE/data.txt")==0){
+                    printf("File konfigurasi aplikasi berhasil dibaca. PURRMART berhasil dijalankan.\n");
+                }
+                else {
+                    printf("File konfigurasi telah rusak. Lakukan install ulang! \n");
+                }
+                dataLoaded = true;
+                isDone = true;
+            }
+
+            else if (stringCompare(inputkata.kata[0], "LOAD") && inputkata.WordCount == 2) {
+                
+                printf("Memuat file %s",inputkata.kata[1]);
+                delay(380,'m');
+                printf(".");
+                delay(380,'m');
+                printf(".");
+                delay(380,'m');
+                printf(".\n\n");
+                delay(1,'s');
+                char filepath[150];
+                sprintf(filepath, "SAVE/%s", inputkata.kata[1]);
+                if(readFile(filepath)==0){
+                    printf("Save file berhasil dibaca. PURRMART berhasil dijalankan.\n");
+                }
+                else {
+                    printf("Save file tidak ditemukan. PURRMART gagal dijalankan. \n");
+                }
+                dataLoaded = true;
+                isDone = true;
+            }
+
+            else if (stringCompare(inputkata.kata[0], "LOGIN") && inputkata.WordCount == 1) {
+                if (dataLoaded){
+                    if (!isLogin){
+                    printf("Username: ");
+                    ArrayOfKata username = inputUser();
+                    printf("Password: ");
+                    ArrayOfKata password = inputUser();
+                    
+                        if (username.WordCount == 1 && password.WordCount == 1) {
+                            int idx = getIndex(username.kata[0]); 
+                            if (idx != -1 && stringCompare(userList[idx].password, password.kata[0])) {
+                                printf("\nLogin berhasil! \nSelamat datang, %s\n", userList[idx].name);
+                                UserIndex = idx;
+                                isLogin = true; 
+                                isDone = true;
+                            } else {
+                                printf("Username atau password salah. Silakan coba lagi.\n");
+                            }
+                        }
+                        else if(password.WordCount>1){
+                            printf("Username atau password salah. Silakan coba lagi.\n");
+                        }     
+                        else {
+                            printf("Anda telah login.\n");
+                        }
+                    }
+                }
+                else{
+                    printf("Lakukan START atau LOAD terlebih dahulu\n");
+                }
+            }
+
+            else if (stringCompare(inputkata.kata[0], "LOGOUT") && inputkata.WordCount == 1) {
+                
+                if (isLogin){
+                    printf("Anda telah logout dari sistem PURRMART.\nSilakan REGISTER/LOGIN kembali untuk melanjutkan.\n");
+                    isLogin = false;
+                }
+                else {
+                    printf("Anda belum login.\n");
+                }
+                isDone = true;
+                dataLoaded = false;
+            }
+
+            else if (stringCompare(inputkata.kata[0], "REGISTER") && inputkata.WordCount == 1 && !isLogin) {
+                if (dataLoaded){
+                    if (userCount<maxUser){
+                        printf("Username: ");
+                        ArrayOfKata username = inputUser();
+
+                        if (getIndex(username.kata[0])==-1){
+                            copyString(userList[userCount].name,username.kata[0]);
+                            printf("Password: ");
+                            ArrayOfKata password = inputUser();
+                            copyString(userList[userCount].password,password.kata[0]);
+                            userList[userCount].money=0;
+                            userCount++;
+                            printf("User berhasil ditambahkan\n");
+                        }
+                        else {
+                            printf("Username tidak tersedia!\n");
+                        }
+
+                    }
+                    else{
+                        printf("Jumlah user telah maksimal.\n");
+                    }
+                    isDone = true;
+                }
+                else{
+                    printf("Lakukan START atau LOAD terlebih dahulu");
+                }
+            }
+
+
+            else if (stringCompare(inputkata.kata[0], "WORK") && inputkata.WordCount == 1 && isLogin) {
+                work(UserIndex);
+                isDone = true;
+            } 
+
+            else if (stringCompare(inputkata.kata[0], "HELP") && inputkata.WordCount == 1) {
+                
+                login_help(isLogin);
+                isDone = true;
+            }
+
+            else if (stringCompare(inputkata.kata[0], "SAVE") && inputkata.WordCount == 2) {
+                
+                printf("Menyimpan file %s",inputkata.kata[1]);
+                delay(380,'m');
+                printf(".");
+                delay(380,'m');
+                printf(".");
+                delay(380,'m');
+                printf(".\n\n");
+                char filepath[150];
+                sprintf(filepath, "SAVE/%s", inputkata.kata[1]);
+                writeFile(filepath);
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "WORK") && stringCompare(inputkata.kata[1],"CHALLENGE") && inputkata.WordCount == 2) {
+                playChallenge(UserIndex);
+                isDone = true;
+            } 
+            else if (stringCompare(inputkata.kata[0], "STORE") && stringCompare(inputkata.kata[1],"LIST") && inputkata.WordCount == 2) {
+                storelist(barangList);
+                isDone = true;
+            } 
+            else if (stringCompare(inputkata.kata[0], "STORE") && stringCompare(inputkata.kata[1],"REQUEST") && inputkata.WordCount == 2) {
+                storerequest(barangList,&antrian);
+                isDone = true;
+            } 
+            else if (stringCompare(inputkata.kata[0], "STORE") && stringCompare(inputkata.kata[1],"SUPPLY") && inputkata.WordCount == 2) {
+                storesupply(&antrian,&barangList);
+                isDone = true;
+            } 
+            else if (stringCompare(inputkata.kata[0], "STORE") && stringCompare(inputkata.kata[1],"REMOVE") && inputkata.WordCount == 2) {
+                storeremove(&barangList);
+                isDone = true;
+            } 
+            else if (stringCompare(inputkata.kata[0], "PROFILE") && inputkata.WordCount == 1 && isLogin){
+                printf("Nama : %s\n",userList[UserIndex].name);
+                printf("Money : %d\n",userList[UserIndex].money);
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"SHOW") && inputkata.WordCount == 2){
+                showcartitems(keranjang);
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"ADD") && inputkata.WordCount >= 4){
+                char namaitem[WordMax] = "";
+                combineword(namaitem,inputkata,2,inputkata.WordCount-1);
+                char* jumlahitem = inputkata.kata[inputkata.WordCount - 1];
+                
+                boolean isNumber = true;
+                for (int i = 0; jumlahitem[i] != '\0'; i++) {
+                    if (jumlahitem[i] < '0' || jumlahitem[i] > '9') {
+                        isNumber = false;
+                        break;
+                    }
+                }
+
+                if(isNumber){
+                    int angka = stringToInt(jumlahitem);
+                    addcart(&keranjang,barangList,namaitem,angka);
+                }
+                else{
+                    printf("Masukkan jumlah barang dengan benar!\n");
+                }
+
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"REMOVE") && inputkata.WordCount == 2){
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"SHOW") && inputkata.WordCount == 2){
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"PAY") && inputkata.WordCount == 2){
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"ADD") && inputkata.WordCount == 2){
+                printf("Masukkan nama barang : ");
+                ArrayOfKata inputwishlist = inputUser();
+                char items[WordMax];
+                combineword(items,inputwishlist,0,inputwishlist.WordCount);
+                wishlist_add(&wishlist,items);
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"SWAP") && inputkata.WordCount == 4){
+                char* angkastring1 = inputkata.kata[2];
+                char* angkastring2 = inputkata.kata[3];
+                boolean isNumber1 = true;
+                for (int i = 0; angkastring1[i] != '\0'; i++) {
+                    if (angkastring1[i] < '0' || angkastring1[i] > '9') {
+                        isNumber1 = false;
+                        break;
+                    }
+                }
+                boolean isNumber2 = true;
+                for (int i = 0; angkastring2[i] != '\0'; i++) {
+                    if (angkastring2[i] < '0' || angkastring2[i] > '9') {
+                        isNumber2 = false;
+                        break;
+                    }
+                }
+                if(isNumber1 && isNumber2){
+                    int angka1 = stringToInt(angkastring1);
+                    int angka2 = stringToInt(angkastring2);
+                    wishlist_swap(&wishlist,angka1, angka2);
+                }
+                else{
+                    printf("Tidak bisa menukar barang. Command tidak valid\n");
+                }
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"REMOVE") && inputkata.WordCount == 2){
+                ArrayOfKata nama;
+                printf("Masukkan nama barang yang ingin diremove :\n");
+                nama = inputUser();
+                char input[CharMax];
+                combineword(input,nama,0,nama.WordCount);
+                wishlist_remove(&wishlist,input);
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"REMOVE") && inputkata.WordCount == 3){
+                char* angkastring = inputkata.kata[2];
+                boolean isNumber = true;
+                for (int i = 0; angkastring[i] != '\0'; i++) {
+                    if (angkastring[i] < '0' || angkastring[i] > '9') {
+                        isNumber = false;
+                        break;
+                    }
+                }
+                if(isNumber){
+                    int angka = stringToInt(angkastring);
+                    wishlist_removei(&wishlist,angka);
+                }
+                else{
+                    printf("Penghapusan barang di wishlist gagal. Command tidak valid\n");
+                }
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"CLEAR") && inputkata.WordCount == 2){
+                wishlist_clear(&wishlist);
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"SHOW") && inputkata.WordCount == 2){
+                wishlist_show(&wishlist);
+                isDone = true;
+            }
+            else{
+                printf("Masukkan command yang sesuai!\nPastikan menggunakan huruf kapital!\ncommand 'HELP' untuk bantuan\n");
+            }
+        }while(!isDone);
+        
     }
 
     return 0;

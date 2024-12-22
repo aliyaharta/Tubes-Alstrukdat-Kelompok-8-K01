@@ -27,3 +27,4 @@ Untuk menampilkan program, masukkan perintah
 
 Setelah selesai menggunakan program, jalankan berikut di terminal yang sudah dalam direktori program
 > make clean
+
