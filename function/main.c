@@ -223,7 +223,7 @@ int main (){
                 storeremove(&barangList);
                 isDone = true;
             } 
-            else if (stringCompare(inputkata.kata[0], "PROFILE") && inputkata.WordCount == 1){
+            else if (stringCompare(inputkata.kata[0], "PROFILE") && inputkata.WordCount == 1 && isLogin){
                 printf("Nama : %s\n",userList[UserIndex].name);
                 printf("Money : %d\n",userList[UserIndex].money);
                 isDone = true;
