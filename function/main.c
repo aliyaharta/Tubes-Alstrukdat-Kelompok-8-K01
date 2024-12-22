@@ -20,6 +20,8 @@
 #include "setmap.h"
 #include "cartshow.h"
 #include "cartadd.h"
+#include "cartremove.h"
+#include "cartpay.h"
 #include "linkedlist.h"
 #include "wishlistadd.h"
 #include "wishlistclear.h"
@@ -27,6 +29,7 @@
 #include "wishlistremove.h"
 #include "wishlistremovei.h"
 #include "wishlistswap.h"
+#include "stack.h"
 
 int main (){
 
@@ -41,6 +44,8 @@ int main (){
     list_create(&wishlist);
     SetMap keranjang;
     createEmptyCart(&keranjang);
+    Stack history;
+    CreateEmptyStack(&history);
 
     printf("\033[3J\033[H\033[J");
     printf("\n\n\n");
@@ -223,14 +228,17 @@ int main (){
                 storeremove(&barangList);
                 isDone = true;
             } 
-            else if (stringCompare(inputkata.kata[0], "PROFILE") && inputkata.WordCount == 1 && isLogin){
-                printf("Nama : %s\n",userList[UserIndex].name);
-                printf("Money : %d\n",userList[UserIndex].money);
+            else if (stringCompare(inputkata.kata[0], "PROFILE") && inputkata.WordCount == 1){
+                if(isLogin){
+                    printf("Nama : %s\n",userList[UserIndex].name);
+                    printf("Money : %d\n",userList[UserIndex].money);
+                }
                 isDone = true;
             }
             else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"SHOW") && inputkata.WordCount == 2){
                 showcartitems(keranjang);
                 isDone = true;
+                // BENERIN LG INTERFACE NYA
             }
             else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"ADD") && inputkata.WordCount >= 4){
                 char namaitem[WordMax] = "";
@@ -250,18 +258,35 @@ int main (){
                     addcart(&keranjang,barangList,namaitem,angka);
                 }
                 else{
-                    printf("Masukkan jumlah barang dengan benar!\n");
+                    printf("Masukan salah. Pastikan input nama dan jumlah dengan valid\n");
                 }
 
                 isDone = true;
             }
-            else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"REMOVE") && inputkata.WordCount == 2){
-                isDone = true;
-            }
-            else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"SHOW") && inputkata.WordCount == 2){
+            else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"REMOVE") && inputkata.WordCount >= 2){
+                char namaitem[WordMax] = "";
+                combineword(namaitem,inputkata,2,inputkata.WordCount-1);
+                char* jumlahitem = inputkata.kata[inputkata.WordCount - 1];
+                
+                boolean isNumber = true;
+                for (int i = 0; jumlahitem[i] != '\0'; i++) {
+                    if (jumlahitem[i] < '0' || jumlahitem[i] > '9') {
+                        isNumber = false;
+                        break;
+                    }
+                }
+
+                if(isNumber){
+                    int angka = stringToInt(jumlahitem);
+                    removecartitems(&keranjang,namaitem,angka);
+                }
+                else{
+                    printf("Masukan salah. Pastikan input nama dan jumlah dengan valid\n");
+                }
                 isDone = true;
             }
             else if (stringCompare(inputkata.kata[0], "CART") && stringCompare(inputkata.kata[1],"PAY") && inputkata.WordCount == 2){
+                cartpay(&keranjang,barangList,&history,UserIndex);
                 isDone = true;
             }
             else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"ADD") && inputkata.WordCount == 2){
@@ -332,6 +357,12 @@ int main (){
             }
             else if (stringCompare(inputkata.kata[0], "WISHLIST") && stringCompare(inputkata.kata[1],"SHOW") && inputkata.WordCount == 2){
                 wishlist_show(&wishlist);
+                isDone = true;
+            }
+            else if (stringCompare(inputkata.kata[0], "HISTORY") && inputkata.WordCount == 2){
+                char* angkastring=inputkata.kata[1];
+                int angka = stringToInt(angkastring);
+                DisplayStack(history,angka);
                 isDone = true;
             }
             else{
