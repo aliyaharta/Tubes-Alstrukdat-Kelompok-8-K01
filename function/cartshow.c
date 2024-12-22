@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "cartshow.h"
+#include "user.h"
 
 void showcartitems(SetMap cart){
     if(isEmptyCart(cart)){
